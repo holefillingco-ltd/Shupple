@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58409CC122EDECDA00050893 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58409CC022EDECDA00050893 /* Alamofire.framework */; };
+		58409CC322EDECE400050893 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58409CC222EDECE400050893 /* Eureka.framework */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58409CC022EDECDA00050893 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		58409CC222EDECE400050893 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +35,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58409CC322EDECE400050893 /* Eureka.framework in Frameworks */,
+				58409CC122EDECDA00050893 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58409CBF22EDECDA00050893 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				58409CC222EDECE400050893 /* Eureka.framework */,
+				58409CC022EDECDA00050893 /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		58FC3CD122EDE61100E89BFB = {
 			isa = PBXGroup;
 			children = (
 				58FC3CDC22EDE61100E89BFB /* Shupple */,
 				58FC3CDB22EDE61100E89BFB /* Products */,
+				58409CBF22EDECDA00050893 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,6 +93,7 @@
 				58FC3CD622EDE61100E89BFB /* Sources */,
 				58FC3CD722EDE61100E89BFB /* Frameworks */,
 				58FC3CD822EDE61100E89BFB /* Resources */,
+				58409CC422EDECF300050893 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -132,6 +149,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58409CC422EDECF300050893 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58FC3CD622EDE61100E89BFB /* Sources */ = {
@@ -288,6 +327,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39M62H66HM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Shupple/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -296,7 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Shupple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -306,6 +349,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 39M62H66HM;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Shupple/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -314,7 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Shupple;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
