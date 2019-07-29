@@ -9,17 +9,21 @@
 /* Begin PBXBuildFile section */
 		58409CC122EDECDA00050893 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58409CC022EDECDA00050893 /* Alamofire.framework */; };
 		58409CC322EDECE400050893 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58409CC222EDECE400050893 /* Eureka.framework */; };
+		58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
 		58FC3CE522EDE61100E89BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE322EDE61100E89BFB /* Main.storyboard */; };
 		58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE622EDE61300E89BFB /* Assets.xcassets */; };
 		58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE822EDE61300E89BFB /* LaunchScreen.storyboard */; };
+		E41929CEC7F263232EE93118 /* Pods_Shupple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE70313AAD303D97A156C371 /* Pods_Shupple.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		312BEC8CDD8AC53B80FB0004 /* Pods-Shupple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.release.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.release.xcconfig"; sourceTree = "<group>"; };
 		58409CC022EDECDA00050893 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		58409CC222EDECE400050893 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
+		58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +32,8 @@
 		58FC3CE622EDE61300E89BFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58FC3CE922EDE61300E89BFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58FC3CEB22EDE61300E89BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
+		BE70313AAD303D97A156C371 /* Pods_Shupple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shupple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +43,7 @@
 			files = (
 				58409CC322EDECE400050893 /* Eureka.framework in Frameworks */,
 				58409CC122EDECDA00050893 /* Alamofire.framework in Frameworks */,
+				E41929CEC7F263232EE93118 /* Pods_Shupple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,6 +55,7 @@
 			children = (
 				58409CC222EDECE400050893 /* Eureka.framework */,
 				58409CC022EDECDA00050893 /* Alamofire.framework */,
+				BE70313AAD303D97A156C371 /* Pods_Shupple.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -58,6 +66,7 @@
 				58FC3CDC22EDE61100E89BFB /* Shupple */,
 				58FC3CDB22EDE61100E89BFB /* Products */,
 				58409CBF22EDECDA00050893 /* Frameworks */,
+				E84D921CD0F32CAFB20C2E2C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,8 +88,19 @@
 				58FC3CE622EDE61300E89BFB /* Assets.xcassets */,
 				58FC3CE822EDE61300E89BFB /* LaunchScreen.storyboard */,
 				58FC3CEB22EDE61300E89BFB /* Info.plist */,
+				58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */,
 			);
 			path = Shupple;
+			sourceTree = "<group>";
+		};
+		E84D921CD0F32CAFB20C2E2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */,
+				312BEC8CDD8AC53B80FB0004 /* Pods-Shupple.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,10 +110,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58FC3CEE22EDE61300E89BFB /* Build configuration list for PBXNativeTarget "Shupple" */;
 			buildPhases = (
+				ADC176EB4E5D66B879EB2DFB /* [CP] Check Pods Manifest.lock */,
 				58FC3CD622EDE61100E89BFB /* Sources */,
 				58FC3CD722EDE61100E89BFB /* Frameworks */,
 				58FC3CD822EDE61100E89BFB /* Resources */,
 				58409CC422EDECF300050893 /* ShellScript */,
+				D01BDE383F488F2DF029E61D /* [CP] Embed Pods Frameworks */,
+				753FA4FD8263EF9B6B173F57 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */,
+				58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */,
 				58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */,
 				58FC3CE522EDE61100E89BFB /* Main.storyboard in Resources */,
 			);
@@ -169,6 +193,62 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
+		753FA4FD8263EF9B6B173F57 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shupple/Pods-Shupple-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shupple/Pods-Shupple-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shupple/Pods-Shupple-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ADC176EB4E5D66B879EB2DFB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shupple-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D01BDE383F488F2DF029E61D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shupple/Pods-Shupple-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shupple/Pods-Shupple-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shupple/Pods-Shupple-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -323,6 +403,7 @@
 		};
 		58FC3CEF22EDE61300E89BFB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -345,6 +426,7 @@
 		};
 		58FC3CF022EDE61300E89BFB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 312BEC8CDD8AC53B80FB0004 /* Pods-Shupple.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
