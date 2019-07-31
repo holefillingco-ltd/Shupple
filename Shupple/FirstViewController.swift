@@ -18,8 +18,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     
     let providers: [FUIAuthProvider] = [
         FUIGoogleAuth(),
-        FUIFacebookAuth(),
-        FUITwitterAuth()
+        FUIFacebookAuth()
     ]
     
     override func viewDidLoad() {
