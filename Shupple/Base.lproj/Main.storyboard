@@ -30,7 +30,7 @@
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
-                        <segue destination="yij-LJ-DzJ" kind="show" id="EbQ-y2-T66"/>
+                        <segue destination="yij-LJ-DzJ" kind="show" identifier="toTopView" id="EbQ-y2-T66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
