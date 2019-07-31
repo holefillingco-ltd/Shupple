@@ -6,6 +6,7 @@ target 'Shupple' do
   use_frameworks!
 
   # Pods for Shupple
+  pod 'TwitterKit'
 
 end
 

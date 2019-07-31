@@ -10,6 +10,7 @@
 		58409CC122EDECDA00050893 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58409CC022EDECDA00050893 /* Alamofire.framework */; };
 		58409CC322EDECE400050893 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58409CC222EDECE400050893 /* Eureka.framework */; };
 		58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */; };
+		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
@@ -24,6 +25,7 @@
 		58409CC022EDECDA00050893 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		58409CC222EDECE400050893 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RegistrationViewController.swift; path = Shupple/RegistrationViewController.swift; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 		58FC3CD122EDE61100E89BFB = {
 			isa = PBXGroup;
 			children = (
+				58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */,
 				58FC3CDC22EDE61100E89BFB /* Shupple */,
 				58FC3CDB22EDE61100E89BFB /* Products */,
 				58409CBF22EDECDA00050893 /* Frameworks */,
@@ -258,6 +261,7 @@
 			files = (
 				58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */,
 				58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */,
+				58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */,
 				58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

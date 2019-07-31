@@ -61,6 +61,18 @@
             ReferencedContainer = "container:Shupple.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "twitter_sk"
+            value = "buEQnPJ51gJTkwIQYDdNbIuaPBse5v05gPlOlHqtmDdAuvRJ9E"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "twitter_ak"
+            value = "TzoGJ45sT2XIaQI7lq3WWZqno"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
