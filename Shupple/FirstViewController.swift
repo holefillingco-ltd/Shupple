@@ -16,20 +16,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     @IBOutlet weak var AuthButton: UIButton!
     
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!} }
-    
-    private func twitterAuthProvider() -> FUIAuthProvider? {
-        let buttonColor = UIColor(red: 71.0/255.0, green: 154.0/255.0, blue: 234.0/255.0, alpha: 1.0)
-        return FUIOAuth(authUI: self.authUI,
-                        providerID: "twitter.com",
-                        buttonLabelText: "Sign in with Twitter",
-                        shortName: "Twitter",
-                        buttonColor: buttonColor,
-                        iconImage: UIImage(named: "twtlogo")!.scaleImage(scaleSize: 0.09),
-                        scopes: ["user.readwrite"],
-                        customParameters: ["prompt" : "consent"],
-                        loginHintKey: nil)
-    }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let providers: [FUIAuthProvider] = [
@@ -43,6 +30,28 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         AuthButton.addTarget(self,
                              action: #selector(self.AuthButtonTapped(sender:)),
                              for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            if let user = user {
+                print(user)
+                self.performSegue(withIdentifier: "toTopView", sender: self)
+            }
+        }
+    }
+    
+    private func twitterAuthProvider() -> FUIAuthProvider? {
+        let buttonColor = UIColor(red: 71.0/255.0, green: 154.0/255.0, blue: 234.0/255.0, alpha: 1.0)
+        return FUIOAuth(authUI: self.authUI,
+                        providerID: "twitter.com",
+                        buttonLabelText: "Sign in with Twitter",
+                        shortName: "Twitter",
+                        buttonColor: buttonColor,
+                        iconImage: UIImage(named: "twtlogo")!.scaleImage(scaleSize: 0.09),
+                        scopes: ["user.readwrite"],
+                        customParameters: ["prompt" : "consent"],
+                        loginHintKey: nil)
     }
     
     @objc func AuthButtonTapped(sender: AnyObject) {
