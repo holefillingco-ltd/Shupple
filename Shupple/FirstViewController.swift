@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import TwitterKit
 
 class FirstViewController: UIViewController, FUIAuthDelegate {
     
@@ -16,13 +17,26 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!} }
     
-    let providers: [FUIAuthProvider] = [
-        FUIGoogleAuth(),
-        FUIFacebookAuth()
-    ]
+    private func twitterAuthProvider() -> FUIAuthProvider? {
+        let buttonColor = UIColor(red: 71.0/255.0, green: 154.0/255.0, blue: 234.0/255.0, alpha: 1.0)
+        return FUIOAuth(authUI: self.authUI,
+                        providerID: "twitter.com",
+                        buttonLabelText: "Sign in with Twitter",
+                        shortName: "Twitter",
+                        buttonColor: buttonColor,
+                        iconImage: UIImage(named: "twtlogo")!.scaleImage(scaleSize: 0.09),
+                        scopes: ["user.readwrite"],
+                        customParameters: ["prompt" : "consent"],
+                        loginHintKey: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let providers: [FUIAuthProvider] = [
+            FUIGoogleAuth(),
+            FUIFacebookAuth(),
+            twitterAuthProvider()!
+        ]
         // authUIのデリゲート
         self.authUI.delegate = self
         self.authUI.providers = providers
@@ -47,5 +61,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         }
         
     }
+    
+    
 }
 

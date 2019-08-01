@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,16 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        TWTRTwitter.sharedInstance().start(
+            withConsumerKey:"TzoGJ45sT2XIaQI7lq3WWZqno",consumerSecret:"buEQnPJ51gJTkwIQYDdNbIuaPBse5v05gPlOlHqtmDdAuvRJ9E")
         return true
     }
     
+    // HACK: if文をまとめるようにする
     // facebook&Google&電話番号認証時に呼ばれる関数
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
         // GoogleもしくはFacebook認証の場合、trueを返す
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
+            return true
+        }
+        // Twitter認証の場合、trueを返す
+        if TWTRTwitter.sharedInstance().application(app, open: url, options: options) {
             return true
         }
         return false
