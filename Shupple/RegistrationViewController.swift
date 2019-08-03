@@ -15,44 +15,53 @@ class RegistrationViewController: FormViewController {
     
     let user = Auth.auth().currentUser
     var selectedImage = UIImage()
-    var imageValue = UIImage()
+    var defaultPI = UIImage()
     
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func downloadImage(from url: URL) {
-        print("Download Started")
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
-            print(response?.suggestedFilename ?? url.lastPathComponent)
-            print("Download Finished")
             DispatchQueue.main.async() {
-                self.imageValue = UIImage(data: data)!
+                self.defaultPI = UIImage(data: data)!
+                self.setEureka()
             }
         }
     }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         downloadImage(from: (user?.photoURL)!)
-        form +++ Section("セクション名")
-            <<< TextRow("Rowのタグ"){ row in
-                row.title = "Rowのタイトル"
-                row.placeholder = "プレースホルダー"
+    }
+    
+    func setEureka() {
+        form
+            +++ Section() {
+                $0.header = {
+                    let header = HeaderFooterView<UIView>(.callback({
+                        let view = UIView(frame: CGRect(x: 0, y: 0,
+                                                        width: self.view.frame.width, height: 300))
+                        view.addSubview(UIImageView(image: self.defaultPI))
+                        return view
+                    }))
+                    return header
+                }()
             }
-            <<< ImageRow() {
+            +++ Section("Profile")
+            <<< TextRow("nickName"){ row in
+                row.title = "ニックネーム"
+                row.value = user?.displayName
+            }
+            <<< ImageRow(){
                 $0.title = "プロフィール画像"
                 $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                // TODO: エラーハンドリング追加
-//                $0.value = UIImage(url: String(contentsOf: (user?.photoURL)!))
-                $0.value = imageValue
-                $0.clearAction = .yes(style: .destructive)
+                $0.value = defaultPI
+                $0.clearAction = .no
                 $0.onChange { [unowned self] row in
                     self.selectedImage = row.value!
                 }
-            }
+        }
     }
-
 }
