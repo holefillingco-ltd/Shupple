@@ -8,6 +8,9 @@ target 'Shupple' do
   # Pods for Shupple
   pod 'TwitterKit'
 
+  # Eureka ImageRow
+  pod 'ImageRow', '~> 3.0'
+
 end
 
 pod 'Firebase/Analytics'

@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    // HACK: if文をまとめるようにする
+    // HACK: if文らへん
     // facebook&Google&電話番号認証時に呼ばれる関数
     func application(_ app: UIApplication, open url: URL,
                      options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
