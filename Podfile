@@ -11,6 +11,9 @@ target 'Shupple' do
   # Eureka ImageRow
   pod 'ImageRow', '~> 3.0'
 
+  # Kingfisher
+  pod 'Kingfisher', '~> 5.0'
+
 end
 
 pod 'Firebase/Analytics'
