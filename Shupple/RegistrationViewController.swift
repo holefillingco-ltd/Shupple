@@ -50,10 +50,6 @@ class RegistrationViewController: FormViewController {
                 }()
             }
             +++ Section("Profile")
-            <<< TextRow("nickName"){ row in
-                row.title = "ニックネーム"
-                row.value = user?.displayName
-            }
             <<< ImageRow(){
                 $0.title = "プロフィール画像"
                 $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
@@ -62,6 +58,10 @@ class RegistrationViewController: FormViewController {
                 $0.onChange { [unowned self] row in
                     self.selectedImage = row.value!
                 }
+            <<< TextRow("nickName"){ row in
+                row.title = "ニックネーム"
+                row.value = user?.displayName
+            }
         }
     }
 }
