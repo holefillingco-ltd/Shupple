@@ -18,6 +18,7 @@ class RegistrationViewController: FormViewController {
     var selectedImage = UIImage()
     var pView = UIView()
 
+    // downloadImageで使用
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
@@ -38,14 +39,18 @@ class RegistrationViewController: FormViewController {
         downloadImage(from: (user?.photoURL)!)
     }
     
-    // プロフィール画像を変更した時に呼ばれる
     // 画像プレビューを変更する
+    // 引数に取ったUIImageをリサイズして表示
+    // TODO: トリミング処理の関数を追加
     func changePV(image: UIImage) {
         let subviews = pView.subviews
         for subview in subviews {
             subview.removeFromSuperview()
         }
-        pView.addSubview(UIImageView(image: image.scaleImage(scaleSize: 0.09)))
+        let imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300)
+        imageView.layer.cornerRadius = 60
+        pView.addSubview(imageView)
     }
     
     // フォームのセットアップ
@@ -57,13 +62,13 @@ class RegistrationViewController: FormViewController {
                         self.pView = UIView(frame: CGRect(x: 0, y: 0,
                                                         width: self.view.frame.width,
                                                         height: 300))
-                        self.pView.addSubview(UIImageView(image: self.selectedImage))
+                        self.changePV(image: self.selectedImage)
                         return self.pView
                     }))
                     return header
                 }()
             }
-            +++ Section("Profile")
+        +++ Section("Profile")
             <<< ImageRow(){
                 $0.title = "プロフィール画像"
                 $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
@@ -73,10 +78,13 @@ class RegistrationViewController: FormViewController {
                     self.selectedImage = row.value!
                     self.changePV(image: self.selectedImage)
                 }
-            <<< TextRow("nickName"){ row in
-                row.title = "ニックネーム"
-                row.value = user?.displayName
             }
-        }
+            <<< TextRow("nickName"){
+                $0.title = "ニックネーム"
+                $0.value = user?.displayName
+            }
+            <<< DateRow("birth"){
+                $0.title = "生年月日"
+            }
     }
 }
