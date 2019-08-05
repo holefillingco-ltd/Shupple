@@ -56,18 +56,18 @@ class RegistrationViewController: FormViewController {
     // フォームのセットアップ
     func setEureka() {
         form
-            +++ Section() {
-                $0.header = {
-                    let header = HeaderFooterView<UIView>(.callback({
-                        self.pView = UIView(frame: CGRect(x: 0, y: 0,
-                                                        width: self.view.frame.width,
-                                                        height: 300))
-                        self.changePV(image: self.selectedImage)
-                        return self.pView
-                    }))
-                    return header
-                }()
-            }
+        +++ Section() {
+            $0.header = {
+                let header = HeaderFooterView<UIView>(.callback({
+                    self.pView = UIView(frame: CGRect(x: 0, y: 0,
+                                                    width: self.view.frame.width,
+                                                    height: 300))
+                    self.changePV(image: self.selectedImage)
+                    return self.pView
+                }))
+                return header
+            }()
+        }
         +++ Section("Profile")
             <<< ImageRow(){
                 $0.title = "プロフィール画像"
@@ -86,5 +86,22 @@ class RegistrationViewController: FormViewController {
             <<< DateRow("birth"){
                 $0.title = "生年月日"
             }
+            <<< SegmentedRow<String>("sex"){
+                $0.options = ["男性", "女性"]
+                $0.title = "性別"
+                $0.value = "男"
+            }
+        +++ Section("Fin") {
+            $0.footer = {
+                let header = HeaderFooterView<UIView>(.callback({
+                    self.pView = UIView(frame: CGRect(x: 0, y: 0,
+                                                      width: self.view.frame.width,
+                                                      height: 300))
+                    self.changePV(image: self.selectedImage)
+                    return self.pView
+                }))
+                return header
+            }()
+        }
     }
 }
