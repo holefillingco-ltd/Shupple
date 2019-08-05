@@ -93,14 +93,13 @@ class RegistrationViewController: FormViewController {
             }
         +++ Section("Fin") {
             $0.footer = {
-                let header = HeaderFooterView<UIView>(.callback({
-                    self.pView = UIView(frame: CGRect(x: 0, y: 0,
+                let footer = HeaderFooterView<UIView>(.callback({
+                    let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    self.changePV(image: self.selectedImage)
-                    return self.pView
+                    return fView
                 }))
-                return header
+                return footer
             }()
         }
     }
