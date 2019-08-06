@@ -97,13 +97,19 @@ class RegistrationViewController: FormViewController {
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    let rgba = UIColor(red: 156, green: 194, blue: 255, alpha: 1.0)
-                    let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: fView.frame.height / 4))
+                    let rgba = UIColor(hex: "b6dae3")
+                    // TODO: finButtonの切り出し
+                    let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width , height: fView.frame.height / 4))
                     finButton.backgroundColor = rgba
                     finButton.layer.borderWidth = 0.5
                     finButton.layer.borderColor = UIColor.black.cgColor
-                    finButton.layer.cornerRadius = 5.0
+                    finButton.layer.cornerRadius = 12.0
+                    finButton.setTitle("登録", for: UIControl.State.normal)
                     finButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+                    finButton.layer.shadowOpacity = 0.5
+                    finButton.layer.shadowRadius = 12
+                    finButton.layer.shadowColor = UIColor.black.cgColor
+                    finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
                     fView.addSubview(finButton)
                     return fView
                 }))
