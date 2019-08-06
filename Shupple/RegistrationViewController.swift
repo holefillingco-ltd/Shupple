@@ -103,7 +103,7 @@ class RegistrationViewController: FormViewController {
                     finButton.backgroundColor = rgba
                     finButton.layer.borderWidth = 0.5
                     finButton.layer.borderColor = UIColor.black.cgColor
-                    finButton.layer.cornerRadius = 12.0
+                    finButton.layer.cornerRadius = 30.0
                     finButton.setTitle("登録", for: UIControl.State.normal)
                     finButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
                     finButton.layer.shadowOpacity = 0.5
