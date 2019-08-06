@@ -97,8 +97,8 @@ class RegistrationViewController: FormViewController {
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    let rgba = UIColor(red: 255/255, green: 128/255, blue: 168/255, alpha: 1.0)
-                    let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: self.view.frame.height / 4))
+                    let rgba = UIColor(red: 156, green: 194, blue: 255, alpha: 1.0)
+                    let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width, height: fView.frame.height / 4))
                     finButton.backgroundColor = rgba
                     finButton.layer.borderWidth = 0.5
                     finButton.layer.borderColor = UIColor.black.cgColor
