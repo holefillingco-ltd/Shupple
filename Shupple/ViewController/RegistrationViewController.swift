@@ -91,7 +91,7 @@ class RegistrationViewController: FormViewController {
                 $0.title = "性別"
                 $0.value = "男"
             }
-        +++ Section("Fin") {
+        +++ Section() {
             $0.footer = {
                 let footer = HeaderFooterView<UIView>(.callback({
                     let fView = UIView(frame: CGRect(x: 0, y: 0,

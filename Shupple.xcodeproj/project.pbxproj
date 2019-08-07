@@ -11,6 +11,7 @@
 		589DA58A22F354E400AE2BE6 /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DA58922F354E400AE2BE6 /* ImageScale.swift */; };
 		58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A66D22F58C6400EC54ED /* ImageForURL.swift */; };
 		58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* uiColorHex.swift */; };
+		58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67322FB33DA00EC54ED /* TopViewController.swift */; };
 		58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */; };
 		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
@@ -29,6 +30,7 @@
 		58A4A66D22F58C6400EC54ED /* ImageForURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForURL.swift; sourceTree = "<group>"; };
 		58A4A66F22F5A42E00EC54ED /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		58A4A67122F9EB2600EC54ED /* uiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiColorHex.swift; sourceTree = "<group>"; };
+		58A4A67322FB33DA00EC54ED /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +84,7 @@
 				58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */,
 				58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */,
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
+				58A4A67322FB33DA00EC54ED /* TopViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */,
 				58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */,
 				589DA58A22F354E400AE2BE6 /* ImageScale.swift in Sources */,
+				58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */,
 				58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */,
 				58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */,
 				58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */,
