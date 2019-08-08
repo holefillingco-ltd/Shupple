@@ -11,6 +11,7 @@ import Eureka
 import ImageRow
 import FirebaseAuth
 
+// TODO: APIを叩く処理
 class RegistrationViewController: FormViewController {
     
     // ログインユーザー
@@ -53,7 +54,13 @@ class RegistrationViewController: FormViewController {
         pView.addSubview(imageView)
     }
     
+    // finButtonを押されたら呼ばれる
+    @objc func toRegistration(_ sender: UIButton) {
+        performSegue(withIdentifier: "toTopView", sender: nil)
+    }
+    
     // フォームのセットアップ
+    // TODO: finButtonの切り出し
     func setEureka() {
         form
         +++ Section() {
@@ -98,7 +105,6 @@ class RegistrationViewController: FormViewController {
                                                       width: self.view.frame.width,
                                                       height: 300))
                     let rgba = UIColor(hex: "b6dae3")
-                    // TODO: finButtonの切り出し
                     let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width , height: fView.frame.height / 4))
                     finButton.backgroundColor = rgba
                     finButton.layer.borderWidth = 0.5
@@ -110,6 +116,9 @@ class RegistrationViewController: FormViewController {
                     finButton.layer.shadowRadius = 12
                     finButton.layer.shadowColor = UIColor.black.cgColor
                     finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+                    finButton.addTarget(self,
+                                        action: #selector(self.toRegistration(_:)),
+                                        for: UIControl.Event.touchUpInside)
                     fView.addSubview(finButton)
                     return fView
                 }))

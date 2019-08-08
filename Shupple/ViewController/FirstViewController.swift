@@ -36,7 +36,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
                 print(user)
-                self.performSegue(withIdentifier: "toTopView", sender: self)
+                self.performSegue(withIdentifier: "toRegistrationView", sender: self)
             }
         }
     }
@@ -66,7 +66,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     ) {
         // 認証に成功した場合
         if error == nil {
-            self.performSegue(withIdentifier: "toTopView", sender: self)
+            self.performSegue(withIdentifier: "toRegistrationView", sender: self)
         }
         
     }
