@@ -133,27 +133,12 @@
         <scene sceneID="1TH-Ym-5ZH">
             <objects>
                 <viewController id="bnh-QK-pl4" customClass="TopViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="Lbf-lf-aNN">
+                    <view key="view" contentMode="scaleToFill" id="IXg-qa-RJD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEv-59-Nsf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="202"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.21250526550000001" green="1" blue="0.27698067269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSV-7D-6y4">
-                                <rect key="frame" x="153" y="657" width="117" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="Ja5-7W-ogV"/>
-                    </scrollView>
-                    <size key="freeformSize" width="414" height="896"/>
+                        <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
+                    </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lA-FX-leG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
