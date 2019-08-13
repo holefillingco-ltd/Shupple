@@ -30,7 +30,7 @@
                     <navigationItem key="navigationItem" id="vAd-aT-qKb"/>
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
-                        <segue destination="yij-LJ-DzJ" kind="show" identifier="toTopView" id="EbQ-y2-T66"/>
+                        <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -40,7 +40,6 @@
         <!--Registration View Controller-->
         <scene sceneID="UNJ-Iv-wkJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="yij-LJ-DzJ" customClass="RegistrationViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nAt-7b-TmC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -49,9 +48,10 @@
                         <viewLayoutGuide key="safeArea" id="QJ1-Br-BVb"/>
                     </view>
                     <connections>
-                        <segue destination="bnh-QK-pl4" kind="show" id="BS2-aV-7Wb"/>
+                        <segue destination="bnh-QK-pl4" kind="show" identifier="toTopView" id="BS2-aV-7Wb"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2486.9565217391305" y="-322.09821428571428"/>
         </scene>
