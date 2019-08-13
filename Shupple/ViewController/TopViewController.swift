@@ -28,7 +28,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        header.frame = CGRect(x: 10, y: 20,
+        header.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
                               width: view.frame.width - 10*2, height: 200)
     }
     
