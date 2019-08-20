@@ -17,8 +17,11 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         // プロフィール画像
-        header = UIView(frame: CGRect(x: 10, y: 20, width: view.frame.width - 10*2, height: 200))
-        header.backgroundColor = UIColor.init(red: 157/255, green: 204/255, blue: 224/255, alpha: 1)
+        header = UIView(frame: CGRect(x: 10, y: 20,
+                                      width: view.frame.width - 10*2,
+                                      height: 200))
+        header.backgroundColor = UIColor.init(red: 157/255, green: 204/255,
+                                              blue: 224/255, alpha: 1)
         scrollView.delegate = self
         scrollView.addSubview(header)
         
@@ -29,7 +32,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         header.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
-                              width: view.frame.width - 10*2, height: 200)
+                              width: view.frame.width, height: 300)
     }
     
     override func didReceiveMemoryWarning() {
