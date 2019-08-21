@@ -18,7 +18,7 @@ public struct Profile: Codable {
     public var opponentAge: Int
     public var imageURL: String?
     public var hobby: String
-    public var residence: Int
+    public var residence: String
     public var job: Int
     public var personality: Int
     
@@ -37,7 +37,7 @@ public struct Profile: Codable {
         self.opponentAge = opponentAge
         self.imageURL = imageURL
         self.hobby = hobby
-        self.residence = residence
+        self.residence = Prefecture(code: residence)!.name
         self.job = job
         self.personality = personality
     }
