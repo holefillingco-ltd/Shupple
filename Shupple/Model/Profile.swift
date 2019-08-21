@@ -20,7 +20,7 @@ public struct Profile: Codable {
     public var hobby: String
     public var residence: String
     public var job: String
-    public var personality: Int
+    public var personality: String
     
     init(
         id: Int, uid: String, nickName: String, sex: Int,
@@ -39,6 +39,6 @@ public struct Profile: Codable {
         self.hobby = hobby
         self.residence = Prefecture(code: residence)!.name
         self.job = Job(code: job)!.name
-        self.personality = personality
+        self.personality = Personality(code: personality)!.name
     }
 }
