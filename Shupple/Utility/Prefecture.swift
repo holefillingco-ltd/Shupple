@@ -5,6 +5,9 @@
 //  Created by 磯崎裕太 on 2019/08/22.
 //  Copyright © 2019 HoleFillingCo.,Ltd. All rights reserved.
 //
+// PrefectureをIntからString, StringからIntへ変換
+// Prefecture(code: 1)!.name <- 北海道
+// Prefecture(name: "北海道")!.code <- 1
 
 import Foundation
 
