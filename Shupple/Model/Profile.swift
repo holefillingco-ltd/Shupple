@@ -31,7 +31,7 @@ public struct Profile: Codable {
         self.id = id
         self.uid = uid
         self.nickName = nickName
-        self.sex = self.getSex(sex: sex)
+        self.sex = Sex(code: sex)!.name
         self.birthDay = birthDay
         self.age = age
         self.opponentAge = opponentAge
