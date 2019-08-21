@@ -5,6 +5,9 @@
 //  Created by 磯崎裕太 on 2019/08/22.
 //  Copyright © 2019 HoleFillingCo.,Ltd. All rights reserved.
 //
+// JobをIntからString, StringからIntへ変換
+// Job(code: 1)!.name <- 会社員
+// Job(name: "会社員")!.code <- 1
 
 import Foundation
 
