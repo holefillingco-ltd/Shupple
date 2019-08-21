@@ -19,7 +19,7 @@ public struct Profile: Codable {
     public var imageURL: String?
     public var hobby: String
     public var residence: String
-    public var job: Int
+    public var job: String
     public var personality: Int
     
     init(
@@ -38,7 +38,7 @@ public struct Profile: Codable {
         self.imageURL = imageURL
         self.hobby = hobby
         self.residence = Prefecture(code: residence)!.name
-        self.job = job
+        self.job = Job(code: job)!.name
         self.personality = personality
     }
 }
