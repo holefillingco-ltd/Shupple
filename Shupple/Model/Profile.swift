@@ -41,18 +41,4 @@ public struct Profile: Codable {
         self.job = job
         self.personality = personality
     }
-    
-    private func getSex(sex: Int) -> String {
-        switch sex {
-        case 0:
-            return "男"
-        case 1:
-            return "女"
-        default:
-            return "その他"
-        }
-    }
-    
-    private func
-
 }

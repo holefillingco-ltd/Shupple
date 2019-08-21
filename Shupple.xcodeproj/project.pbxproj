@@ -15,6 +15,7 @@
 		58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */; };
 		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
 		58CF97BC230C5DBB00C3C0B7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BB230C5DBB00C3C0B7 /* Profile.swift */; };
+		58CF97BE230DAE2700C3C0B7 /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BD230DAE2700C3C0B7 /* Sex.swift */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
@@ -35,6 +36,7 @@
 		58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		58CF97BB230C5DBB00C3C0B7 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		58CF97BD230DAE2700C3C0B7 /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				589DA58922F354E400AE2BE6 /* ImageScale.swift */,
 				58A4A66D22F58C6400EC54ED /* ImageForURL.swift */,
 				58A4A67122F9EB2600EC54ED /* uiColorHex.swift */,
+				58CF97BD230DAE2700C3C0B7 /* Sex.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58CF97BE230DAE2700C3C0B7 /* Sex.swift in Sources */,
 				58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */,
 				58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */,
 				58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */,
