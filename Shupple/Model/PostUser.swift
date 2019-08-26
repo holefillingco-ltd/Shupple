@@ -13,8 +13,8 @@ class PostUser: Codable {
     var nickName: String = ""
     private var sex: Int = 1
     private var birthDay: String = ""
-    var age: Int = 1
-    var opponentAge: String = ""
+    var opponentAgeLow: Int = 1
+    var opponentAgeUpper: Int = 1
     var hobby: String = ""
     private var residence: Int = 1
     private var job: Int = 1
@@ -34,5 +34,25 @@ class PostUser: Codable {
     
     func setPersonality(personality: String) {
         self.personality = Personality.init(name: personality)!.code
+    }
+    
+    func setOpponentAge(opponentAgeRange: String) {
+        switch opponentAgeRange {
+        case "18~20":
+            self.opponentAgeLow = 18
+            self.opponentAgeUpper = 20
+        case "20~25":
+            self.opponentAgeLow = 20
+            self.opponentAgeUpper = 25
+        case "25~30":
+            self.opponentAgeLow = 25
+            self.opponentAgeUpper = 30
+        case "30~35":
+            self.opponentAgeLow = 30
+            self.opponentAgeUpper = 35
+        default:
+            self.opponentAgeLow = 1
+            self.opponentAgeUpper = 100
+        }
     }
 }
