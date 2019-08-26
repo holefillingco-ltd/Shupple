@@ -10,21 +10,26 @@ import UIKit
 import Eureka
 import ImageRow
 import FirebaseAuth
-
-// TODO: APIを叩く処理
+/*
+ * TODO: APIを叩く処理
+ */
 class RegistrationViewController: FormViewController {
     
     // ログインユーザー
     let user = Auth.auth().currentUser
     var selectedImage = UIImage()
     var pView = UIView()
+    let prefectures = Prefecture.allPrefectures
 
-    // downloadImageで使用
+    /*
+     * downloadImageで使用
+     */
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-    
-    // URLからプロフィール画像をダウンロードする
+    /*
+     * URLからプロフィール画像をダウンロードする
+     */
     func downloadImage(from url: URL) {
         getData(from: url) { data, response, error in
             guard let data = data, error == nil else { return }
@@ -39,10 +44,11 @@ class RegistrationViewController: FormViewController {
         super.viewDidLoad()
         downloadImage(from: (user?.photoURL)!)
     }
-    
-    // 画像プレビューを変更する
-    // 引数に取ったUIImageをリサイズして表示
-    // TODO: トリミング処理の関数を追加
+    /*
+     * 画像プレビューを変更する
+     * 引数に取ったUIImageをリサイズして表示
+     * TODO: トリミング処理の関数を追加
+     */
     func changePV(image: UIImage) {
         let subviews = pView.subviews
         for subview in subviews {
@@ -53,14 +59,16 @@ class RegistrationViewController: FormViewController {
         imageView.layer.cornerRadius = 60
         pView.addSubview(imageView)
     }
-    
-    // finButtonを押されたら呼ばれる
+    /*
+     * finButtonを押されたら呼ばれる
+     */
     @objc func toRegistration(_ sender: UIButton) {
         performSegue(withIdentifier: "toTopView", sender: nil)
     }
-    
-    // フォームのセットアップ
-    // TODO: finButtonの切り出し
+    /*
+     * フォームのセットアップ
+     * TODO: finButtonの切り出し
+     */
     func setEureka() {
         form
         +++ Section() {
@@ -76,54 +84,69 @@ class RegistrationViewController: FormViewController {
             }()
         }
         +++ Section("Profile")
-            <<< ImageRow(){
-                $0.title = "プロフィール画像"
-                $0.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
-                $0.value = selectedImage
-                $0.clearAction = .no
-                $0.onChange { [unowned self] row in
+            <<< ImageRow(){ row in
+                row.title = "プロフィール画像"
+                row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                row.value = selectedImage
+                row.clearAction = .no
+                row.onChange { [unowned self] row in
                     self.selectedImage = row.value!
                     self.changePV(image: self.selectedImage)
                 }
             }
-            <<< TextRow("nickName"){
-                $0.title = "ニックネーム"
-                $0.value = user?.displayName
+            <<< TextRow("nickName"){ row in
+                row.title = "ニックネーム"
+                row.value = user?.displayName
             }
-            <<< DateRow("birth"){
-                $0.title = "生年月日"
+            <<< DateRow("birth"){ row in
+                row.title = "生年月日"
             }
-            <<< SegmentedRow<String>("sex"){
-                $0.options = ["男性", "女性"]
-                $0.title = "性別"
-                $0.value = "男"
+            <<< SegmentedRow<String>("sex"){ row in
+                row.options = ["男性", "女性"]
+                row.title = "性別"
+                row.value = "男"
             }
-        +++ Section() {
-            $0.footer = {
+            <<< TextRow("hobby"){ row in
+                row.title = "趣味"
+                row.placeholder = "Ex.) サッカー"
+            }
+            <<< PickerInlineRow<String>() { row in
+                row.title = "居住地"
+//                row.options = PrefectureName.AllCases
+            }
+        +++ Section() { row in
+            row.footer = {
                 let footer = HeaderFooterView<UIView>(.callback({
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    let rgba = UIColor(hex: "b6dae3")
-                    let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width , height: fView.frame.height / 4))
-                    finButton.backgroundColor = rgba
-                    finButton.layer.borderWidth = 0.5
-                    finButton.layer.borderColor = UIColor.black.cgColor
-                    finButton.layer.cornerRadius = 30.0
-                    finButton.setTitle("登録", for: UIControl.State.normal)
-                    finButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
-                    finButton.layer.shadowOpacity = 0.5
-                    finButton.layer.shadowRadius = 12
-                    finButton.layer.shadowColor = UIColor.black.cgColor
-                    finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-                    finButton.addTarget(self,
-                                        action: #selector(self.toRegistration(_:)),
-                                        for: UIControl.Event.touchUpInside)
+                    let finButton = self.setFinButton(fView: fView)
                     fView.addSubview(finButton)
                     return fView
                 }))
                 return footer
             }()
         }
+    }
+    /*
+     * finButton(submit)を返す
+     */
+    func setFinButton(fView: UIView) -> UIButton {
+        let rgba = UIColor(hex: "b6dae3")
+        let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width , height: fView.frame.height / 4))
+        finButton.backgroundColor = rgba
+        finButton.layer.borderWidth = 0.5
+        finButton.layer.borderColor = UIColor.black.cgColor
+        finButton.layer.cornerRadius = 30.0
+        finButton.setTitle("登録", for: UIControl.State.normal)
+        finButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        finButton.layer.shadowOpacity = 0.5
+        finButton.layer.shadowRadius = 12
+        finButton.layer.shadowColor = UIColor.black.cgColor
+        finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        finButton.addTarget(self,
+                            action: #selector(self.toRegistration(_:)),
+                            for: UIControl.Event.touchUpInside)
+        return finButton
     }
 }

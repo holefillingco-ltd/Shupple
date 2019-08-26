@@ -63,7 +63,7 @@ internal enum PrefectureCode: Int {
 }
 
 /// 都道府県名
-internal enum PrefectureName: String {
+internal enum PrefectureName: String, CaseIterable {
     case 北海道
     case 青森県
     case 岩手県
@@ -164,17 +164,26 @@ public enum Prefecture {
     case okinawa
 }
 
-// MARK: -
 extension Prefecture {
-    
+    /*
+     * 都道府県を[String]で全件返す
+     * HACK: メモリ食い過ぎ
+     */
+    static var allPrefectures: [String] {
+        var allPrefectures: Array<String> = Array()
+        for pref in PrefectureName.allCases {
+            allPrefectures.append(pref.rawValue)
+        }
+        return allPrefectures
+    }
     /// 都道府県コードで初期化
     public init?(code: Int) {
-        self.init(PrefectureCode(rawValue: code))
+        self.init(PrefectureCode(rawValue: code)!.rawValue)
     }
     
     /// 都道府県名で初期化
     public init?(name: String) {
-        self.init(PrefectureName(rawValue: name))
+        self.init(PrefectureName(rawValue: name)!.rawValue)
     }
     
     /// 都道府県コード
