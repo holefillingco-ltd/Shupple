@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Profile: Codable {
+class Profile: Codable {
     var uid: String
     var nickName: String
     var sex: String

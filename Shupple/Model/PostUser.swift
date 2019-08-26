@@ -9,14 +9,30 @@
 import Foundation
 
 class PostUser: Codable {
-    var uid: String
-    var nickName: String
-    var sex: Int
-    var birthDay: String
-    var age: Int
-    var opponentAge: Int
-    var hobby: String
-    var residence: Int
-    var job: Int
-    var personality: Int
+    var uid: String = ""
+    var nickName: String = ""
+    private var sex: Int = 1
+    private var birthDay: String = ""
+    var age: Int = 1
+    var opponentAge: Int = 1
+    var hobby: String = ""
+    private var residence: Int = 1
+    private var job: Int = 1
+    private var personality: Int = 1
+    
+    func setSex(sex: String) {
+        self.sex = Sex.init(name: sex)!.code
+    }
+    
+    func setResidence(residence: String) {
+        self.residence = Prefecture.init(name: residence)!.code
+    }
+    
+    func setJob(job: String) {
+        self.job = Job.init(name: job)!.code
+    }
+    
+    func setPersonality(personality: String) {
+        self.personality = Personality.init(name: personality)!.code
+    }
 }

@@ -22,6 +22,7 @@ class RegistrationViewController: FormViewController {
     let prefectures = Prefecture.allPrefectures
     let jobs = Job.allJob
     let personalitys = Personality.allPersonality
+    var postUser = PostUser()
 
     /*
      * downloadImageで使用
@@ -99,6 +100,9 @@ class RegistrationViewController: FormViewController {
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
                 row.value = user?.displayName
+                row.onChange{ row in
+                    self.postUser.nickName = row.value!
+                }
             }
             <<< DateRow("birth"){ row in
                 row.title = "生年月日"
@@ -106,15 +110,24 @@ class RegistrationViewController: FormViewController {
             <<< SegmentedRow<String>("sex"){ row in
                 row.options = ["男性", "女性"]
                 row.title = "性別"
-                row.value = "男"
+                row.value = "男性"
+                row.onChange{ row in
+                    self.postUser.setSex(sex: row.value!)
+                }
             }
             <<< TextRow("hobby"){ row in
                 row.title = "趣味"
                 row.placeholder = "Ex.) サッカー"
+                row.onChange{ row in
+                    self.postUser.nickName = row.value!
+                }
             }
             <<< PickerInlineRow<String>() { row in
                 row.title = "居住地"
                 row.options = prefectures
+                row.onChange{ row in
+                    self.postUser.setResidence(residence: row.value!)
+                }
             }
             <<< PickerInlineRow<String>() { row in
                 row.title = "職業"
