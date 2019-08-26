@@ -12,7 +12,7 @@
 import UIKit
 
 extension UIImage {
-    // resize image
+    
     func reSizeImage(reSize:CGSize)->UIImage {
         //UIGraphicsBeginImageContext(reSize);
         UIGraphicsBeginImageContextWithOptions(reSize,false,UIScreen.main.scale);
