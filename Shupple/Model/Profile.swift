@@ -9,26 +9,24 @@
 import Foundation
 
 public class Profile: Codable {
-    public var id: Int
-    public var uid: String
-    public var nickName: String
-    public var sex: String
-    public var birthDay: String
-    public var age: Int
-    public var opponentAge: Int
-    public var imageURL: String?
-    public var hobby: String
-    public var residence: String
-    public var job: String
-    public var personality: String
+    var uid: String
+    var nickName: String
+    var sex: String
+    var birthDay: String
+    var age: Int
+    var opponentAge: Int
+    var imageURL: String?
+    var hobby: String
+    var residence: String
+    var job: String
+    var personality: String
     
     init(
-        id: Int, uid: String, nickName: String, sex: Int,
+        uid: String, nickName: String, sex: Int,
         birthDay: String, age: Int, opponentAge: Int,
         imageURL: String?, hobby: String, residence: Int,
         job: Int, personality: Int
     ) {
-        self.id = id
         self.uid = uid
         self.nickName = nickName
         self.sex = Sex(code: sex)!.name
