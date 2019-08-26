@@ -125,17 +125,26 @@ class RegistrationViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "居住地"
                 row.options = prefectures
-                row.onChange{ row in
+                row.onChange{ row in 
                     self.postUser.setResidence(residence: row.value!)
                 }
             }
             <<< PickerInlineRow<String>() { row in
                 row.title = "職業"
                 row.options = jobs
+                row.onChange{ row in 
+                    self.postUser.setJob(job: row.value!)
+                }
             }
             <<< PickerInlineRow<String>() { row in
                 row.title = "性格"
                 row.options = personalitys
+                row.onChange{ row in
+                    self.postUser.setPersonality(personality: row.value!)
+                }
+            }
+            <<< PickerInlineRow<Int>() { row in
+                row.title = "お相手の年齢"
             }
         +++ Section() { row in
             row.footer = {
