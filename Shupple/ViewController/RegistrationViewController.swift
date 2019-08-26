@@ -22,6 +22,7 @@ class RegistrationViewController: FormViewController {
     let prefectures = Prefecture.allPrefectures
     let jobs = Job.allJob
     let personalitys = Personality.allPersonality
+    let ages = ["18~20", "20~25", "25~30", "30~"]
     var postUser = PostUser()
 
     /*
@@ -143,8 +144,10 @@ class RegistrationViewController: FormViewController {
                     self.postUser.setPersonality(personality: row.value!)
                 }
             }
-            <<< PickerInlineRow<Int>() { row in
+            <<< PickerInlineRow<String>() { row in
                 row.title = "お相手の年齢"
+                row.options = ages
+                /** ここにonChange **/
             }
         +++ Section() { row in
             row.footer = {

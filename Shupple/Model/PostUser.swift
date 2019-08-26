@@ -14,7 +14,7 @@ class PostUser: Codable {
     private var sex: Int = 1
     private var birthDay: String = ""
     var age: Int = 1
-    var opponentAge: Int = 1
+    var opponentAge: String = ""
     var hobby: String = ""
     private var residence: Int = 1
     private var job: Int = 1
