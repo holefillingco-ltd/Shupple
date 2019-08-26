@@ -30,7 +30,7 @@ internal enum PersonalityCode: Int {
     case other
 }
 
-internal enum PersonalityStr: String {
+internal enum PersonalityStr: String, CaseIterable {
     case 努力家
     case 思いやり家
     case 責任感が強い
@@ -69,6 +69,17 @@ public enum Personality {
 
 // MARK: -
 extension Personality {
+    /*
+     * 性格を[String]で全件返す
+     * HACK: メモリ食い過ぎ
+     */
+    static var allPersonality: [String] {
+        var allPersonality: Array<String> = Array()
+        for person in PersonalityStr.allCases {
+            allPersonality.append(person.rawValue)
+        }
+        return allPersonality
+    }
     
     public init?(code: Int) {
         self.init(PersonalityCode(rawValue: code))

@@ -20,6 +20,8 @@ class RegistrationViewController: FormViewController {
     var selectedImage = UIImage()
     var pView = UIView()
     let prefectures = Prefecture.allPrefectures
+    let jobs = Job.allJob
+    let personalitys = Personality.allPersonality
 
     /*
      * downloadImageで使用
@@ -112,7 +114,15 @@ class RegistrationViewController: FormViewController {
             }
             <<< PickerInlineRow<String>() { row in
                 row.title = "居住地"
-//                row.options = PrefectureName.AllCases
+                row.options = prefectures
+            }
+            <<< PickerInlineRow<String>() { row in
+                row.title = "職業"
+                row.options = jobs
+            }
+            <<< PickerInlineRow<String>() { row in
+                row.title = "性格"
+                row.options = personalitys
             }
         +++ Section() { row in
             row.footer = {

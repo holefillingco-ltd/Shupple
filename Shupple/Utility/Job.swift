@@ -40,7 +40,7 @@ internal enum JobCode: Int {
    case other
 }
 
-internal enum JobName: String {
+internal enum JobName: String, CaseIterable {
     case 会社員
     case 公務員
     case 経営者・役員
@@ -99,7 +99,17 @@ public enum Job {
 }
 
 extension Job {
-    
+    /*
+     * 仕事を[String]で全件返す
+     * HACK: メモリ食い過ぎ
+     */
+    static var allJob: [String] {
+        var allJob: Array<String> = Array()
+        for job in JobName.allCases {
+            allJob.append(job.rawValue)
+        }
+        return allJob
+    }
     public init?(code: Int) {
         self.init(JobCode(rawValue: code))
     }

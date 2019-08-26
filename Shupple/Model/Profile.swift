@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Profile: Codable {
+public class Profile: Codable {
     public var id: Int
     public var uid: String
     public var nickName: String
