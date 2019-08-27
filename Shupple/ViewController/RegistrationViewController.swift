@@ -16,14 +16,17 @@ import FirebaseAuth
 class RegistrationViewController: FormViewController {
     
     // ログインユーザー
-    let user = Auth.auth().currentUser
-    var selectedImage = UIImage()
-    var pView = UIView()
+    let USER = Auth.auth().currentUser
     let prefectures = Prefecture.allPrefectures
     let jobs = Job.allJob
     let personalitys = Personality.allPersonality
     let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
+    let sexes = Sex.allSex
+    
+    var selectedImage = UIImage()
+    var pView = UIView()
     var postUser = PostUser()
+    
 
     /*
      * downloadImageで使用
@@ -46,7 +49,7 @@ class RegistrationViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadImage(from: (user?.photoURL)!)
+        downloadImage(from: (USER?.photoURL)!)
     }
     /*
      * 画像プレビューを変更する
@@ -70,7 +73,7 @@ class RegistrationViewController: FormViewController {
         performSegue(withIdentifier: "toTopView", sender: nil)
     }
     /*
-     * フォームのセットアップ
+     * フォームのセット
      * TODO: finButtonの切り出し
      */
     func setEureka() {
@@ -100,16 +103,19 @@ class RegistrationViewController: FormViewController {
             }
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
-                row.value = user?.displayName
+                row.value = USER?.displayName
                 row.onChange{ row in
                     self.postUser.nickName = row.value!
                 }
             }
             <<< DateRow("birth"){ row in
                 row.title = "生年月日"
+                row.onChange{ row in
+                    self.postUser.setBirth(birth: row.value!)
+                }
             }
             <<< SegmentedRow<String>("sex"){ row in
-                row.options = ["男性", "女性"]
+                row.options = sexes
                 row.title = "性別"
                 row.value = "男性"
                 row.onChange{ row in

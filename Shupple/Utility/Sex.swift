@@ -14,11 +14,11 @@
 import Foundation
 
 internal enum SexCode: Int {
-    case man = 0
-    case female = 1
+    case man = 1
+    case female
 }
 
-internal enum SexStr: String {
+internal enum SexStr: String, CaseIterable {
     case 男性
     case 女性
 }
@@ -30,12 +30,20 @@ public enum Sex {
 
 extension Sex {
     
+    static var allSex: [String] {
+        var allSex: Array<String> = Array()
+        for job in SexStr.allCases {
+            allSex.append(job.rawValue)
+        }
+        return allSex
+    }
+    
     public init?(code: Int) {
-        self.init(SexCode(rawValue: code)!.rawValue)
+        self.init(SexCode(rawValue: code))
     }
     
     public init?(name: String) {
-        self.init(SexStr(rawValue: name)!.rawValue)
+        self.init(SexStr(rawValue: name))
     }
     
     public var code: Int {

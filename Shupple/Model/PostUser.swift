@@ -11,17 +11,25 @@ import Foundation
 class PostUser: Codable {
     var uid: String = ""
     var nickName: String = ""
-    private var sex: Int = 1
-    private var birthDay: String = ""
     var opponentAgeLow: Int = 1
     var opponentAgeUpper: Int = 1
     var hobby: String = ""
+    /*
+     * set関数を使用してアクセス
+     */
+    private var sex: Int = 1
+    private var birthDay: String = ""
     private var residence: Int = 1
     private var job: Int = 1
     private var personality: Int = 1
-    
+
     func setSex(sex: String) {
         self.sex = Sex.init(name: sex)!.code
+    }
+    
+    func setBirth(birth: Date) {
+        let fmt = ISO8601DateFormatter()
+        self.birthDay = fmt.string(from: birth)
     }
     
     func setResidence(residence: String) {

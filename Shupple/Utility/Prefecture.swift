@@ -178,12 +178,12 @@ extension Prefecture {
     }
     /// 都道府県コードで初期化
     public init?(code: Int) {
-        self.init(PrefectureCode(rawValue: code)!.rawValue)
+        self.init(PrefectureCode(rawValue: code))
     }
     
     /// 都道府県名で初期化
     public init?(name: String) {
-        self.init(PrefectureName(rawValue: name)!.rawValue)
+        self.init(PrefectureName(rawValue: name))
     }
     
     /// 都道府県コード
