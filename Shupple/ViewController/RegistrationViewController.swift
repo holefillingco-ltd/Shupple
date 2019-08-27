@@ -151,7 +151,7 @@ class RegistrationViewController: FormViewController {
                 row.title = "趣味"
                 row.placeholder = "Ex.) サッカー"
                 row.onChange{ row in
-                    self.postUser.nickName = row.value!
+                    self.postUser.hobby = row.value!
                 }
             }
             <<< PickerInlineRow<String>() { row in
