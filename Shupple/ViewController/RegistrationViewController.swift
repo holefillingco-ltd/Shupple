@@ -10,6 +10,7 @@ import UIKit
 import Eureka
 import ImageRow
 import FirebaseAuth
+import Alamofire
 /*
  * TODO: APIを叩く処理
  */
@@ -22,6 +23,7 @@ class RegistrationViewController: FormViewController {
     let personalitys = Personality.allPersonality
     let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
     let sexes = Sex.allSex
+    let encoder = JSONEncoder()
     
     var selectedImage = UIImage()
     var pView = UIView()
@@ -70,7 +72,31 @@ class RegistrationViewController: FormViewController {
      * finButtonを押されたら呼ばれる
      */
     @objc func toRegistration(_ sender: UIButton) {
+        requestRegistration()
         performSegue(withIdentifier: "toTopView", sender: nil)
+    }
+    /*
+     * API Request
+     * POST /users
+     */
+    private func requestRegistration() {
+        let data = try! encoder.encode(postUser)
+        let url: URL = URL(string: "http://localhost:8080/users")!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = data
+
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                print("fin")
+                print(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     /*
      * フォームのセット

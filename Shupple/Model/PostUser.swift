@@ -9,11 +9,13 @@
 import Foundation
 
 class PostUser: Codable {
+    
     var uid: String = ""
     var nickName: String = ""
     var opponentAgeLow: Int = 1
     var opponentAgeUpper: Int = 1
     var hobby: String = ""
+    
     /*
      * set関数を使用してアクセス
      */
