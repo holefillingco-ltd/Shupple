@@ -195,6 +195,8 @@ class RegistrationViewController: FormViewController {
                 return footer
             }()
         }
+        postUser.nickName = (USER?.displayName)!
+        postUser.uid = (USER?.uid)!
     }
     /*
      * finButton(submit)を返す
