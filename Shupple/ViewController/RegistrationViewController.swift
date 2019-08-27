@@ -91,7 +91,6 @@ class RegistrationViewController: FormViewController {
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(let value):
-                print("fin")
                 print(value)
             case .failure(let error):
                 print(error)
