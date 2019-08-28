@@ -80,10 +80,12 @@ class RegistrationViewController: FormViewController {
      * POST /users
      */
     private func requestRegistration() {
+        let indicator = Indicator(view: self.view)
+        indicator.start()
         let data = try! encoder.encode(postUser)
         let url: URL = URL(string: "http://localhost:8080/users")!
-        
         var request = URLRequest(url: url)
+
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = data
@@ -96,6 +98,7 @@ class RegistrationViewController: FormViewController {
                 print(error)
             }
         }
+        indicator.stop()
     }
     /*
      * フォームのセット

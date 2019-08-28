@@ -14,6 +14,9 @@ target 'Shupple' do
   # Kingfisher
   pod 'Kingfisher', '~> 5.0'
 
+  # くるくる
+  pod 'NVActivityIndicatorView'
+
 end
 
 pod 'Firebase/Analytics'

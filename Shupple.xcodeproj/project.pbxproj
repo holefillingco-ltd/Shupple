@@ -20,6 +20,7 @@
 		58CF97C2230DB31B00C3C0B7 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C1230DB31B00C3C0B7 /* Job.swift */; };
 		58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C3230DBA2D00C3C0B7 /* Personality.swift */; };
 		58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C52314366900C3C0B7 /* PostUser.swift */; };
+		58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C72316EBAE00C3C0B7 /* Indicator.swift */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
@@ -45,6 +46,7 @@
 		58CF97C1230DB31B00C3C0B7 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
 		58CF97C3230DBA2D00C3C0B7 /* Personality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personality.swift; sourceTree = "<group>"; };
 		58CF97C52314366900C3C0B7 /* PostUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUser.swift; sourceTree = "<group>"; };
+		58CF97C72316EBAE00C3C0B7 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				58CF97BF230DB28900C3C0B7 /* Prefecture.swift */,
 				58CF97C1230DB31B00C3C0B7 /* Job.swift */,
 				58CF97C3230DBA2D00C3C0B7 /* Personality.swift */,
+				58CF97C72316EBAE00C3C0B7 /* Indicator.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */,
 				58CF97BC230C5DBB00C3C0B7 /* Profile.swift in Sources */,
 				58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */,
+				58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */,
 				58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
