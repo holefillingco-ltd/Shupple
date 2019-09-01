@@ -25,6 +25,7 @@ class RegistrationViewController: FormViewController {
     let sexes = Sex.allSex
     let encoder = JSONEncoder()
     let userDefaults = UserDefaults.standard
+    let url: URL = URL(string: "http://localhost:8080/users")!
     
     var selectedImage = UIImage()
     var pView = UIView()
@@ -85,7 +86,6 @@ class RegistrationViewController: FormViewController {
         let indicator = Indicator(view: self.view)
         indicator.start()
         let data = try! encoder.encode(postUser)
-        let url: URL = URL(string: "http://localhost:8080/users")!
         var request = URLRequest(url: url)
 
         request.httpMethod = HTTPMethod.post.rawValue

@@ -40,4 +40,10 @@ class User: Codable {
     func setPersonality(personality: Int) {
         self.personality = Personality.init(code: personality)!.name
     }
+    
+    func setImage(image: String?) {
+        if image != nil {
+            self.imageURL = image
+        }
+    }
 }

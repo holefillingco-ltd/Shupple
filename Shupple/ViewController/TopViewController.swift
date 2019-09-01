@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Alamofire
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
     var scrollView = UIScrollView()
+    let uid = UserDefaults.standard.object(forKey: "UID") as! String
+    let url: URL = URL(string: "http://localhost:8080/users")!
+    var opponent = User()
     // プロフィール画像
     @IBOutlet weak var header: UIView!
     
@@ -36,7 +40,23 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     /*
      * APIで取得した相手の情報を各パーツに表示する
      */
-    func setOppoent(opponent: Profile) {
+    func setOppoent(opponent: User) {
+        let indicator = Indicator(view: self.view)
+        indicator.start()
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(uid, forHTTPHeaderField: "UID")
+        
+        Alamofire.request(request).responseJSON{ response in
+            switch response.result {
+            case .success(let value):
+                self.opponent = try? JSONDecoder().decode(User.self, from: value as! Data)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
