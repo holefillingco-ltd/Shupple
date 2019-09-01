@@ -17,6 +17,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var opponent = User()
     // プロフィール画像
     @IBOutlet weak var header: UIView!
+    @IBOutlet weak var mylabel: UILabel!
+    @IBOutlet weak var opponentName: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         header.backgroundColor = UIColor.init(red: 157/255, green: 204/255,
                                               blue: 224/255, alpha: 1)
         scrollView.delegate = self
+        scrollView.addSubview(mylabel)
+        scrollView.addSubview(opponentName)
         scrollView.addSubview(header)
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
@@ -35,7 +39,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         header.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
-                              width: view.frame.width, height: 300)
+                              width: view.frame.width, height: 350)
     }
     /*
      * APIで取得した相手の情報を各パーツに表示する
@@ -52,7 +56,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         Alamofire.request(request).responseJSON{ response in
             switch response.result {
             case .success(let value):
-                self.opponent = try? JSONDecoder().decode(User.self, from: value as! Data)
+                self.opponent = try! JSONDecoder().decode(User.self, from: value as! Data)
             case .failure(let error):
                 print(error)
             }

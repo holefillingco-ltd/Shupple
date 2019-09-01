@@ -21,6 +21,7 @@
 		58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C3230DBA2D00C3C0B7 /* Personality.swift */; };
 		58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C52314366900C3C0B7 /* PostUser.swift */; };
 		58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C72316EBAE00C3C0B7 /* Indicator.swift */; };
+		58CF97CA231BF9CE00C3C0B7 /* Eureka.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CF97C9231BF9CE00C3C0B7 /* Eureka.bundle */; settings = {ATTRIBUTES = (Weak, ); }; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
@@ -47,6 +48,7 @@
 		58CF97C3230DBA2D00C3C0B7 /* Personality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personality.swift; sourceTree = "<group>"; };
 		58CF97C52314366900C3C0B7 /* PostUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUser.swift; sourceTree = "<group>"; };
 		58CF97C72316EBAE00C3C0B7 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
+		58CF97C9231BF9CE00C3C0B7 /* Eureka.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Eureka.bundle; path = Pods/Eureka/Source/Resources/Eureka.bundle; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58CF97CA231BF9CE00C3C0B7 /* Eureka.bundle in Frameworks */,
 				21766D27FB2BEBD48679BFD8 /* Pods_Shupple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +77,7 @@
 		58409CBF22EDECDA00050893 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58CF97C9231BF9CE00C3C0B7 /* Eureka.bundle */,
 				58A4A66F22F5A42E00EC54ED /* Kingfisher.framework */,
 				58409CC222EDECE400050893 /* Eureka.framework */,
 				58409CC022EDECDA00050893 /* Alamofire.framework */,
