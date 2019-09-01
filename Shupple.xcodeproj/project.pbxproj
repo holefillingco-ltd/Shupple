@@ -14,7 +14,7 @@
 		58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67322FB33DA00EC54ED /* TopViewController.swift */; };
 		58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */; };
 		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
-		58CF97BC230C5DBB00C3C0B7 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BB230C5DBB00C3C0B7 /* Profile.swift */; };
+		58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BB230C5DBB00C3C0B7 /* User.swift */; };
 		58CF97BE230DAE2700C3C0B7 /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BD230DAE2700C3C0B7 /* Sex.swift */; };
 		58CF97C0230DB28900C3C0B7 /* Prefecture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BF230DB28900C3C0B7 /* Prefecture.swift */; };
 		58CF97C2230DB31B00C3C0B7 /* Job.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C1230DB31B00C3C0B7 /* Job.swift */; };
@@ -40,7 +40,7 @@
 		58A4A67322FB33DA00EC54ED /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		58CF97BB230C5DBB00C3C0B7 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		58CF97BB230C5DBB00C3C0B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		58CF97BD230DAE2700C3C0B7 /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
 		58CF97BF230DB28900C3C0B7 /* Prefecture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prefecture.swift; sourceTree = "<group>"; };
 		58CF97C1230DB31B00C3C0B7 /* Job.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Job.swift; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 		58A4A66922F5854600EC54ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				58CF97BB230C5DBB00C3C0B7 /* Profile.swift */,
+				58CF97BB230C5DBB00C3C0B7 /* User.swift */,
 				58CF97C52314366900C3C0B7 /* PostUser.swift */,
 			);
 			path = Model;
@@ -333,7 +333,7 @@
 				58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */,
 				58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */,
 				58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */,
-				58CF97BC230C5DBB00C3C0B7 /* Profile.swift in Sources */,
+				58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */,
 				58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */,
 				58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */,
 				58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */,
