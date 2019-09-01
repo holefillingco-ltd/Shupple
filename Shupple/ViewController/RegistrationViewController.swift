@@ -24,6 +24,7 @@ class RegistrationViewController: FormViewController {
     let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
     let sexes = Sex.allSex
     let encoder = JSONEncoder()
+    let userDefaults = UserDefaults.standard
     
     var selectedImage = UIImage()
     var pView = UIView()
@@ -51,6 +52,7 @@ class RegistrationViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         downloadImage(from: (USER?.photoURL)!)
     }
     /*
@@ -94,6 +96,8 @@ class RegistrationViewController: FormViewController {
             switch response.result {
             case .success(let value):
                 print(value)
+                self.userDefaults.set(self.USER!.uid, forKey: "UID")
+                print(self.userDefaults.object(forKey: "UID") as! String)
                 indicator.stop()
             case .failure(let error):
                 print(error)
@@ -221,5 +225,10 @@ class RegistrationViewController: FormViewController {
                             action: #selector(self.toRegistration(_:)),
                             for: UIControl.Event.touchUpInside)
         return finButton
+    }
+    /*
+     * UserDefaultにUIDを保存
+     */
+    func setUIDToUserDefault() {
     }
 }

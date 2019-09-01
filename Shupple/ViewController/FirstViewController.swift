@@ -15,10 +15,14 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     
     @IBOutlet weak var AuthButton: UIButton!
     
+    // Firebase認証
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!} }
+    // UserDefaultのインスタンス
+    let userDefault = UserDefaults.standard
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userDefault.register(defaults: ["UID":"default"])
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
@@ -31,11 +35,16 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                              action: #selector(self.AuthButtonTapped(sender:)),
                              for: .touchUpInside)
     }
-    
+    /*
+     * UserDefaultにUID保存済みであれば TopViewまで遷移
+     * 認証済であれば RegistrationViewまで遷移
+     */
     override func viewWillAppear(_ animated: Bool) {
+        if userDefault.object(forKey: "UID") as! String != "default" {
+            self.performSegue(withIdentifier: "toTopView", sender: self)
+        }
         Auth.auth().addStateDidChangeListener { (auth, user) in
             if let user = user {
-                print(user)
                 self.performSegue(withIdentifier: "toRegistrationView", sender: self)
             }
         }
