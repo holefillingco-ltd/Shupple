@@ -15,6 +15,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         
         // プロフィール画像
         header = UIView(frame: CGRect(x: 10, y: 20,

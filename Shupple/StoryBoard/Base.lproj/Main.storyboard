@@ -31,6 +31,7 @@
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
                         <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
+                        <segue destination="bnh-QK-pl4" kind="show" identifier="toTopView" id="HHr-OJ-4LR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -53,7 +54,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2486.9565217391305" y="-322.09821428571428"/>
+            <point key="canvasLocation" x="2755" y="-726"/>
         </scene>
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
@@ -142,11 +143,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lA-FX-leG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3479.7101449275365" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="3868" y="-320"/>
         </scene>
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="HHr-OJ-4LR"/>
+    </inferredMetricsTieBreakers>
 </document>
