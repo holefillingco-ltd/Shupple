@@ -94,11 +94,11 @@ class RegistrationViewController: FormViewController {
             switch response.result {
             case .success(let value):
                 print(value)
+                indicator.stop()
             case .failure(let error):
                 print(error)
             }
         }
-        indicator.stop()
     }
     /*
      * フォームのセット

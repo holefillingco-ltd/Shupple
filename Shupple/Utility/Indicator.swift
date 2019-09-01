@@ -15,9 +15,15 @@ import NVActivityIndicatorView
 class Indicator {
     
     var indicator: NVActivityIndicatorView!
+    let overView = UIView()
 
     init(view: UIView) {
-        self.indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), type: NVActivityIndicatorType.lineSpinFadeLoader, color: UIColor.red, padding: 0)
+        let overView = UIView()
+        overView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+        overView.backgroundColor = UIColor.black
+        overView.alpha = 0.5
+        view.addSubview(overView)
+        self.indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), type: NVActivityIndicatorType.ballClipRotatePulse, color: UIColor.white, padding: 0)
         self.indicator.center = view.center
         view.addSubview(indicator)
     }
