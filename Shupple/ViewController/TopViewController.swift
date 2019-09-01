@@ -10,16 +10,13 @@ import UIKit
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
-    var header: UIView!
     var scrollView = UIScrollView()
+    @IBOutlet weak var header: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         // プロフィール画像
-        header = UIView(frame: CGRect(x: 10, y: 20,
-                                      width: view.frame.width - 10*2,
-                                      height: 200))
         header.backgroundColor = UIColor.init(red: 157/255, green: 204/255,
                                               blue: 224/255, alpha: 1)
         scrollView.delegate = self
