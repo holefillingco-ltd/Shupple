@@ -10,7 +10,7 @@
 		21766D27FB2BEBD48679BFD8 /* Pods_Shupple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE70313AAD303D97A156C371 /* Pods_Shupple.framework */; };
 		589DA58A22F354E400AE2BE6 /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DA58922F354E400AE2BE6 /* ImageScale.swift */; };
 		58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A66D22F58C6400EC54ED /* ImageForURL.swift */; };
-		58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* uiColorHex.swift */; };
+		58A4A67222F9EB2600EC54ED /* UiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* UiColorHex.swift */; };
 		58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67322FB33DA00EC54ED /* TopViewController.swift */; };
 		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
 		58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BB230C5DBB00C3C0B7 /* User.swift */; };
@@ -21,6 +21,7 @@
 		58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C52314366900C3C0B7 /* PostUser.swift */; };
 		58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C72316EBAE00C3C0B7 /* Indicator.swift */; };
 		58CF97CA231BF9CE00C3C0B7 /* Eureka.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CF97C9231BF9CE00C3C0B7 /* Eureka.bundle */; settings = {ATTRIBUTES = (Weak, ); }; };
+		58CF97CC231ED58C00C3C0B7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97CB231ED58C00C3C0B7 /* APIClient.swift */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
@@ -38,7 +39,7 @@
 		589DA58922F354E400AE2BE6 /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
 		58A4A66D22F58C6400EC54ED /* ImageForURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForURL.swift; sourceTree = "<group>"; };
 		58A4A66F22F5A42E00EC54ED /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		58A4A67122F9EB2600EC54ED /* uiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiColorHex.swift; sourceTree = "<group>"; };
+		58A4A67122F9EB2600EC54ED /* UiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColorHex.swift; sourceTree = "<group>"; };
 		58A4A67322FB33DA00EC54ED /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		58CF97BB230C5DBB00C3C0B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		58CF97C52314366900C3C0B7 /* PostUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUser.swift; sourceTree = "<group>"; };
 		58CF97C72316EBAE00C3C0B7 /* Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indicator.swift; sourceTree = "<group>"; };
 		58CF97C9231BF9CE00C3C0B7 /* Eureka.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Eureka.bundle; path = Pods/Eureka/Source/Resources/Eureka.bundle; sourceTree = "<group>"; };
+		58CF97CB231ED58C00C3C0B7 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		58FC3CDA22EDE61100E89BFB /* Shupple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shupple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -93,12 +95,13 @@
 			children = (
 				589DA58922F354E400AE2BE6 /* ImageScale.swift */,
 				58A4A66D22F58C6400EC54ED /* ImageForURL.swift */,
-				58A4A67122F9EB2600EC54ED /* uiColorHex.swift */,
+				58A4A67122F9EB2600EC54ED /* UiColorHex.swift */,
 				58CF97BD230DAE2700C3C0B7 /* Sex.swift */,
 				58CF97BF230DB28900C3C0B7 /* Prefecture.swift */,
 				58CF97C1230DB31B00C3C0B7 /* Job.swift */,
 				58CF97C3230DBA2D00C3C0B7 /* Personality.swift */,
 				58CF97C72316EBAE00C3C0B7 /* Indicator.swift */,
+				58CF97CB231ED58C00C3C0B7 /* APIClient.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58CF97BE230DAE2700C3C0B7 /* Sex.swift in Sources */,
+				58CF97CC231ED58C00C3C0B7 /* APIClient.swift in Sources */,
 				58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */,
 				58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */,
 				58CF97C0230DB28900C3C0B7 /* Prefecture.swift in Sources */,
@@ -342,7 +346,7 @@
 				58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */,
 				58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */,
 				58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */,
-				58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */,
+				58A4A67222F9EB2600EC54ED /* UiColorHex.swift in Sources */,
 				58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */,
 				58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */,
 			);
