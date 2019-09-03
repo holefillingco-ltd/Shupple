@@ -9,12 +9,13 @@
 import Foundation
 
 class User: Codable {
-    var uid: String = ""
-    var nickName: String = ""
-    var sex: String = ""
-    var birthDay: String = ""
-    var age: Int = 1
+    var uid: String?
+    var nickName: String?
+    var sex: String?
+    var birthDay: String?
+    var age: Int?
     var imageURL: String? = "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png"
+    var userInformation: UserInformation?
 
     func setSex(sex: Int) {
         self.sex = Sex.init(code: sex)!.name
