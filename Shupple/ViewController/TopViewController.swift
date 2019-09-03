@@ -17,8 +17,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var opponent = User()
     // プロフィール画像
     @IBOutlet weak var header: UIView!
-    @IBOutlet weak var mylabel: UILabel!
     @IBOutlet weak var opponentName: UILabel!
+    @IBOutlet weak var opponentAge: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,14 +26,13 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         header.backgroundColor = UIColor.init(red: 157/255, green: 204/255,
                                               blue: 224/255, alpha: 1)
         scrollView.delegate = self
-        scrollView.addSubview(mylabel)
         scrollView.addSubview(opponentName)
         scrollView.addSubview(header)
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         view.addSubview(scrollView)
     }
-    /*
+    /**
      * scrollViewがスクロールされた時に呼ばれる
      * プロフィール画像を上部に固定する
      */
@@ -41,10 +40,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         header.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
                               width: view.frame.width, height: 350)
     }
-    /*
-     * APIで取得した相手の情報を各パーツに表示する
+    /**
+     * API Client
      */
-    func setOppoent(opponent: User) {
+    func apiClient() {
         let indicator = Indicator(view: self.view)
         indicator.start()
         var request = URLRequest(url: url)
@@ -62,7 +61,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
+    /**
+     * APIのレスポンスを各パーツに詰める
+     */
+    func setOpponent(value: Data) {
+    }
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
