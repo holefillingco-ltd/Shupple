@@ -12,7 +12,6 @@
 		58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A66D22F58C6400EC54ED /* ImageForURL.swift */; };
 		58A4A67222F9EB2600EC54ED /* uiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* uiColorHex.swift */; };
 		58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67322FB33DA00EC54ED /* TopViewController.swift */; };
-		58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */; };
 		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
 		58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BB230C5DBB00C3C0B7 /* User.swift */; };
 		58CF97BE230DAE2700C3C0B7 /* Sex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BD230DAE2700C3C0B7 /* Sex.swift */; };
@@ -28,6 +27,7 @@
 		58FC3CE522EDE61100E89BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE322EDE61100E89BFB /* Main.storyboard */; };
 		58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE622EDE61300E89BFB /* Assets.xcassets */; };
 		58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE822EDE61300E89BFB /* LaunchScreen.storyboard */; };
+		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +39,6 @@
 		58A4A66F22F5A42E00EC54ED /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		58A4A67122F9EB2600EC54ED /* uiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uiColorHex.swift; sourceTree = "<group>"; };
 		58A4A67322FB33DA00EC54ED /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
-		58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		58CF97BB230C5DBB00C3C0B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		58CF97BD230DAE2700C3C0B7 /* Sex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sex.swift; sourceTree = "<group>"; };
@@ -57,6 +56,7 @@
 		58FC3CE622EDE61300E89BFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58FC3CE922EDE61300E89BFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		58FC3CEB22EDE61300E89BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70313AAD303D97A156C371 /* Pods_Shupple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shupple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -158,7 +158,7 @@
 				58FC3CE622EDE61300E89BFB /* Assets.xcassets */,
 				58FC3CE822EDE61300E89BFB /* LaunchScreen.storyboard */,
 				58FC3CEB22EDE61300E89BFB /* Info.plist */,
-				58B0DF7822EF5E5500EF23AA /* GoogleService-Info.plist */,
+				5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */,
 			);
 			path = Shupple;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */,
-				58B0DF7922EF5E5600EF23AA /* GoogleService-Info.plist in Resources */,
+				5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */,
 				58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */,
 				58FC3CE522EDE61100E89BFB /* Main.storyboard in Resources */,
 			);
@@ -494,6 +494,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Shupple/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -517,6 +518,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = Shupple/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
