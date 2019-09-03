@@ -62,9 +62,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         }
     }
     /**
-     * APIのレスポンスを各パーツに詰める
+     * APIのレスポンスを受け取った後のopponentを各パーツに詰める
+     * TODO: それぞれのフィールドへ詰めていく
      */
     func setOpponent(value: Data) {
+        opponentName.text = opponent.nickName
+        opponentAge.text = "\(String(opponent.age!)) 歳"
     }
 
     override func didReceiveMemoryWarning() {
