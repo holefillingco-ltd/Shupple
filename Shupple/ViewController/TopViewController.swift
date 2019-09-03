@@ -65,7 +65,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * APIのレスポンスを受け取った後のopponentを各パーツに詰める
      * TODO: それぞれのフィールドへ詰めていく
      */
-    func setOpponent(value: Data) {
+    func convertOpponent(value: Data) {
         opponentName.text = opponent.nickName
         opponentAge.text = "\(String(opponent.age!)) 歳"
     }
