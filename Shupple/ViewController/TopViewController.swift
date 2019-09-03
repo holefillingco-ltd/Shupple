@@ -19,6 +19,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var opponentAge: UILabel!
+    @IBOutlet weak var opponentResidence: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +69,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     func convertOpponent(value: Data) {
         opponentName.text = opponent.nickName
         opponentAge.text = "\(String(opponent.age!)) 歳"
+        opponentResidence.text = opponent.userInformation?.residence
     }
 
     override func didReceiveMemoryWarning() {
