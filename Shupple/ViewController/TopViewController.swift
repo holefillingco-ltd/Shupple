@@ -20,6 +20,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var opponentAge: UILabel!
     @IBOutlet weak var opponentResidence: UILabel!
+    @IBOutlet weak var opponentJob: UILabel!
+    @IBOutlet weak var opponentHobby: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(opponentName)
         scrollView.addSubview(opponentAge)
         scrollView.addSubview(opponentResidence)
+        scrollView.addSubview(opponentJob)
+        scrollView.addSubview(opponentHobby)
         scrollView.addSubview(header)
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
