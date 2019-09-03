@@ -28,6 +28,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
                                               blue: 224/255, alpha: 1)
         scrollView.delegate = self
         scrollView.addSubview(opponentName)
+        scrollView.addSubview(opponentAge)
+        scrollView.addSubview(opponentResidence)
         scrollView.addSubview(header)
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
