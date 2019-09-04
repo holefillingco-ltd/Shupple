@@ -16,7 +16,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let url: URL = URL(string: "http://localhost:8080/users")!
     var opponent = User()
     // プロフィール画像
-    @IBOutlet weak var header: UIView!
+    @IBOutlet weak var opponentImage: UIImageView!
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var opponentAge: UILabel!
     @IBOutlet weak var opponentResidence: UILabel!
@@ -26,15 +26,17 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        header.backgroundColor = UIColor.init(red: 157/255, green: 204/255,
-                                              blue: 224/255, alpha: 1)
         scrollView.delegate = self
+        
+        let image = UIImage(url: opponent.imageURL)
+        opponentImage.image = image
+        
         scrollView.addSubview(opponentName)
         scrollView.addSubview(opponentAge)
         scrollView.addSubview(opponentResidence)
         scrollView.addSubview(opponentJob)
         scrollView.addSubview(opponentHobby)
-        scrollView.addSubview(header)
+        scrollView.addSubview(opponentImage)
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         view.addSubview(scrollView)
@@ -44,7 +46,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * プロフィール画像を上部に固定する
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        header.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
+        opponentImage.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
                               width: view.frame.width, height: 350)
     }
     /**
