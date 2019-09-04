@@ -12,13 +12,13 @@ import Alamofire
 
 class APIClient {
     let registrationURL = URL(string: "http://localhost:8080/users")
+    let getOpponentURL = URL(string: "http://localhost:8080/users")
     
     /**
      * POST /users
      * RegistrationVC
      */
-    func requestRegistration(view: UIView, postUser: PostUser, userDefaults: UserDefaults, uid: String) {
-        let indicator = Indicator(view: view)
+    func requestRegistration(postUser: PostUser, userDefaults: UserDefaults, uid: String, indicator: Indicator) {
         indicator.start()
         
         let data = try! JSONEncoder().encode(postUser)
@@ -30,7 +30,7 @@ class APIClient {
         
         Alamofire.request(request).responseJSON { response in
             switch response.result {
-            case .success(let value):
+            case .success(_):
                 userDefaults.set(uid, forKey: "UID")
                 indicator.stop()
             case .failure(let error):
@@ -42,6 +42,22 @@ class APIClient {
      * GET /users
      * TopVC
      */
-    func requestGetOpponen() {
+    func requestGetOpponen(opponent: User, uid: String, indicator: Indicator) {
+        indicator.start()
+        var request = URLRequest(url: getOpponentURL!)
+        
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(uid, forHTTPHeaderField: "UID")
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                opponent = try! JSONDecoder().decode(User.self, from: value as! Data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+
     }
 }

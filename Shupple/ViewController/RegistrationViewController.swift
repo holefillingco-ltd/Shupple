@@ -26,7 +26,7 @@ class RegistrationViewController: FormViewController {
     let encoder = JSONEncoder()
     let userDefaults = UserDefaults.standard
     let url: URL = URL(string: "http://localhost:8080/users")!
-    
+
     var selectedImage = UIImage()
     var pView = UIView()
     var postUser = PostUser()
@@ -55,6 +55,7 @@ class RegistrationViewController: FormViewController {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         downloadImage(from: (USER?.photoURL)!)
+        let indicator = Indicator(view: view)
     }
     /*
      * 画像プレビューを変更する
