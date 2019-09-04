@@ -41,9 +41,12 @@ class APIClient {
     /**
      * GET /users
      * TopVC
+     * TODO: decodeエラーハンドリング
+     * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponen(opponent: User, uid: String, indicator: Indicator) {
+    func requestGetOpponen(uid: String, indicator: Indicator) -> User? {
         indicator.start()
+        var opponent = User()
         var request = URLRequest(url: getOpponentURL!)
         
         request.httpMethod = HTTPMethod.get.rawValue
@@ -58,6 +61,6 @@ class APIClient {
                 print(error)
             }
         }
-
+        return opponent
     }
 }
