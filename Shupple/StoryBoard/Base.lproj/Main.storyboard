@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2QL-1g-U24">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9pv-A4-QxB">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,23 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="kGq-A9-rAE">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y10-1q-zbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController id="2QL-1g-U24" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cwl-TK-fsZ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="3Rg-JK-gWy"/>
-                    </connections>
-                </tabBarController>
-            </objects>
-            <point key="canvasLocation" x="258" y="-320"/>
-        </scene>
         <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -48,12 +31,12 @@
                     <navigationItem key="navigationItem" id="vAd-aT-qKb"/>
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
-                        <segue destination="yij-LJ-DzJ" kind="showDetail" identifier="toRegistrationView" id="EbQ-y2-T66"/>
+                        <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1659.4202898550725" y="-320.08928571428572"/>
+            <point key="canvasLocation" x="1648" y="-320"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="UNJ-Iv-wkJ">
@@ -67,14 +50,31 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="bnh-QK-pl4" kind="show" identifier="toTopView" id="BS2-aV-7Wb"/>
+                        <segue destination="2hw-Of-Jms" kind="show" identifier="toTopView" id="eVs-lP-UDp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2755" y="-726"/>
+            <point key="canvasLocation" x="2822" y="-770"/>
         </scene>
-        <!--Top View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="Mmk-8s-HF2">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9HR-iJ-DA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tabBarController id="2hw-Of-Jms" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g66-rB-3Rv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="bnh-QK-pl4" kind="relationship" relationship="viewControllers" id="8DI-Pf-fbH"/>
+                    </connections>
+                </tabBarController>
+            </objects>
+            <point key="canvasLocation" x="3646" y="-196"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="1TH-Ym-5ZH">
             <objects>
                 <viewController storyboardIdentifier="TopView" id="bnh-QK-pl4" customClass="TopViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,6 +139,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="c3d-QS-AJM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
@@ -152,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lA-FX-leG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4111.594202898551" y="-329.46428571428572"/>
+            <point key="canvasLocation" x="4823" y="-196"/>
         </scene>
     </scenes>
 </document>

@@ -25,7 +25,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
         scrollView.delegate = self
         
         let image = UIImage(url: opponent.imageURL)
