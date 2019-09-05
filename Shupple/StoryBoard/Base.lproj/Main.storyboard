@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LPp-mT-DW6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2QL-1g-U24">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="kGq-A9-rAE">
+            <objects>
+                <tabBarController id="2QL-1g-U24" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cwl-TK-fsZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="3Rg-JK-gWy"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y10-1q-zbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="258" y="-320"/>
+        </scene>
         <!--First View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -27,6 +44,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="vVm-Fi-tpj"/>
                     <navigationItem key="navigationItem" id="vAd-aT-qKb"/>
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
@@ -47,6 +65,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QJ1-Br-BVb"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="hmT-Pe-KZY"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="bnh-QK-pl4" kind="show" identifier="toTopView" id="BS2-aV-7Wb"/>
                     </connections>
@@ -54,25 +74,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2755" y="-726"/>
-        </scene>
-        <!--First-->
-        <scene sceneID="XSQ-pf-bst">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LPp-mT-DW6" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aHH-2D-0HF">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="rootViewController" id="Aa9-8b-obU"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vU5-zw-MDV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="749.27536231884062" y="-320.08928571428572"/>
         </scene>
         <!--Top View Controller-->
         <scene sceneID="1TH-Ym-5ZH">
@@ -139,6 +140,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
                     </view>
+                    <tabBarItem key="tabBarItem" systemItem="favorites" id="h2f-q6-MCv"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
                         <outlet property="opponentAge" destination="A98-a2-bTN" id="lGm-qP-BkX"/>
@@ -154,7 +157,4 @@
             <point key="canvasLocation" x="4111.594202898551" y="-329.46428571428572"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="first" width="30" height="30"/>
-    </resources>
 </document>

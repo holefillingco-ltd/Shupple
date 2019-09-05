@@ -50,27 +50,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
                               width: view.frame.width, height: 350)
     }
     /**
-     * API Client
-     */
-    func apiClient() {
-//        let indicator = Indicator(view: self.view)
-//        indicator.start()
-//        var request = URLRequest(url: url)
-//
-//        request.httpMethod = HTTPMethod.get.rawValue
-//        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-//        request.setValue(uid, forHTTPHeaderField: "UID")
-//
-//        Alamofire.request(request).responseJSON{ response in
-//            switch response.result {
-//            case .success(let value):
-//                self.opponent = try! JSONDecoder().decode(User.self, from: value as! Data)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-    }
-    /**
      * APIのレスポンスを受け取った後のopponentを各パーツに詰める
      * TODO: それぞれのフィールドへ詰めていく
      */
