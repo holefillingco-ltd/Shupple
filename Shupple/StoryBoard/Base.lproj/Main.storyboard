@@ -13,6 +13,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="kGq-A9-rAE">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y10-1q-zbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController id="2QL-1g-U24" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cwl-TK-fsZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -23,7 +24,6 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="3Rg-JK-gWy"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Y10-1q-zbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="258" y="-320"/>
         </scene>
@@ -48,7 +48,7 @@
                     <navigationItem key="navigationItem" id="vAd-aT-qKb"/>
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
-                        <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
+                        <segue destination="yij-LJ-DzJ" kind="showDetail" identifier="toRegistrationView" id="EbQ-y2-T66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
@@ -65,7 +65,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="QJ1-Br-BVb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="hmT-Pe-KZY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="bnh-QK-pl4" kind="show" identifier="toTopView" id="BS2-aV-7Wb"/>
@@ -140,7 +139,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="h2f-q6-MCv"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>
