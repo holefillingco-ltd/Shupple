@@ -26,6 +26,8 @@ class RegistrationViewController: FormViewController {
     let encoder = JSONEncoder()
     let userDefaults = UserDefaults.standard
     let url: URL = URL(string: "http://localhost:8080/users")!
+    let indicator = Indicator()
+    let apiClient = APIClient()
 
     var selectedImage = UIImage()
     var pView = UIView()
@@ -55,7 +57,6 @@ class RegistrationViewController: FormViewController {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         downloadImage(from: (USER?.photoURL)!)
-        let indicator = Indicator(view: view)
     }
     /*
      * 画像プレビューを変更する
@@ -76,34 +77,8 @@ class RegistrationViewController: FormViewController {
      * finButtonを押されたら呼ばれる
      */
     @objc func toRegistration(_ sender: UIButton) {
-        requestRegistration()
+        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: USER!.uid, view: view, indicator: indicator)
         performSegue(withIdentifier: "toTopView", sender: nil)
-    }
-    /*
-     * API Request
-     * POST /users
-     */
-    private func requestRegistration() {
-        let indicator = Indicator(view: self.view)
-        indicator.start()
-        let data = try! encoder.encode(postUser)
-        var request = URLRequest(url: url)
-
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.httpBody = data
-
-        Alamofire.request(request).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-                self.userDefaults.set(self.USER!.uid, forKey: "UID")
-                print(self.userDefaults.object(forKey: "UID") as! String)
-                indicator.stop()
-            case .failure(let error):
-                print(error)
-            }
-        }
     }
     /*
      * フォームのセット

@@ -18,8 +18,8 @@ class APIClient {
      * POST /users
      * RegistrationVC
      */
-    func requestRegistration(postUser: PostUser, userDefaults: UserDefaults, uid: String, indicator: Indicator) {
-        indicator.start()
+    func requestRegistration(postUser: PostUser, userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) {
+        indicator.start(view: view)
         
         let data = try! JSONEncoder().encode(postUser)
         var request = URLRequest(url: registrationURL!)
@@ -32,7 +32,6 @@ class APIClient {
             switch response.result {
             case .success(_):
                 userDefaults.set(uid, forKey: "UID")
-                indicator.stop()
             case .failure(let error):
                 print(error)
             }
@@ -44,8 +43,8 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponen(uid: String, indicator: Indicator) -> User? {
-        indicator.start()
+    func requestGetOpponen(uid: String, view: UIView, indicator: Indicator) -> User? {
+        indicator.start(view: view)
         var opponent = User()
         var request = URLRequest(url: getOpponentURL!)
         
