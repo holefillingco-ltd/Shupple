@@ -33,6 +33,7 @@ class APIClient {
             case .success(_):
                 userDefaults.set(uid, forKey: "UID")
             case .failure(let error):
+                userDefaults.set(uid, forKey: "UID")
                 print(error)
             }
         }
