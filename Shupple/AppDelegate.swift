@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if userDefault.object(forKey: "UID") as! String != "default" {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TopView")
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabView")
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         } else {
