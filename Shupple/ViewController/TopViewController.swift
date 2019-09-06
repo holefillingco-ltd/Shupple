@@ -19,7 +19,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var scrollView = UIScrollView()
     var opponent = User()
     
+    @IBOutlet weak var jobTitle: UILabel!
+    @IBOutlet weak var hobbyTitle: UILabel!
     @IBOutlet weak var opponentImage: UIImageView!
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var opponentAge: UILabel!
     @IBOutlet weak var opponentResidence: UILabel!
@@ -31,14 +34,20 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         
         let image = UIImage(url: opponent.imageURL)
+        opponentImage.contentMode = .scaleAspectFill
+        shadowView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 0.9
+        shadowView.layer.shadowRadius = 6
         opponentImage.image = image
-        
         setScrollView()
     }
     /**
      * scrollViewのセットアップ
      */
     func setScrollView() {
+        scrollView.addSubview(jobTitle)
+        scrollView.addSubview(hobbyTitle)
         scrollView.addSubview(opponentName)
         scrollView.addSubview(opponentAge)
         scrollView.addSubview(opponentResidence)
@@ -55,7 +64,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         opponentImage.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
-                              width: view.frame.width, height: 350)
+                              width: view.frame.width, height: 300)
     }
     /**
      * APIのレスポンスを受け取った後のopponentを各パーツに詰める
