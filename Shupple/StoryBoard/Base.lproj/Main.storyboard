@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="3646" y="-196"/>
         </scene>
-        <!--Item-->
+        <!--Main-->
         <scene sceneID="1TH-Ym-5ZH">
             <objects>
                 <viewController storyboardIdentifier="TopView" id="bnh-QK-pl4" customClass="TopViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,7 +139,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="c3d-QS-AJM"/>
+                    <tabBarItem key="tabBarItem" title="Main" id="c3d-QS-AJM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="414" height="1000"/>
                     <connections>

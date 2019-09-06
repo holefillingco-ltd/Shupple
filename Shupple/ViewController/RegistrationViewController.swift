@@ -17,7 +17,7 @@ import Alamofire
 class RegistrationViewController: FormViewController {
     
     // ログインユーザー
-    let USER = Auth.auth().currentUser
+    let currentuser = Auth.auth().currentUser
     let prefectures = Prefecture.allPrefectures
     let jobs = Job.allJob
     let personalitys = Personality.allPersonality
@@ -55,8 +55,7 @@ class RegistrationViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
-        downloadImage(from: (USER?.photoURL)!)
+        downloadImage(from: (currentuser?.photoURL)!)
     }
     /*
      * 画像プレビューを変更する
@@ -76,13 +75,12 @@ class RegistrationViewController: FormViewController {
     /*
      * finButtonを押されたら呼ばれる
      */
-    @objc func toRegistration(_ sender: UIButton) {
-        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: USER!.uid, view: view, indicator: indicator)
+    @objc func requestRegistration(_ sender: UIButton) {
+        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
         performSegue(withIdentifier: "toTopView", sender: nil)
     }
     /*
      * フォームのセット
-     * TODO: finButtonの切り出し
      */
     func setEureka() {
         form
@@ -111,7 +109,7 @@ class RegistrationViewController: FormViewController {
             }
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
-                row.value = USER?.displayName
+                row.value = currentuser?.displayName
                 row.onChange{ row in
                     self.postUser.nickName = row.value!
                 }
@@ -178,8 +176,8 @@ class RegistrationViewController: FormViewController {
                 return footer
             }()
         }
-        postUser.nickName = (USER?.displayName)!
-        postUser.uid = (USER?.uid)!
+        postUser.nickName = (currentuser?.displayName)!
+        postUser.uid = (currentuser?.uid)!
     }
     /*
      * finButton(submit)を返す
@@ -198,7 +196,7 @@ class RegistrationViewController: FormViewController {
         finButton.layer.shadowColor = UIColor.black.cgColor
         finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
         finButton.addTarget(self,
-                            action: #selector(self.toRegistration(_:)),
+                            action: #selector(self.requestRegistration(_:)),
                             for: UIControl.Event.touchUpInside)
         return finButton
     }

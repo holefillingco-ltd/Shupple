@@ -11,11 +11,14 @@ import Alamofire
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
-    var scrollView = UIScrollView()
-    let uid = UserDefaults.standard.object(forKey: "UID") as! String
+    let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
     let url: URL = URL(string: "http://localhost:8080/users")!
+    let indicator = Indicator()
+    let apiClient = APIClient()
+    
+    var scrollView = UIScrollView()
     var opponent = User()
-    // プロフィール画像
+    
     @IBOutlet weak var opponentImage: UIImageView!
     @IBOutlet weak var opponentName: UILabel!
     @IBOutlet weak var opponentAge: UILabel!
@@ -30,6 +33,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         let image = UIImage(url: opponent.imageURL)
         opponentImage.image = image
         
+        setScrollView()
+    }
+    /**
+     * scrollViewのセットアップ
+     */
+    func setScrollView() {
         scrollView.addSubview(opponentName)
         scrollView.addSubview(opponentAge)
         scrollView.addSubview(opponentResidence)
@@ -56,6 +65,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentName.text = opponent.nickName
         opponentAge.text = "\(String(opponent.age!)) 歳"
         opponentResidence.text = opponent.userInformation?.residence
+    }
+    /**
+     *
+     */
+    func requestGetShupple() {
+
     }
 
     override func didReceiveMemoryWarning() {
