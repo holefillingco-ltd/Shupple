@@ -35,9 +35,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         
         let image = UIImage(url: opponent.imageURL)
         opponentImage.contentMode = .scaleAspectFill
-        shadowView.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOpacity = 0.9
+        shadowView.layer.shadowOpacity = 0.6
         shadowView.layer.shadowRadius = 6
         opponentImage.image = image
         setScrollView()
