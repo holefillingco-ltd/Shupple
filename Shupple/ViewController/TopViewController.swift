@@ -33,6 +33,13 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         scrollView.delegate = self
         
+        setOpponentImage()
+        setScrollView()
+    }
+    /**
+     * imageView(opponentImage)のセットアップ
+     */
+    func setOpponentImage() {
         let image = UIImage(url: opponent.imageURL)
         opponentImage.contentMode = .scaleAspectFill
         shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -40,7 +47,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         shadowView.layer.shadowOpacity = 0.6
         shadowView.layer.shadowRadius = 6
         opponentImage.image = image
-        setScrollView()
     }
     /**
      * scrollViewのセットアップ
