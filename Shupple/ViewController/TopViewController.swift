@@ -48,7 +48,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         shadowView.layer.shadowRadius = 6
         opponentImage.image = image
     }
-    
     /**
      * scrollViewのセットアップ
      */
@@ -81,12 +80,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentName.text = opponent.nickName
         opponentAge.text = "\(String(opponent.age!)) 歳"
         opponentResidence.text = opponent.userInformation?.residence
-    }
-    /**
-     *
-     */
-    func requestGetShupple() {
-
     }
 
     override func didReceiveMemoryWarning() {
