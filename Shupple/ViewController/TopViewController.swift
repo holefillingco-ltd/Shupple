@@ -48,6 +48,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         shadowView.layer.shadowRadius = 6
         opponentImage.image = image
     }
+    
     /**
      * scrollViewのセットアップ
      */
