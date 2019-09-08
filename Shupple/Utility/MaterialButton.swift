@@ -10,23 +10,25 @@ import Foundation
 import UIKit
 
 class MaterialUIButton {
-    
     /**
-     * MaterialデザインのUIButtonを返す
+     * 青ベースMaterialデザイン
      */
-    func setButton(superView: UIView, contentView: UIView) -> UIButton {
-        let rgba = UIColor(hex: "b6dae3")
-        let button = UIButton(frame: CGRect(x: 0, y: 50, width: superView.frame.width , height: 75.0))
-        button.backgroundColor = rgba
-        button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
-        button.layer.cornerRadius = 30.0
-        button.setTitle("登録", for: UIControl.State.normal)
-        button.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        button.layer.shadowOpacity = 0.5
-        button.layer.shadowRadius = 12
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOffset = CGSize(width: 5, height: 5)
+    func setBlueButton(superView: UIView, title: String) -> UIButton {
+        let button = UIButton(frame: CGRect(x: (superView.frame.width - 150)/2, y: 30, width: 150, height: 50))
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = button.bounds.midY
+        button.layer.shadowColor = UIColor.startColor.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 10
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = button.bounds
+        gradientLayer.cornerRadius = button.bounds.midY
+        gradientLayer.colors = [UIColor.startColor.cgColor, UIColor.endColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        button.layer.insertSublayer(gradientLayer, at: 0)
         return button
     }
 }

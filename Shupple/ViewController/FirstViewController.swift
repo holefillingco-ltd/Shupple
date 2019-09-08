@@ -63,7 +63,6 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         if error == nil {
             self.performSegue(withIdentifier: "toRegistrationView", sender: self)
         }
-        
     }
     
     

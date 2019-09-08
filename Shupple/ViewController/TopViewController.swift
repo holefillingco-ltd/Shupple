@@ -15,6 +15,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let url: URL = URL(string: "http://localhost:8080/users")!
     let indicator = Indicator()
     let apiClient = APIClient()
+    let materialButton = MaterialUIButton()
     
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
@@ -29,13 +30,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var opponentResidence: UILabel!
     @IBOutlet weak var opponentJob: UILabel!
     @IBOutlet weak var opponentHobby: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
         
         setScrollView()
         setOpponentImage()
+        setButton()
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -92,5 +94,27 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestRegistration(_ sender: UIButton) {
         opponent = apiClient.requestGetOpponen(uid: currentUserUid, view: view, indicator: indicator)!
+    }
+    
+    func setButton() {
+        let getOpponentBtn = UIButton(type: .system)
+        getOpponentBtn.frame = CGRect(x: 200, y: 550, width: 150, height: 50)
+        getOpponentBtn.setTitle("Tap here!", for: .normal)
+        getOpponentBtn.setTitleColor(UIColor.white, for: .normal)
+        getOpponentBtn.layer.cornerRadius = getOpponentBtn.bounds.midY
+        getOpponentBtn.layer.shadowColor = UIColor.startColor.cgColor
+        getOpponentBtn.layer.shadowOffset = CGSize(width: 0, height: 3)
+        getOpponentBtn.layer.shadowOpacity = 0.7
+        getOpponentBtn.layer.shadowRadius = 10
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = getOpponentBtn.bounds
+        gradientLayer.cornerRadius = getOpponentBtn.bounds.midY
+        gradientLayer.colors = [UIColor.startColor.cgColor, UIColor.endColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        
+        getOpponentBtn.layer.insertSublayer(gradientLayer, at: 0)
+        
+        scrollView.addSubview(getOpponentBtn)
     }
 }
