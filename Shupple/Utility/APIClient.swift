@@ -56,6 +56,7 @@ class APIClient {
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(let value):
+                print(value)
                 opponent = try! JSONDecoder().decode(User.self, from: value as! Data)
             case .failure(let error):
                 print(error)

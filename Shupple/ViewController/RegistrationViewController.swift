@@ -29,6 +29,7 @@ class RegistrationViewController: FormViewController {
     let indicator = Indicator()
     let apiClient = APIClient()
     let materialUIButton = MaterialUIButton()
+    var finButton = SpringButton()
 
     var selectedImage = UIImage()
     var pView = UIView()
@@ -77,6 +78,7 @@ class RegistrationViewController: FormViewController {
      * finButtonを押されたら呼ばれる
      */
     @objc func requestRegistration(_ sender: UIButton) {
+        finButton.animate()
         apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
         performSegue(withIdentifier: "toTopView", sender: nil)
     }
@@ -170,9 +172,9 @@ class RegistrationViewController: FormViewController {
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    let finButton = self.materialUIButton.setBlueButton(superView: self.view, title: "登録")
-                    finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
-                    fView.addSubview(finButton)
+                    self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
+                    self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
+                    fView.addSubview(self.finButton)
                     return fView
                 }))
                 return footer

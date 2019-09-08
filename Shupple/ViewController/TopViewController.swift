@@ -20,6 +20,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
     var opponent = User()
+    var getOpponentBtn = SpringButton()
     
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
@@ -90,31 +91,16 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
     }
     /**
-     * finButtonを押されたら呼ばれる
+     * getOpponentButtonを押されたら呼ばれる
      */
     @objc func requestRegistration(_ sender: UIButton) {
+        getOpponentBtn.animate()
         opponent = apiClient.requestGetOpponen(uid: currentUserUid, view: view, indicator: indicator)!
     }
     
     func setButton() {
-        let getOpponentBtn = UIButton(type: .system)
-        getOpponentBtn.frame = CGRect(x: 200, y: 550, width: 150, height: 50)
-        getOpponentBtn.setTitle("Tap here!", for: .normal)
-        getOpponentBtn.setTitleColor(UIColor.white, for: .normal)
-        getOpponentBtn.layer.cornerRadius = getOpponentBtn.bounds.midY
-        getOpponentBtn.layer.shadowColor = UIColor.startColor.cgColor
-        getOpponentBtn.layer.shadowOffset = CGSize(width: 0, height: 3)
-        getOpponentBtn.layer.shadowOpacity = 0.7
-        getOpponentBtn.layer.shadowRadius = 10
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = getOpponentBtn.bounds
-        gradientLayer.cornerRadius = getOpponentBtn.bounds.midY
-        gradientLayer.colors = [UIColor.startColor.cgColor, UIColor.endColor.cgColor]
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-        
-        getOpponentBtn.layer.insertSublayer(gradientLayer, at: 0)
-        
+        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 550, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        getOpponentBtn.addTarget(self, action: #selector(requestRegistration(_:)), for: UIControl.Event.touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
 }
