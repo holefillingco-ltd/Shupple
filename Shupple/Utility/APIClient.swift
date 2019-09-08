@@ -82,10 +82,6 @@ class APIClient {
         opponentUserInformation.setJob(job: json["user_information"]["job"].int!)
         opponentUserInformation.setPersonality(personality: json["user_information"]["personality"].int!)
         opponent.userInformation = opponentUserInformation
-//        opponent.userInformation!.hobby = json["user_information"]["hobby"].string!
-//        opponent.userInformation!.setResidence(residence: json["user_information"]["residence"].int!)
-//        opponent.userInformation!.setJob(job: json["user_information"]["job"].int!)
-//        opponent.userInformation!.setPersonality(personality: json["user_information"]["personality"].int!)
         return opponent
     }
 }
