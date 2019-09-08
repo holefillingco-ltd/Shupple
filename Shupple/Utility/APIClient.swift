@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import SwiftyJSON
 
 class APIClient {
     let registrationURL = URL(string: "http://localhost:8080/users")
@@ -57,11 +58,26 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 print(value)
-                opponent = try! JSONDecoder().decode(User.self, from: value as! Data)
+                opponent = self.decodeUser(json: JSON(value))
             case .failure(let error):
                 print(error)
             }
         }
+        return opponent
+    }
+    
+    func decodeUser(json: JSON) -> User {
+        let opponent = User()
+        opponent.uid = json["uid"].string!
+        opponent.nickName = json["nickName"].string!
+        opponent.setSex(sex: json["sex"].int!)
+        opponent.birthDay = json["birthDay"].string!
+        opponent.age = json["age"].int!
+        opponent.imageURL = json["imageUrl"].string!
+        opponent.userInformation!.hobby = json["UserInformation"]["hobby"].string!
+        opponent.userInformation!.setResidence(residence: json["UserInformation"]["residence"].int!)
+        opponent.userInformation!.setJob(job: json["job"].int!)
+        opponent.userInformation!.setPersonality(personality: json["UserInformation"]["personality"].int!)
         return opponent
     }
 }
