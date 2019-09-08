@@ -33,8 +33,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         scrollView.delegate = self
         
-        setOpponentImage()
         setScrollView()
+        setOpponentImage()
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -69,8 +69,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * プロフィール画像を上部に固定する
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        opponentImage.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y,
-                              width: view.frame.width, height: 300)
+        opponentImage.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y, width: view.frame.width, height: 300)
     }
     /**
      * APIのレスポンスを受け取った後のopponentを各パーツに詰める
