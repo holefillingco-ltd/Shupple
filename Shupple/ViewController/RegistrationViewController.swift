@@ -28,6 +28,7 @@ class RegistrationViewController: FormViewController {
     let url: URL = URL(string: "http://localhost:8080/users")!
     let indicator = Indicator()
     let apiClient = APIClient()
+    let materialUIButton = MaterialUIButton()
 
     var selectedImage = UIImage()
     var pView = UIView()
@@ -169,7 +170,8 @@ class RegistrationViewController: FormViewController {
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    let finButton = self.setFinButton(fView: fView)
+                    let finButton = self.materialUIButton.setButton(superView: self.view, contentView: fView)
+                    finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
                     fView.addSubview(finButton)
                     return fView
                 }))
@@ -178,31 +180,5 @@ class RegistrationViewController: FormViewController {
         }
         postUser.nickName = (currentuser?.displayName)!
         postUser.uid = (currentuser?.uid)!
-    }
-    /*
-     * finButton(submit)を返す
-     */
-    func setFinButton(fView: UIView) -> UIButton {
-        let rgba = UIColor(hex: "b6dae3")
-        let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width , height: fView.frame.height / 4))
-        finButton.backgroundColor = rgba
-        finButton.layer.borderWidth = 0.5
-        finButton.layer.borderColor = UIColor.black.cgColor
-        finButton.layer.cornerRadius = 30.0
-        finButton.setTitle("登録", for: UIControl.State.normal)
-        finButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        finButton.layer.shadowOpacity = 0.5
-        finButton.layer.shadowRadius = 12
-        finButton.layer.shadowColor = UIColor.black.cgColor
-        finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-        finButton.addTarget(self,
-                            action: #selector(self.requestRegistration(_:)),
-                            for: UIControl.Event.touchUpInside)
-        return finButton
-    }
-    /*
-     * UserDefaultにUIDを保存
-     */
-    func setUIDToUserDefault() {
     }
 }

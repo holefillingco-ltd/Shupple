@@ -17,6 +17,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let apiClient = APIClient()
     
     var scrollView = UIScrollView()
+    var opponentContentView = UIView()
     var opponent = User()
     
     @IBOutlet weak var jobTitle: UILabel!
@@ -52,15 +53,17 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * scrollViewのセットアップ
      */
     func setScrollView() {
-        scrollView.addSubview(jobTitle)
-        scrollView.addSubview(hobbyTitle)
-        scrollView.addSubview(opponentName)
-        scrollView.addSubview(opponentAge)
-        scrollView.addSubview(opponentResidence)
-        scrollView.addSubview(opponentJob)
-        scrollView.addSubview(opponentHobby)
-        scrollView.addSubview(opponentImage)
+        opponentContentView.addSubview(jobTitle)
+        opponentContentView.addSubview(hobbyTitle)
+        opponentContentView.addSubview(opponentName)
+        opponentContentView.addSubview(opponentAge)
+        opponentContentView.addSubview(opponentResidence)
+        opponentContentView.addSubview(opponentJob)
+        opponentContentView.addSubview(opponentHobby)
+        opponentContentView.addSubview(opponentImage)
+        opponentContentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        scrollView.addSubview(opponentContentView)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         view.addSubview(scrollView)
     }
@@ -84,5 +87,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    /**
+     * finButtonを押されたら呼ばれる
+     */
+    @objc func requestRegistration(_ sender: UIButton) {
+        opponent = apiClient.requestGetOpponen(uid: currentUserUid, view: view, indicator: indicator)!
+    }
 }
