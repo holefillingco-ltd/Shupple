@@ -57,7 +57,9 @@ class APIClient {
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(let value):
-                print(value)
+                let jsonv = JSON(value)
+                print(JSON(value))
+                print(jsonv["user_information"]["hobby"])
                 opponent = self.decodeUser(json: JSON(value))
             case .failure(let error):
                 print(error)
@@ -68,16 +70,22 @@ class APIClient {
     
     func decodeUser(json: JSON) -> User {
         let opponent = User()
+        let opponentUserInformation = UserInformation()
         opponent.uid = json["uid"].string!
         opponent.nickName = json["nickName"].string!
         opponent.setSex(sex: json["sex"].int!)
         opponent.birthDay = json["birthDay"].string!
         opponent.age = json["age"].int!
         opponent.imageURL = json["imageUrl"].string!
-        opponent.userInformation!.hobby = json["UserInformation"]["hobby"].string!
-        opponent.userInformation!.setResidence(residence: json["UserInformation"]["residence"].int!)
-        opponent.userInformation!.setJob(job: json["job"].int!)
-        opponent.userInformation!.setPersonality(personality: json["UserInformation"]["personality"].int!)
+        opponentUserInformation.hobby = json["user_information"]["hobby"].string!
+        opponentUserInformation.setResidence(residence: json["user_information"]["residence"].int!)
+        opponentUserInformation.setJob(job: json["user_information"]["job"].int!)
+        opponentUserInformation.setPersonality(personality: json["user_information"]["personality"].int!)
+        opponent.userInformation = opponentUserInformation
+//        opponent.userInformation!.hobby = json["user_information"]["hobby"].string!
+//        opponent.userInformation!.setResidence(residence: json["user_information"]["residence"].int!)
+//        opponent.userInformation!.setJob(job: json["user_information"]["job"].int!)
+//        opponent.userInformation!.setPersonality(personality: json["user_information"]["personality"].int!)
         return opponent
     }
 }
