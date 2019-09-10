@@ -20,6 +20,7 @@ class APIClient {
      * RegistrationVC
      */
     func requestRegistration(postUser: PostUser, userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) {
+        
         indicator.start(view: view)
         
         let data = try! JSONEncoder().encode(postUser)

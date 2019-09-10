@@ -11,17 +11,17 @@ import Alamofire
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
-    let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
-    let url: URL = URL(string: "http://localhost:8080/users")!
-    let indicator = Indicator()
-    let apiClient = APIClient()
-    let materialButton = MaterialUIButton()
-    let userDefaults = UserDefaults.standard
+    private let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
+    private let url: URL = URL(string: "http://localhost:8080/users")!
+    private let indicator = Indicator()
+    private let apiClient = APIClient()
+    private let materialButton = MaterialUIButton()
+    private let userDefaults = UserDefaults.standard
     
-    var scrollView = UIScrollView()
-    var opponentContentView = UIView()
-    var opponent = User()
-    var getOpponentBtn = SpringButton()
+    private  var scrollView = UIScrollView()
+    private var opponentContentView = UIView()
+    private var opponent = User()
+    private var getOpponentBtn = SpringButton()
     
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
@@ -73,7 +73,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(scrollView)
     }
     /**
-     *
+     * MaterialButton
      */
     func setButton() {
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 550, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
