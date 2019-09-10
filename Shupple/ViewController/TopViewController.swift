@@ -103,7 +103,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        opponent = apiClient.requestGetOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator)!
+        opponent = apiClient.requestGetOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator)
         convertOpponent()
         indicator.stop(view: view)
     }

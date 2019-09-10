@@ -46,7 +46,7 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) -> User? {
+    func requestGetOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) -> User {
 
         indicator.start(view: view)
         
