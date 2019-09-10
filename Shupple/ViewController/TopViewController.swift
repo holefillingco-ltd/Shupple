@@ -77,7 +77,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     func setButton() {
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 550, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
-        getOpponentBtn.addTarget(self, action: #selector(requestRegistration(_:)), for: UIControl.Event.touchUpInside)
+        getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: UIControl.Event.touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
     /**
@@ -103,7 +103,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     /**
      * getOpponentButtonを押されたら呼ばれる
      */
-    @objc func requestRegistration(_ sender: UIButton) {
+    @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
         opponent = apiClient.requestGetOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator)!
     }

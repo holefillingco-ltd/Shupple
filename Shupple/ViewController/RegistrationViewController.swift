@@ -172,7 +172,7 @@ class RegistrationViewController: FormViewController {
                                                       width: self.view.frame.width,
                                                       height: 300))
                     self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
-                    self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
+                    self.finButton.addTarget(self, action: #selector(self.requestGetOpponent(_:)), for: UIControl.Event.touchUpInside)
                     fView.addSubview(self.finButton)
                     return fView
                 }))
