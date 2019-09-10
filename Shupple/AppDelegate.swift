@@ -23,6 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let userDefault = UserDefaults.standard
+        userDefault.register(defaults: ["UID":"default"])
+        
+        /**
+         * ログインしている場合TopViewControllerへ遷移
+         */
+        if userDefault.object(forKey: "UID") as! String != "default" {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabView")
+            self.window?.rootViewController = initialViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            // ログインしていない場合Is Initial View Controllerに遷移
+        }
+        
         TWTRTwitter.sharedInstance().start(
             withConsumerKey:"TzoGJ45sT2XIaQI7lq3WWZqno",consumerSecret:"buEQnPJ51gJTkwIQYDdNbIuaPBse5v05gPlOlHqtmDdAuvRJ9E")
         return true
@@ -30,8 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // HACK: if文らへん
     // facebook&Google&電話番号認証時に呼ばれる関数
-    func application(_ app: UIApplication, open url: URL,
-                     options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         let sourceApplication = options[UIApplication.OpenURLOptionsKey.sourceApplication] as! String?
         // GoogleもしくはFacebook認証の場合、trueを返す
         if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {

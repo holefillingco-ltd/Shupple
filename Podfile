@@ -17,6 +17,9 @@ target 'Shupple' do
   # くるくる
   pod 'NVActivityIndicatorView'
 
+  # SwiftyJSON
+  pod 'SwiftyJSON'
+
 end
 
 pod 'Firebase/Analytics'

@@ -16,20 +16,22 @@ import Alamofire
  */
 class RegistrationViewController: FormViewController {
     
-    // ログインユーザー
-    let USER = Auth.auth().currentUser
-    let prefectures = Prefecture.allPrefectures
-    let jobs = Job.allJob
-    let personalitys = Personality.allPersonality
-    let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
-    let sexes = Sex.allSex
-    let encoder = JSONEncoder()
-    let userDefaults = UserDefaults.standard
-    let url: URL = URL(string: "http://localhost:8080/users")!
-    
-    var selectedImage = UIImage()
-    var pView = UIView()
-    var postUser = PostUser()
+    private let currentuser = Auth.auth().currentUser
+    private let prefectures = Prefecture.allPrefectures
+    private let jobs = Job.allJob
+    private let personalitys = Personality.allPersonality
+    private let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
+    private let sexes = Sex.allSex
+    private let encoder = JSONEncoder()
+    private let userDefaults = UserDefaults.standard
+    private let indicator = Indicator()
+    private let apiClient = APIClient()
+    private let materialUIButton = MaterialUIButton()
+    private var finButton = SpringButton()
+
+    private var selectedImage = UIImage()
+    private var pView = UIView()
+    private var postUser = PostUser()
     
 
     /*
@@ -53,8 +55,7 @@ class RegistrationViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
-        downloadImage(from: (USER?.photoURL)!)
+        downloadImage(from: (currentuser?.photoURL)!)
     }
     /*
      * 画像プレビューを変更する
@@ -74,39 +75,13 @@ class RegistrationViewController: FormViewController {
     /*
      * finButtonを押されたら呼ばれる
      */
-    @objc func toRegistration(_ sender: UIButton) {
-        requestRegistration()
+    @objc func requestRegistration(_ sender: UIButton) {
+        finButton.animate()
+        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
         performSegue(withIdentifier: "toTopView", sender: nil)
     }
     /*
-     * API Request
-     * POST /users
-     */
-    private func requestRegistration() {
-        let indicator = Indicator(view: self.view)
-        indicator.start()
-        let data = try! encoder.encode(postUser)
-        var request = URLRequest(url: url)
-
-        request.httpMethod = HTTPMethod.post.rawValue
-        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.httpBody = data
-
-        Alamofire.request(request).responseJSON { response in
-            switch response.result {
-            case .success(let value):
-                print(value)
-                self.userDefaults.set(self.USER!.uid, forKey: "UID")
-                print(self.userDefaults.object(forKey: "UID") as! String)
-                indicator.stop()
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    /*
      * フォームのセット
-     * TODO: finButtonの切り出し
      */
     func setEureka() {
         form
@@ -135,7 +110,7 @@ class RegistrationViewController: FormViewController {
             }
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
-                row.value = USER?.displayName
+                row.value = currentuser?.displayName
                 row.onChange{ row in
                     self.postUser.nickName = row.value!
                 }
@@ -195,40 +170,15 @@ class RegistrationViewController: FormViewController {
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
                                                       height: 300))
-                    let finButton = self.setFinButton(fView: fView)
-                    fView.addSubview(finButton)
+                    self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
+                    self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
+                    fView.addSubview(self.finButton)
                     return fView
                 }))
                 return footer
             }()
         }
-        postUser.nickName = (USER?.displayName)!
-        postUser.uid = (USER?.uid)!
-    }
-    /*
-     * finButton(submit)を返す
-     */
-    func setFinButton(fView: UIView) -> UIButton {
-        let rgba = UIColor(hex: "b6dae3")
-        let finButton = UIButton(frame: CGRect(x: 0, y: 50, width: self.view.frame.width , height: fView.frame.height / 4))
-        finButton.backgroundColor = rgba
-        finButton.layer.borderWidth = 0.5
-        finButton.layer.borderColor = UIColor.black.cgColor
-        finButton.layer.cornerRadius = 30.0
-        finButton.setTitle("登録", for: UIControl.State.normal)
-        finButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
-        finButton.layer.shadowOpacity = 0.5
-        finButton.layer.shadowRadius = 12
-        finButton.layer.shadowColor = UIColor.black.cgColor
-        finButton.layer.shadowOffset = CGSize(width: 5, height: 5)
-        finButton.addTarget(self,
-                            action: #selector(self.toRegistration(_:)),
-                            for: UIControl.Event.touchUpInside)
-        return finButton
-    }
-    /*
-     * UserDefaultにUIDを保存
-     */
-    func setUIDToUserDefault() {
+        postUser.nickName = (currentuser?.displayName)!
+        postUser.uid = (currentuser?.uid)!
     }
 }
