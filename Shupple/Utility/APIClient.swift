@@ -55,9 +55,11 @@ class APIClient {
         
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.setValue(uid, forHTTPHeaderField: "UID")
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        debugPrint(request)
         
         Alamofire.request(request).responseJSON { response in
+            debugPrint(response)
             switch response.result {
             case .success(let value):
                 opponent = self.decodeUser(json: JSON(value))
@@ -72,6 +74,7 @@ class APIClient {
     func decodeUser(json: JSON) -> User {
         let opponent = User()
         let opponentUserInformation = UserInformation()
+        print(json)
         opponent.uid = json["uid"].string!
         opponent.nickName = json["nickName"].string!
         opponent.setSex(sex: json["sex"].int!)

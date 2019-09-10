@@ -24,7 +24,6 @@ class RegistrationViewController: FormViewController {
     private let sexes = Sex.allSex
     private let encoder = JSONEncoder()
     private let userDefaults = UserDefaults.standard
-    private let url: URL = URL(string: "http://localhost:8080/users")!
     private let indicator = Indicator()
     private let apiClient = APIClient()
     private let materialUIButton = MaterialUIButton()
@@ -172,7 +171,7 @@ class RegistrationViewController: FormViewController {
                                                       width: self.view.frame.width,
                                                       height: 300))
                     self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
-                    self.finButton.addTarget(self, action: #selector(self.requestGetOpponent(_:)), for: UIControl.Event.touchUpInside)
+                    self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
                     fView.addSubview(self.finButton)
                     return fView
                 }))
