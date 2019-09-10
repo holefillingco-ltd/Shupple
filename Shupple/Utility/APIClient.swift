@@ -12,8 +12,8 @@ import Alamofire
 import SwiftyJSON
 
 class APIClient {
-    let registrationURL = URL(string: "http://localhost:8080/users")
-    let getOpponentURL = URL(string: "http://localhost:8080/users")
+    private let registrationURL = URL(string: "http://localhost:8080/users")
+    private let getOpponentURL = URL(string: "http://localhost:8080/users")
     
     /**
      * POST /users
@@ -57,9 +57,6 @@ class APIClient {
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(let value):
-                let jsonv = JSON(value)
-                print(JSON(value))
-                print(jsonv["user_information"]["hobby"])
                 opponent = self.decodeUser(json: JSON(value))
             case .failure(let error):
                 print(error)
