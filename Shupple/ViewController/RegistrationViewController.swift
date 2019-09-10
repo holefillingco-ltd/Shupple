@@ -16,24 +16,23 @@ import Alamofire
  */
 class RegistrationViewController: FormViewController {
     
-    // ログインユーザー
-    let currentuser = Auth.auth().currentUser
-    let prefectures = Prefecture.allPrefectures
-    let jobs = Job.allJob
-    let personalitys = Personality.allPersonality
-    let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
-    let sexes = Sex.allSex
-    let encoder = JSONEncoder()
-    let userDefaults = UserDefaults.standard
-    let url: URL = URL(string: "http://localhost:8080/users")!
-    let indicator = Indicator()
-    let apiClient = APIClient()
-    let materialUIButton = MaterialUIButton()
-    var finButton = SpringButton()
+    private let currentuser = Auth.auth().currentUser
+    private let prefectures = Prefecture.allPrefectures
+    private let jobs = Job.allJob
+    private let personalitys = Personality.allPersonality
+    private let ages = ["18~20", "20~25", "25~30", "30~35", "指定無し"]
+    private let sexes = Sex.allSex
+    private let encoder = JSONEncoder()
+    private let userDefaults = UserDefaults.standard
+    private let url: URL = URL(string: "http://localhost:8080/users")!
+    private let indicator = Indicator()
+    private let apiClient = APIClient()
+    private let materialUIButton = MaterialUIButton()
+    private var finButton = SpringButton()
 
-    var selectedImage = UIImage()
-    var pView = UIView()
-    var postUser = PostUser()
+    private var selectedImage = UIImage()
+    private var pView = UIView()
+    private var postUser = PostUser()
     
 
     /*

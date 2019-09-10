@@ -45,8 +45,10 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponen(uid: String, view: UIView, indicator: Indicator) -> User? {
+    func requestGetOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) -> User? {
+
         indicator.start(view: view)
+        
         var opponent = User()
         var request = URLRequest(url: getOpponentURL!)
         
@@ -58,13 +60,14 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 opponent = self.decodeUser(json: JSON(value))
+                userDefaults.set(opponent.uid, forKey: "OpponentUID")
             case .failure(let error):
                 print(error)
             }
         }
         return opponent
     }
-    
+
     func decodeUser(json: JSON) -> User {
         let opponent = User()
         let opponentUserInformation = UserInformation()

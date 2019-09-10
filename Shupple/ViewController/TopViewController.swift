@@ -16,6 +16,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let indicator = Indicator()
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
+    let userDefaults = UserDefaults.standard
     
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
@@ -39,6 +40,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setScrollView()
         setOpponentImage()
         setButton()
+        userDefaults.register(defaults: ["OpponentUID":"default"])
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -71,6 +73,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(scrollView)
     }
     /**
+     *
+     */
+    func setButton() {
+        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 550, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        getOpponentBtn.addTarget(self, action: #selector(requestRegistration(_:)), for: UIControl.Event.touchUpInside)
+        scrollView.addSubview(getOpponentBtn)
+    }
+    /**
      * scrollViewがスクロールされた時に呼ばれる
      * プロフィール画像を上部に固定する
      */
@@ -95,12 +105,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestRegistration(_ sender: UIButton) {
         getOpponentBtn.animate()
-        opponent = apiClient.requestGetOpponen(uid: currentUserUid, view: view, indicator: indicator)!
+        opponent = apiClient.requestGetOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator)!
     }
     
-    func setButton() {
-        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 550, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
-        getOpponentBtn.addTarget(self, action: #selector(requestRegistration(_:)), for: UIControl.Event.touchUpInside)
-        scrollView.addSubview(getOpponentBtn)
-    }
 }
