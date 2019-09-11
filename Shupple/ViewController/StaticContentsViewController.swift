@@ -8,23 +8,31 @@
 
 import UIKit
 
-class StaticContentsViewController: UIViewController {
+class StaticContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
-    */
 
+    /**
+     * セルの数を設定
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return staticContents.count
+    }
+    
+    /**
+     * セルに表示する値を設定
+     */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "staticContents", for: indexPath)
+        cell.textLabel!.text = staticContents[indexPath.row]
+        return cell
+    }
 }
