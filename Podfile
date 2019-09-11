@@ -20,6 +20,12 @@ target 'Shupple' do
   # SwiftyJSON
   pod 'SwiftyJSON'
 
+  # ChatView
+  pod 'JSQMessagesViewController'
+
+  # Firebase
+  pod 'Firebase'
+
 end
 
 pod 'Firebase/Analytics'
