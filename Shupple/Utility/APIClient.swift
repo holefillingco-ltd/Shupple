@@ -74,6 +74,10 @@ class APIClient {
         return opponent
     }
 
+    /**
+     * JsonからUserへデコード
+     * TODO: Codableで出来る様に
+     */
     func decodeUser(json: JSON) -> User {
         let opponent = User()
         let opponentUserInformation = UserInformation()
