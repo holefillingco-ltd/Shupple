@@ -20,10 +20,10 @@ class Indicator {
     public func start(view: UIView) {
         overView = UIView()
         overView!.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
-        overView!.backgroundColor = UIColor.black
+        overView!.backgroundColor = UIColor.blueEndColor
         overView!.alpha = 0.5
         view.addSubview(overView!)
-        indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), type: NVActivityIndicatorType.ballClipRotatePulse, color: UIColor.red, padding: 0)
+        indicator = NVActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 60, height: 60), type: NVActivityIndicatorType.lineScale, color: UIColor.white, padding: 0)
         indicator!.center = view.center
         view.addSubview(indicator!)
         indicator!.startAnimating()
