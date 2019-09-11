@@ -52,14 +52,13 @@ class APIClient {
         
         var opponent = User()
         var request = URLRequest(url: getOpponentURL!)
+        var keepAlive = true
         
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.setValue(uid, forHTTPHeaderField: "Uid")
-        debugPrint(request)
-        
+
         Alamofire.request(request).responseJSON { response in
-            debugPrint(response)
             switch response.result {
             case .success(let value):
                 opponent = self.decodeUser(json: JSON(value))
@@ -67,7 +66,11 @@ class APIClient {
             case .failure(let error):
                 print(error)
             }
+            keepAlive = false
         }
+        let runLoop = RunLoop.current
+        while keepAlive &&
+            runLoop.run(mode: RunLoop.Mode.default, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {}
         return opponent
     }
 

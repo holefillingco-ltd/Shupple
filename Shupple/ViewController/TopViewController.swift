@@ -112,7 +112,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     func setButton() {
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 650, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
-        getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: UIControl.Event.touchUpInside)
+        getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
 }
