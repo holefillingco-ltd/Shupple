@@ -180,10 +180,10 @@
             </objects>
             <point key="canvasLocation" x="4872" y="414.53201970443354"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="VT1-IA-IFY">
             <objects>
-                <viewController id="fTU-cS-Ra3" sceneMemberID="viewController">
+                <viewController id="fTU-cS-Ra3" customClass="ChatViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QbZ-3s-flb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
