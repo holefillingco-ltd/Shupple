@@ -58,6 +58,7 @@
 		5E44B52B2324E87A0063AF4B /* UnwindSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B50E2324E87A0063AF4B /* UnwindSegue.swift */; };
 		5E44B52C2324E87A0063AF4B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B50F2324E87A0063AF4B /* LoadingView.swift */; };
 		5E44B52E2324E87A0063AF4B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B5112324E87A0063AF4B /* AsyncImageView.swift */; };
+		5E44B53023291A8C0063AF4B /* StaticContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,7 @@
 		5E44B50E2324E87A0063AF4B /* UnwindSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnwindSegue.swift; sourceTree = "<group>"; };
 		5E44B50F2324E87A0063AF4B /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5E44B5112324E87A0063AF4B /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContentsViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70313AAD303D97A156C371 /* Pods_Shupple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shupple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,6 +171,7 @@
 				58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */,
 				58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */,
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
+				5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */,
 				58A4A67322FB33DA00EC54ED /* TopViewController.swift */,
 			);
 			path = ViewController;
@@ -482,6 +485,7 @@
 				58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */,
 				5E44B52A2324E87A0063AF4B /* SpringAnimation.swift in Sources */,
 				5E44B5252324E87A0063AF4B /* AsyncButton.swift in Sources */,
+				5E44B53023291A8C0063AF4B /* StaticContentsViewController.swift in Sources */,
 				58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
