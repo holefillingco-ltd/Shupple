@@ -26,7 +26,8 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func setFirebase() {
-        ref = Database.database().reference()
+        ref = Database.database().reference().child("messages")
+        
     }
 
 }
