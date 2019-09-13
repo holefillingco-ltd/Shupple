@@ -104,7 +104,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        apiClient.requestGetOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
+        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
     }
     /**
      * MaterialButton
@@ -115,7 +115,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(getOpponentBtn)
         scrollView.addSubview(tmp)
     }
-    
+    /**
+     * MEMO: チャット導線確認用（その内消す）
+     */
     @objc func hoge(_ sender: UIButton) {
         performSegue(withIdentifier: "toChatView", sender: nil)
     }

@@ -14,6 +14,7 @@ import SwiftyJSON
 class APIClient {
     private let registrationURL = URL(string: "http://localhost:8080/users")
     private let getOpponentURL = URL(string: "http://localhost:8080/users")
+    private let getUserURL = URL(string: "http://localhost:8080/users/select")
     
     /**
      * POST /users
@@ -46,7 +47,7 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
+    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
 
         indicator.start(view: view)
 
@@ -54,7 +55,7 @@ class APIClient {
 
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
-        request.setValue(uid, forHTTPHeaderField: "Uid")
+        request.setValue(opponentUid, forHTTPHeaderField: "Uid")
 
         Alamofire.request(request).responseJSON { response in
             switch response.result {
@@ -68,7 +69,31 @@ class APIClient {
             indicator.stop(view: view)
         }
     }
-
+    /**
+     * GET /users/select
+     * TopVC, etc..
+     */
+    func requestGetUser(uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
+        
+        indicator.start(view: view)
+        
+        var request = URLRequest(url: getUserURL!)
+        
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                let user = self.decodeUser(json: JSON(value))
+                function(user)
+            case .failure(let error):
+                print(error)
+            }
+            indicator.stop(view: view)
+        }
+    }
     /**
      * JsonからUserへデコード
      * TODO: Codableで出来る様に
