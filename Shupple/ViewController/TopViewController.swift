@@ -120,3 +120,4 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         performSegue(withIdentifier: "toChatView", sender: nil)
     }
 }
+

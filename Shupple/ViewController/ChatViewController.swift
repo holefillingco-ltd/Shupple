@@ -41,7 +41,7 @@ class ChatViewController: JSQMessagesViewController {
     func setupFirebase() {
         ref = Database.database().reference()
         
-        ref.queryLimited(toLast: 25).observeSingleEvent(of: .childAdded, with: {
+        ref.queryLimited(toLast: 25).observe(DataEventType.childAdded, with: {
             (snapshot) in
             let snapshotValue = snapshot.value as! NSDictionary
             let text = snapshotValue["text"] as! String
