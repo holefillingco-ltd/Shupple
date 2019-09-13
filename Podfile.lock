@@ -131,7 +131,7 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
     - nanopb (~> 0.3)
   - GoogleDataTransport (1.2.0)
-  - GoogleDataTransportCCTSupport (1.0.3):
+  - GoogleDataTransportCCTSupport (1.0.4):
     - GoogleDataTransport (~> 1.2)
     - nanopb
   - GoogleSignIn (4.4.0):
@@ -183,11 +183,17 @@ PODS:
   - GTMSessionFetcher/Core (1.2.2)
   - ImageRow (3.2.0):
     - Eureka (~> 4.3)
+  - InputBarAccessoryView (4.2.2)
   - JSQMessagesViewController (7.3.5):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - Kingfisher (5.7.1)
   - leveldb-library (1.22)
+  - MessageInputBar (0.4.1):
+    - MessageInputBar/Core (= 0.4.1)
+  - MessageInputBar/Core (0.4.1)
+  - MessageKit (3.0.0):
+    - InputBarAccessoryView (~> 4.2.2)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
@@ -212,6 +218,8 @@ DEPENDENCIES:
   - ImageRow (~> 3.0)
   - JSQMessagesViewController
   - Kingfisher (~> 5.0)
+  - MessageInputBar
+  - MessageKit
   - NVActivityIndicatorView
   - SwiftyJSON
   - TwitterKit
@@ -244,10 +252,13 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - ImageRow
+    - InputBarAccessoryView
     - JSQMessagesViewController
     - JSQSystemSoundPlayer
     - Kingfisher
     - leveldb-library
+    - MessageInputBar
+    - MessageKit
     - nanopb
     - NVActivityIndicatorView
     - Protobuf
@@ -275,7 +286,7 @@ SPEC CHECKSUMS:
   FirebaseUI: d92c980c1c7e553df3c5e7b0725baeb13f80f6d2
   GoogleAppMeasurement: 86a82f0e1f20b8eedf8e20326530138fd71409de
   GoogleDataTransport: 8f9897b8e073687f24ca8d3c3a8013dec7d2d1cc
-  GoogleDataTransportCCTSupport: 51134d81fca795c60cc247d1cb6af63c3d67b8d8
+  GoogleDataTransportCCTSupport: 7455d07b98851aa63e4c05a34dad356ca588479e
   GoogleSignIn: 7ff245e1a7b26d379099d3243a562f5747e23d39
   GoogleToolboxForMac: b3553629623a3b1bff17f555e736cd5a6d95ad55
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
@@ -283,10 +294,13 @@ SPEC CHECKSUMS:
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   ImageRow: 03681b3ef8034b5a649440325f5d5ba7b22c1b0a
+  InputBarAccessoryView: 2b937602598e2fab3149f37f51dd7ad795653812
   JSQMessagesViewController: 6587f56aedbcb150a8ba1d968e1ef58b1bc758b7
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Kingfisher: 176d377ad339113c99ad4980cbae687f807e20fe
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MessageInputBar: e81c7535347f1f7b923de7080409a535a004b6e4
+  MessageKit: e892a9ca49ebe6d82684d3a93ad84021fa23e2c6
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
@@ -295,6 +309,6 @@ SPEC CHECKSUMS:
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: ac29cd2e7fdbd929a10e4b72422b9b244124884f
+PODFILE CHECKSUM: 4aec77867eb2d2752cb67c9fee0e07c681fb750b
 
 COCOAPODS: 1.7.5

@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -155,6 +154,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZG3-xW-8wT">
+                                <rect key="frame" x="267" y="869" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="fTU-cS-Ra3" kind="show" identifier="toChatView" id="MKC-A7-Mab"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
@@ -174,11 +181,12 @@
                         <outlet property="opponentResidence" destination="6M3-AA-uLG" id="zDt-M0-E6G"/>
                         <outlet property="personalityTitle" destination="Yvq-Mt-xb5" id="Sh8-v0-tId"/>
                         <outlet property="shadowView" destination="S5r-gk-vdn" id="9tD-eV-orf"/>
+                        <outlet property="tmp" destination="ZG3-xW-8wT" id="NYQ-VI-x9Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lA-FX-leG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4872" y="414.53201970443354"/>
+            <point key="canvasLocation" x="4871.1999999999998" y="414.53201970443354"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="VT1-IA-IFY">

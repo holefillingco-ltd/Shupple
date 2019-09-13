@@ -23,6 +23,10 @@ target 'Shupple' do
   # ChatView
   pod 'JSQMessagesViewController'
 
+  # Chat
+  pod 'MessageKit'
+  pod 'MessageInputBar'
+
   # Firebase
   pod 'Firebase'
 

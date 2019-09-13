@@ -59,8 +59,7 @@
 		5E44B52C2324E87A0063AF4B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B50F2324E87A0063AF4B /* LoadingView.swift */; };
 		5E44B52E2324E87A0063AF4B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B5112324E87A0063AF4B /* AsyncImageView.swift */; };
 		5E44B53023291A8C0063AF4B /* StaticContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */; };
-		5E44B532232927C40063AF4B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B531232927C40063AF4B /* ChatViewController.swift */; };
-		5E44B534232928140063AF4B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B533232928140063AF4B /* ChatViewController.swift */; };
+		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -123,8 +122,7 @@
 		5E44B50F2324E87A0063AF4B /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5E44B5112324E87A0063AF4B /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContentsViewController.swift; sourceTree = "<group>"; };
-		5E44B531232927C40063AF4B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Shupple/ViewController/ChatViewController.swift; sourceTree = SOURCE_ROOT; };
-		5E44B533232928140063AF4B /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70313AAD303D97A156C371 /* Pods_Shupple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shupple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -173,11 +171,11 @@
 			isa = PBXGroup;
 			children = (
 				58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */,
-				5E44B533232928140063AF4B /* ChatViewController.swift */,
 				58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */,
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
 				5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */,
 				58A4A67322FB33DA00EC54ED /* TopViewController.swift */,
+				5E7CEFC9232B677300E4A72F /* ChatViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -196,7 +194,6 @@
 			isa = PBXGroup;
 			children = (
 				58FC3CE322EDE61100E89BFB /* Main.storyboard */,
-				5E44B531232927C40063AF4B /* ChatViewController.swift */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -458,7 +455,7 @@
 				58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */,
 				5E44B5292324E87A0063AF4B /* AutoTextView.swift in Sources */,
 				5E44B5232324E87A0063AF4B /* DesignableView.swift in Sources */,
-				5E44B532232927C40063AF4B /* ChatViewController.swift in Sources */,
+				5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */,
 				5E44B51D2324E87A0063AF4B /* SpringButton.swift in Sources */,
 				5E44B51C2324E87A0063AF4B /* DesignableTextField.swift in Sources */,
 				58CF97C0230DB28900C3C0B7 /* Prefecture.swift in Sources */,
@@ -481,7 +478,6 @@
 				5E44B5162324E87A0063AF4B /* ImageLoader.swift in Sources */,
 				5E44B5132324E87A0063AF4B /* KeyboardLayoutConstraint.swift in Sources */,
 				58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */,
-				5E44B534232928140063AF4B /* ChatViewController.swift in Sources */,
 				58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */,
 				5E44B5222324E87A0063AF4B /* SpringTextField.swift in Sources */,
 				5E44B4B52324BAF80063AF4B /* MaterialButton.swift in Sources */,

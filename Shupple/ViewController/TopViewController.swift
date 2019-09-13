@@ -32,6 +32,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var opponentJob: UILabel!
     @IBOutlet weak var opponentHobby: UILabel!
     @IBOutlet weak var opponentPersonality: UILabel!
+    @IBOutlet weak var tmp: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setOpponentImage()
         setButton()
         userDefaults.register(defaults: ["OpponentUID":"default"])
+        tmp.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -111,5 +113,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 650, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
+        scrollView.addSubview(tmp)
+    }
+    
+    @objc func hoge(_ sender: UIButton) {
+        performSegue(withIdentifier: "toChatView", sender: nil)
     }
 }
