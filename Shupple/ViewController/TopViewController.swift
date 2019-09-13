@@ -15,6 +15,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
     let userDefaults = UserDefaults.standard
+    let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as! String
     
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
@@ -42,6 +43,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setOpponentImage()
         setButton()
         userDefaults.register(defaults: ["OpponentUID":"default"])
+        requestGetUser()
+        
+        // MEMO: チャットへの導線テスト（完成次第消す）
         tmp.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
     }
     /**
@@ -105,6 +109,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
         apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
+    }
+    /**
+     * マッチング済みの場合相手のプロフィールを取得、表示する
+     */
+    func requestGetUser() {
+        if opponentUid != "default" {
+            apiClient.requestGetUser(uid: opponentUid, view: view, indicator: indicator, function: convertOpponent)
+        }
     }
     /**
      * MaterialButton
