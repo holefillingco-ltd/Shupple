@@ -21,6 +21,8 @@ class MaterialUIButton {
      */
     func setMaterialButton(superView: UIView, title: String, y: Int, startColor: UIColor, endColor: UIColor) -> SpringButton {
         let button = SpringButton(frame: CGRect(x: Int((superView.frame.width - 150)/2), y: y, width: 150, height: 50))
+        let gradientLayer = CAGradientLayer()
+        
         button.setTitle(title, for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = button.bounds.midY
@@ -28,14 +30,16 @@ class MaterialUIButton {
         button.layer.shadowOffset = CGSize(width: 0, height: 3)
         button.layer.shadowOpacity = 0.7
         button.layer.shadowRadius = 10
-        let gradientLayer = CAGradientLayer()
+
         gradientLayer.frame = button.bounds
         gradientLayer.cornerRadius = button.bounds.midY
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
         gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
         gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        
         button.layer.insertSublayer(gradientLayer, at: 0)
         button.animation = "wobble"
+        
         return button
     }
     
