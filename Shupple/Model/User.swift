@@ -21,11 +21,6 @@ class User: Codable {
         self.sex = Sex.init(code: sex)!.name
     }
     
-//    func setBirth(birth: Date) {
-//        let fmt = ISO8601DateFormatter()
-//        self.birthDay = fmt.string(from: birth)
-//    }
-    
     func setImage(image: String?) {
         if image != nil {
             self.imageURL = image!

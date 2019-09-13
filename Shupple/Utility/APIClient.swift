@@ -46,14 +46,12 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) -> User {
+    func requestGetOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
 
         indicator.start(view: view)
-        
-        var opponent = User()
+
         var request = URLRequest(url: getOpponentURL!)
-        var keepAlive = true
-        
+
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.setValue(uid, forHTTPHeaderField: "Uid")
@@ -61,17 +59,14 @@ class APIClient {
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(let value):
-                opponent = self.decodeUser(json: JSON(value))
+                let opponent = self.decodeUser(json: JSON(value))
                 userDefaults.set(opponent.uid, forKey: "OpponentUID")
+                function(opponent)
             case .failure(let error):
                 print(error)
             }
-            keepAlive = false
+            indicator.stop(view: view)
         }
-        let runLoop = RunLoop.current
-        while keepAlive &&
-            runLoop.run(mode: RunLoop.Mode.default, before: NSDate(timeIntervalSinceNow: 0.1) as Date) {}
-        return opponent
     }
 
     /**
