@@ -13,7 +13,7 @@ import JSQMessagesViewController
 class ChatViewController: JSQMessagesViewController {
     
     private let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
-    private let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID")
+    private let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as! String
     
     var ref: DatabaseReference!
     var messages: [JSQMessage]?
@@ -39,7 +39,8 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func setupFirebase() {
-        ref = Database.database().reference()
+        let ch = Channel(myId: currentUserUid, opponentId: opponentUid)
+        ref = Database.database().reference().child(ch.id!)
         
         ref.queryLimited(toLast: 25).observe(DataEventType.childAdded, with: {
             (snapshot) in
