@@ -21,6 +21,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var opponentContentView = UIView()
     var opponent = User()
     var getOpponentBtn = SpringButton()
+    var chatBtn = SpringButton()
     
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
@@ -33,7 +34,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var opponentJob: UILabel!
     @IBOutlet weak var opponentHobby: UILabel!
     @IBOutlet weak var opponentPersonality: UILabel!
-    @IBOutlet weak var tmp: UIButton!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,12 +42,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         
         setScrollView()
         setOpponentImage()
-        setButton()
+        setShuppleButton()
+        setChatButton()
         userDefaults.register(defaults: ["OpponentUID":"default"])
         requestGetUser()
-        
-        // MEMO: チャットへの導線テスト（完成次第消す）
-        tmp.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -121,11 +120,15 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     /**
      * MaterialButton
      */
-    func setButton() {
+    func setShuppleButton() {
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 650, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
-        scrollView.addSubview(tmp)
+    }
+    func setChatButton() {
+        chatBtn = materialButton.setMaterialButton(superView: view, title: "Messagees", y: 750, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
+        scrollView.addSubview(chatBtn)
     }
     /**
      * MEMO: チャット導線確認用（その内消す）
