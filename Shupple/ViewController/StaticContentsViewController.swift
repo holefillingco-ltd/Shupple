@@ -35,4 +35,23 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         cell.textLabel!.text = staticContents[indexPath.row]
         return cell
     }
+    
+    /**
+     * セルが選択された時の動作
+     * TODO: 他のセルが選択された時の動作
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.row {
+        case StaticContents.updateUser.hashValue:
+            performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
+        case StaticContents.notice.hashValue:
+            performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
+        case StaticContents.contact.hashValue:
+            performSegue(withIdentifier: StaticContents.contact.segueIdentifirer, sender: nil)
+        default:
+            return
+        }
+    }
 }

@@ -1,8 +1,8 @@
 //
-//  RegistrationViewController.swift
+//  UpdateUserViewController.swift
 //  Shupple
 //
-//  Created by 磯崎裕太 on 2019/08/01.
+//  Created by 磯崎 裕太 on 2019/09/14.
 //  Copyright © 2019 HoleFillingCo.,Ltd. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import Eureka
 import ImageRow
 import FirebaseAuth
 
-class RegistrationViewController: FormViewController {
+class UpdateUserViewController: UIViewController {
     
     private let currentuser = Auth.auth().currentUser
     private let prefectures = Prefecture.allPrefectures
@@ -25,35 +25,16 @@ class RegistrationViewController: FormViewController {
     private let apiClient = APIClient()
     private let materialUIButton = MaterialUIButton()
     private var finButton = SpringButton()
-
+    
     private var selectedImage = UIImage()
     private var pView = UIView()
     private var postUser = PostUser()
-    
-
-    /*
-     * downloadImageで使用
-     */
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    /*
-     * URLからプロフィール画像をダウンロードする
-     */
-    func downloadImage(from url: URL) {
-        getData(from: url) { data, response, error in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async() {
-                self.selectedImage = UIImage(data: data)!
-                self.setEureka()
-            }
-        }
-    }
+    private var currentUser = User()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadImage(from: (currentuser?.photoURL)!)
     }
+
     /*
      * 画像プレビューを変更する
      * 引数に取ったUIImageをリサイズして表示
@@ -69,32 +50,25 @@ class RegistrationViewController: FormViewController {
         imageView.layer.cornerRadius = 60
         pView.addSubview(imageView)
     }
-    /*
-     * finButtonを押されたら呼ばれる
-     */
-    @objc func requestRegistration(_ sender: UIButton) {
-        finButton.animate()
-        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
-        performSegue(withIdentifier: "toTopView", sender: nil)
-    }
+    
     /*
      * フォームのセット
      */
     func setEureka() {
         form
-        +++ Section() {
-            $0.header = {
-                let header = HeaderFooterView<UIView>(.callback({
-                    self.pView = UIView(frame: CGRect(x: 0, y: 0,
-                                                    width: self.view.frame.width,
-                                                    height: 300))
-                    self.changePV(image: self.selectedImage)
-                    return self.pView
-                }))
-                return header
-            }()
-        }
-        +++ Section("Profile")
+            +++ Section() {
+                $0.header = {
+                    let header = HeaderFooterView<UIView>(.callback({
+                        self.pView = UIView(frame: CGRect(x: 0, y: 0,
+                                                          width: self.view.frame.width,
+                                                          height: 300))
+                        self.changePV(image: self.selectedImage)
+                        return self.pView
+                    }))
+                    return header
+                }()
+            }
+            +++ Section("Profile")
             <<< ImageRow(){ row in
                 row.title = "プロフィール画像"
                 row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
@@ -136,7 +110,7 @@ class RegistrationViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "居住地"
                 row.options = prefectures
-                row.onChange{ row in 
+                row.onChange{ row in
                     self.postUser.setResidence(residence: row.value!)
                 }
             }
@@ -150,30 +124,30 @@ class RegistrationViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "性格"
                 row.options = personalitys
-                row.onChange{ row in 
+                row.onChange{ row in
                     self.postUser.setPersonality(personality: row.value!)
                 }
             }
-            <<< PickerInlineRow<String>() { row in 
+            <<< PickerInlineRow<String>() { row in
                 row.title = "お相手の年齢"
                 row.options = ages
                 row.onChange{ row in
                     self.postUser.setOpponentAge(opponentAgeRange: row.value!)
                 }
             }
-        +++ Section() { row in
-            row.footer = {
-                let footer = HeaderFooterView<UIView>(.callback({
-                    let fView = UIView(frame: CGRect(x: 0, y: 0,
-                                                      width: self.view.frame.width,
-                                                      height: 300))
-                    self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
-                    self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
-                    fView.addSubview(self.finButton)
-                    return fView
-                }))
-                return footer
-            }()
+            +++ Section() { row in
+                row.footer = {
+                    let footer = HeaderFooterView<UIView>(.callback({
+                        let fView = UIView(frame: CGRect(x: 0, y: 0,
+                                                         width: self.view.frame.width,
+                                                         height: 300))
+                        self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
+                        self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
+                        fView.addSubview(self.finButton)
+                        return fView
+                    }))
+                    return footer
+                }()
         }
         postUser.nickName = (currentuser?.displayName)!
         postUser.uid = (currentuser?.uid)!

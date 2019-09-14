@@ -59,6 +59,8 @@
 		5E44B52E2324E87A0063AF4B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B5112324E87A0063AF4B /* AsyncImageView.swift */; };
 		5E44B53023291A8C0063AF4B /* StaticContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */; };
 		5E6424E0232BB67400C8DBDF /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424DF232BB67400C8DBDF /* Channel.swift */; };
+		5E6424E3232CFE1200C8DBDF /* UpdateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */; };
+		5E6424E5232CFFC100C8DBDF /* StaticContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E4232CFFC100C8DBDF /* StaticContents.swift */; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -122,6 +124,8 @@
 		5E44B5112324E87A0063AF4B /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContentsViewController.swift; sourceTree = "<group>"; };
 		5E6424DF232BB67400C8DBDF /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserViewController.swift; sourceTree = "<group>"; };
+		5E6424E4232CFFC100C8DBDF /* StaticContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContents.swift; sourceTree = "<group>"; };
 		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */,
+				5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */,
 				58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */,
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
 				5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */,
@@ -237,6 +242,7 @@
 			children = (
 				58CF97C3230DBA2D00C3C0B7 /* Personality.swift */,
 				58CF97BF230DB28900C3C0B7 /* Prefecture.swift */,
+				5E6424E4232CFFC100C8DBDF /* StaticContents.swift */,
 				58CF97BD230DAE2700C3C0B7 /* Sex.swift */,
 				58CF97C1230DB31B00C3C0B7 /* Job.swift */,
 			);
@@ -455,6 +461,7 @@
 				5E44B5242324E87A0063AF4B /* DesignableTabBarController.swift in Sources */,
 				58CF97BE230DAE2700C3C0B7 /* Sex.swift in Sources */,
 				5E44B51B2324E87A0063AF4B /* BlurView.swift in Sources */,
+				5E6424E5232CFFC100C8DBDF /* StaticContents.swift in Sources */,
 				58CF97CC231ED58C00C3C0B7 /* APIClient.swift in Sources */,
 				5E44B5172324E87A0063AF4B /* Spring.swift in Sources */,
 				58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */,
@@ -494,6 +501,7 @@
 				5E44B52B2324E87A0063AF4B /* UnwindSegue.swift in Sources */,
 				5E44B51E2324E87A0063AF4B /* SpringTextView.swift in Sources */,
 				5E44B5182324E87A0063AF4B /* SpringImageView.swift in Sources */,
+				5E6424E3232CFE1200C8DBDF /* UpdateUserViewController.swift in Sources */,
 				58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */,
 				5E44B52A2324E87A0063AF4B /* SpringAnimation.swift in Sources */,
 				5E44B5252324E87A0063AF4B /* AsyncButton.swift in Sources */,
