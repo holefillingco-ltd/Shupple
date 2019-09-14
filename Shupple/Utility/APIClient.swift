@@ -15,6 +15,7 @@ class APIClient {
     private let registrationURL = URL(string: "http://localhost:8080/users")
     private let getOpponentURL = URL(string: "http://localhost:8080/users")
     private let getUserURL = URL(string: "http://localhost:8080/users/select")
+    private let isMatchedURL = URL(string: "http://localhost:8080/users/isMatched")
     
     /**
      * POST /users
@@ -52,7 +53,6 @@ class APIClient {
         indicator.start(view: view)
 
         var request = URLRequest(url: getOpponentURL!)
-        let matchingTime = Date()
 
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -72,7 +72,7 @@ class APIClient {
     }
     /**
      * GET /users/select
-     * TopVC, etc..
+     * etc..
      */
     func requestGetUser(uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
         
@@ -96,24 +96,69 @@ class APIClient {
         }
     }
     /**
+     * GET /users/isMatched
+     * TopVC
+     */
+    func requestIsMatched(userDefaults: UserDefaults,uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
+        
+        indicator.start(view: view)
+        
+        var request = URLRequest(url: isMatchedURL!)
+        
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                    if JSON(value)["is_matched"].bool! == true {
+                        let user = self.decodeIsMatched(json: JSON(value))
+                        userDefaults.set(user.uid, forKey: "OpponentUID")
+                        function(user)
+                }
+            case .failure(let error):
+                print(error)
+            }
+            indicator.stop(view: view)
+        }
+    }
+    
+    /**
      * JsonからUserへデコード
      * TODO: Codableで出来る様に
      */
     func decodeUser(json: JSON) -> User {
-        let opponent = User()
-        let opponentUserInformation = UserInformation()
-        print(json)
-        opponent.uid = json["uid"].string!
-        opponent.nickName = json["nickName"].string!
-        opponent.setSex(sex: json["sex"].int!)
-        opponent.birthDay = json["birthDay"].string!
-        opponent.age = json["age"].int!
-        opponent.imageURL = json["imageUrl"].string!
-        opponentUserInformation.hobby = json["user_information"]["hobby"].string!
-        opponentUserInformation.setResidence(residence: json["user_information"]["residence"].int!)
-        opponentUserInformation.setJob(job: json["user_information"]["job"].int!)
-        opponentUserInformation.setPersonality(personality: json["user_information"]["personality"].int!)
-        opponent.userInformation = opponentUserInformation
-        return opponent
+        let user = User()
+        let userInformation = UserInformation()
+        user.uid = json["uid"].string!
+        user.nickName = json["nickName"].string!
+        user.setSex(sex: json["sex"].int!)
+        user.birthDay = json["birthDay"].string!
+        user.age = json["age"].int!
+        user.imageURL = json["imageUrl"].string!
+        userInformation.hobby = json["user_information"]["hobby"].string!
+        userInformation.setResidence(residence: json["user_information"]["residence"].int!)
+        userInformation.setJob(job: json["user_information"]["job"].int!)
+        userInformation.setPersonality(personality: json["user_information"]["personality"].int!)
+        user.userInformation = userInformation
+        return user
+    }
+    
+    func decodeIsMatched(json: JSON) -> User {
+        let user = User()
+        let userInformation = UserInformation()
+        user.uid = json["user"]["uid"].string!
+        user.nickName = json["user"]["nickName"].string!
+        user.setSex(sex: json["user"]["sex"].int!)
+        user.birthDay = json["user"]["birthDay"].string!
+        user.age = json["user"]["age"].int!
+        user.imageURL = json["user"]["imageUrl"].string!
+        userInformation.hobby = json["user"]["user_information"]["hobby"].string!
+        userInformation.setResidence(residence: json["user"]["user_information"]["residence"].int!)
+        userInformation.setJob(job: json["user"]["user_information"]["job"].int!)
+        userInformation.setPersonality(personality: json["user"]["user_information"]["personality"].int!)
+        user.userInformation = userInformation
+        return user
     }
 }
