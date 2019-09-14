@@ -15,13 +15,13 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
     let userDefaults = UserDefaults.standard
-    let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as! String
     
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
     var opponent = User()
     var getOpponentBtn = SpringButton()
     var chatBtn = SpringButton()
+    var opponentUid: String?
     
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
@@ -45,6 +45,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setShuppleButton()
         setChatButton()
         userDefaults.register(defaults: ["OpponentUID":"default"])
+        opponentUid = userDefaults.object(forKey: "OpponentUID") as? String
         requestGetUser()
     }
     /**
@@ -113,9 +114,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * マッチング済みの場合相手のプロフィールを取得、表示する
      */
     func requestGetUser() {
-        if opponentUid != "default" {
-            apiClient.requestGetUser(uid: opponentUid, view: view, indicator: indicator, function: convertOpponent)
-        }
+        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
     }
     /**
      * MaterialButton

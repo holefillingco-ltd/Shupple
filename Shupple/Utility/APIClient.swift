@@ -110,6 +110,7 @@ class APIClient {
         request.setValue(uid, forHTTPHeaderField: "Uid")
         
         Alamofire.request(request).responseJSON { response in
+            debugPrint(response)
             switch response.result {
             case .success(let value):
                     if JSON(value)["is_matched"].bool! == true {
