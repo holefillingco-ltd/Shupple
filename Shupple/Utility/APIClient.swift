@@ -84,6 +84,7 @@ class APIClient {
         
         request.httpMethod = HTTPMethod.put.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(uid, forHTTPHeaderField: "Uid")
         request.httpBody = data
         
         Alamofire.request(request).responseJSON { response in

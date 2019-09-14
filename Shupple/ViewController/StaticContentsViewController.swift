@@ -42,13 +42,14 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        print(indexPath.row)
+        print(StaticContents.updateUser.hashValue)
         switch indexPath.row {
-        case StaticContents.updateUser.hashValue:
+        case StaticContents.updateUser.rawValue:
             performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
-        case StaticContents.notice.hashValue:
+        case StaticContents.notice.rawValue:
             performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
-        case StaticContents.contact.hashValue:
+        case StaticContents.contact.rawValue:
             performSegue(withIdentifier: StaticContents.contact.segueIdentifirer, sender: nil)
         default:
             return
