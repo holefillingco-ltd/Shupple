@@ -11,7 +11,7 @@ import Eureka
 import ImageRow
 import FirebaseAuth
 
-class UpdateUserViewController: UIViewController {
+class UpdateUserViewController: FormViewController {
     
     private let currentuser = Auth.auth().currentUser
     private let prefectures = Prefecture.allPrefectures
@@ -21,6 +21,7 @@ class UpdateUserViewController: UIViewController {
     private let sexes = Sex.allSex
     private let encoder = JSONEncoder()
     private let userDefaults = UserDefaults.standard
+    private let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
     private let indicator = Indicator()
     private let apiClient = APIClient()
     private let materialUIButton = MaterialUIButton()
@@ -50,6 +51,11 @@ class UpdateUserViewController: UIViewController {
         imageView.layer.cornerRadius = 60
         pView.addSubview(imageView)
     }
+    
+    func getUser() {
+        apiClient.requestGetUser(uid: currentUserUid, view: view, indicator: indicator, function: )
+    }
+    
     
     /*
      * フォームのセット
@@ -81,27 +87,14 @@ class UpdateUserViewController: UIViewController {
             }
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
-                row.value = currentuser?.displayName
+                row.value = currentUser.nickName
                 row.onChange{ row in
                     self.postUser.nickName = row.value!
                 }
             }
-            <<< DateRow("birth"){ row in
-                row.title = "生年月日"
-                row.onChange{ row in
-                    self.postUser.setBirth(birth: row.value!)
-                }
-            }
-            <<< SegmentedRow<String>("sex"){ row in
-                row.options = sexes
-                row.title = "性別"
-                row.value = "男性"
-                row.onChange{ row in
-                    self.postUser.setSex(sex: row.value!)
-                }
-            }
             <<< TextRow("hobby"){ row in
                 row.title = "趣味"
+                row.value = currentUser.userInformation?.hobby
                 row.placeholder = "Ex.) サッカー"
                 row.onChange{ row in
                     self.postUser.hobby = row.value!
@@ -110,6 +103,7 @@ class UpdateUserViewController: UIViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "居住地"
                 row.options = prefectures
+                row.value = prefectures[(Prefecture.init(name: currentUser.userInformation!.residence!)?.code)!]
                 row.onChange{ row in
                     self.postUser.setResidence(residence: row.value!)
                 }
@@ -117,6 +111,8 @@ class UpdateUserViewController: UIViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "職業"
                 row.options = jobs
+//                row.value = jobs[(Job.init(name: currentUser.userInformation!.job!)?.code)!]
+                row.value = currentUser.userInformation?.job
                 row.onChange{ row in
                     self.postUser.setJob(job: row.value!)
                 }
@@ -124,6 +120,7 @@ class UpdateUserViewController: UIViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "性格"
                 row.options = personalitys
+                row.value = personalitys[(Personality.init(name: currentUser.userInformation!.personality!)?.code)!]
                 row.onChange{ row in
                     self.postUser.setPersonality(personality: row.value!)
                 }
