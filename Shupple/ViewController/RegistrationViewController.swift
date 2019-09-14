@@ -11,9 +11,7 @@ import Eureka
 import ImageRow
 import FirebaseAuth
 import Alamofire
-/*
- * TODO: APIを叩く処理
- */
+
 class RegistrationViewController: FormViewController {
     
     private let currentuser = Auth.auth().currentUser

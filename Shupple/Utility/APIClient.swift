@@ -52,6 +52,7 @@ class APIClient {
         indicator.start(view: view)
 
         var request = URLRequest(url: getOpponentURL!)
+        let matchingTime = Date()
 
         request.httpMethod = HTTPMethod.get.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
