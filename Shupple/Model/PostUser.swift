@@ -10,20 +10,21 @@ import Foundation
 
 class PostUser: Codable {
     
-    var uid: String = ""
-    var nickName: String = ""
-    var opponentAgeLow: Int = 1
-    var opponentAgeUpper: Int = 1
-    var hobby: String? = ""
+    var uid: String?
+    var nickName: String?
+    var opponentAgeLow: Int?
+    var opponentAgeUpper: Int?
+    var hobby: String?
     
     /*
      * set関数を使用してアクセス
      */
-    private var sex: Int = 1
-    private var birthDay: String = ""
-    private var residence: Int = 1
-    private var job: Int = 1
-    private var personality: Int = 1
+    private var sex: Int?
+    private var birthDay: String?
+    private var residence: Int?
+    private var job: Int?
+    private var personality: Int?
+    private var opponentResidence: Int?
 
     func setSex(sex: String) {
         self.sex = Sex.init(name: sex)!.code
@@ -44,6 +45,10 @@ class PostUser: Codable {
     
     func setPersonality(personality: String) {
         self.personality = Personality.init(name: personality)!.code
+    }
+    
+    func setOpponentResidence(residence: String) {
+        self.opponentResidence = Prefecture.init(name: residence)!.code
     }
     
     func setOpponentAge(opponentAgeRange: String) {

@@ -13,6 +13,7 @@ class UserInformation: Codable {
     var residence: String?
     var job: String?
     var personality: String?
+    var opponentResidence: String?
     
     func setResidence(residence: Int) {
         self.residence = Prefecture.init(code: residence)!.name
@@ -24,6 +25,10 @@ class UserInformation: Codable {
     
     func setPersonality(personality: Int) {
         self.personality = Personality.init(code: personality)!.name
+    }
+    
+    func setOpponentResidence(residence: Int) {
+        self.opponentResidence = Prefecture.init(code: residence)!.name
     }
     
 }

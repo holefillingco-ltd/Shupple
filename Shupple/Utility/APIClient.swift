@@ -14,6 +14,7 @@ import SwiftyJSON
 class APIClient {
     private let registrationURL = URL(string: "http://localhost:8080/users")
     private let getOpponentURL = URL(string: "http://localhost:8080/users")
+    private let updateUserURL = URL(string: "http://localhost:8080/users")
     private let getUserURL = URL(string: "http://localhost:8080/users/select")
     private let isMatchedURL = URL(string: "http://localhost:8080/users/isMatched")
     
@@ -37,9 +38,9 @@ class APIClient {
             case .success(_):
                 userDefaults.set(uid, forKey: "UID")
             case .failure(let error):
-                userDefaults.set(uid, forKey: "UID")
                 print(error)
             }
+            indicator.stop(view: view)
         }
     }
     /**
@@ -64,6 +65,31 @@ class APIClient {
                 let opponent = self.decodeUser(json: JSON(value))
                 userDefaults.set(opponent.uid, forKey: "OpponentUID")
                 function(opponent)
+            case .failure(let error):
+                print(error)
+            }
+            indicator.stop(view: view)
+        }
+    }
+    /**
+     * PUT /users
+     * UpdateUserVC
+     */
+    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator) {
+        
+        indicator.start(view: view)
+        
+        let data = try! JSONEncoder().encode(postUser)
+        var request = URLRequest(url: registrationURL!)
+        
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.httpBody = data
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
             case .failure(let error):
                 print(error)
             }
@@ -141,6 +167,7 @@ class APIClient {
         userInformation.setResidence(residence: json["user_information"]["residence"].int!)
         userInformation.setJob(job: json["user_information"]["job"].int!)
         userInformation.setPersonality(personality: json["user_information"]["personality"].int!)
+        userInformation.setOpponentResidence(residence: json["user_information"]["opponentResidence"].int!)
         user.userInformation = userInformation
         return user
     }
@@ -158,6 +185,7 @@ class APIClient {
         userInformation.setResidence(residence: json["user"]["user_information"]["residence"].int!)
         userInformation.setJob(job: json["user"]["user_information"]["job"].int!)
         userInformation.setPersonality(personality: json["user"]["user_information"]["personality"].int!)
+        userInformation.setOpponentResidence(residence: json["user"]["user_information"]["opponentResidence"].int!)
         user.userInformation = userInformation
         return user
     }

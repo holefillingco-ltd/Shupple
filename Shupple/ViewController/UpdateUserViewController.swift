@@ -25,7 +25,7 @@ class UpdateUserViewController: FormViewController {
     private let indicator = Indicator()
     private let apiClient = APIClient()
     private let materialUIButton = MaterialUIButton()
-    private var finButton = SpringButton()
+    private var finBtn = SpringButton()
     
     private var selectedImage = UIImage()
     private var pView = UIView()
@@ -34,6 +34,7 @@ class UpdateUserViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUser()
     }
 
     /*
@@ -51,12 +52,26 @@ class UpdateUserViewController: FormViewController {
         imageView.layer.cornerRadius = 60
         pView.addSubview(imageView)
     }
-    
+    /**
+     * 各フォームのvalueに表示するためcurrentUserを取得する
+     */
     func getUser() {
-        apiClient.requestGetUser(uid: currentUserUid, view: view, indicator: indicator, function: )
+        apiClient.requestGetUser(uid: currentUserUid, view: view, indicator: indicator, function: convertUser)
     }
-    
-    
+    /**
+     * TODO: やばすぎ。。
+     */
+    private func convertUser(user: User) {
+        currentUser = user
+        setEureka()
+    }
+    /**
+     * finBtnを押した時に呼ばれる
+     */
+    @objc func requestUpdateUser(_ sender: UIButton) {
+        finBtn.animate()
+        apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid, view: view, indicator: indicator)
+    }
     /*
      * フォームのセット
      */
@@ -126,10 +141,17 @@ class UpdateUserViewController: FormViewController {
                 }
             }
             <<< PickerInlineRow<String>() { row in
-                row.title = "お相手の年齢"
+                row.title = "相手の年齢"
                 row.options = ages
                 row.onChange{ row in
                     self.postUser.setOpponentAge(opponentAgeRange: row.value!)
+                }
+            }
+            <<< PickerInlineRow<String>() { row in
+                row.title = "相手の居住地"
+                row.options = prefectures
+                row.onChange{ row in
+                    self.postUser.setOpponentResidence(residence: row.value!)
                 }
             }
             +++ Section() { row in
@@ -138,15 +160,13 @@ class UpdateUserViewController: FormViewController {
                         let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                          width: self.view.frame.width,
                                                          height: 300))
-                        self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
-                        self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
-                        fView.addSubview(self.finButton)
+                        self.finBtn = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
+                        self.finBtn.addTarget(self, action: #selector(self.requestUpdateUser(_:)), for: UIControl.Event.touchUpInside)
+                        fView.addSubview(self.finBtn)
                         return fView
                     }))
                     return footer
                 }()
         }
-        postUser.nickName = (currentuser?.displayName)!
-        postUser.uid = (currentuser?.uid)!
     }
 }
