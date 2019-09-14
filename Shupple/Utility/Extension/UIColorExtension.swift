@@ -1,5 +1,5 @@
 //
-//  uiColorHex.swift
+//  UIColorExtension.swift
 //  Shupple
 //
 //  Created by 磯崎裕太 on 2019/08/07.

@@ -8,9 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		21766D27FB2BEBD48679BFD8 /* Pods_Shupple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE70313AAD303D97A156C371 /* Pods_Shupple.framework */; };
-		589DA58A22F354E400AE2BE6 /* ImageScale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DA58922F354E400AE2BE6 /* ImageScale.swift */; };
-		58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A66D22F58C6400EC54ED /* ImageForURL.swift */; };
-		58A4A67222F9EB2600EC54ED /* UiColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* UiColorHex.swift */; };
+		589DA58A22F354E400AE2BE6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DA58922F354E400AE2BE6 /* UIImageExtension.swift */; };
+		58A4A67222F9EB2600EC54ED /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* UIColorExtension.swift */; };
 		58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67322FB33DA00EC54ED /* TopViewController.swift */; };
 		58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */; };
 		58CF97BC230C5DBB00C3C0B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97BB230C5DBB00C3C0B7 /* User.swift */; };
@@ -68,10 +67,9 @@
 		312BEC8CDD8AC53B80FB0004 /* Pods-Shupple.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.release.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.release.xcconfig"; sourceTree = "<group>"; };
 		58409CC022EDECDA00050893 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		58409CC222EDECE400050893 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
-		589DA58922F354E400AE2BE6 /* ImageScale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageScale.swift; sourceTree = "<group>"; };
-		58A4A66D22F58C6400EC54ED /* ImageForURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageForURL.swift; sourceTree = "<group>"; };
+		589DA58922F354E400AE2BE6 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		58A4A66F22F5A42E00EC54ED /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
-		58A4A67122F9EB2600EC54ED /* UiColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiColorHex.swift; sourceTree = "<group>"; };
+		58A4A67122F9EB2600EC54ED /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		58A4A67322FB33DA00EC54ED /* TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopViewController.swift; sourceTree = "<group>"; };
 		58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		58CF97BB230C5DBB00C3C0B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -158,11 +156,9 @@
 		589DA58822F354B600AE2BE6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				5E6424E1232CFC9800C8DBDF /* Extension */,
 				5E44B4B62324BB7B0063AF4B /* Enum */,
-				589DA58922F354E400AE2BE6 /* ImageScale.swift */,
 				5E6424DF232BB67400C8DBDF /* Channel.swift */,
-				58A4A66D22F58C6400EC54ED /* ImageForURL.swift */,
-				58A4A67122F9EB2600EC54ED /* UiColorHex.swift */,
 				58CF97C72316EBAE00C3C0B7 /* Indicator.swift */,
 				58CF97CB231ED58C00C3C0B7 /* APIClient.swift */,
 				5E44B4B42324BAF80063AF4B /* MaterialButton.swift */,
@@ -281,6 +277,15 @@
 				5E44B5112324E87A0063AF4B /* AsyncImageView.swift */,
 			);
 			path = Spring;
+			sourceTree = "<group>";
+		};
+		5E6424E1232CFC9800C8DBDF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				58A4A67122F9EB2600EC54ED /* UIColorExtension.swift */,
+				589DA58922F354E400AE2BE6 /* UIImageExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E84D921CD0F32CAFB20C2E2C /* Pods */ = {
@@ -465,7 +470,7 @@
 				58C1CBBE22F2030500460FE1 /* RegistrationViewController.swift in Sources */,
 				5E44B4B2231EA1020063AF4B /* UserInformation.swift in Sources */,
 				5E44B5272324E87A0063AF4B /* SpringLabel.swift in Sources */,
-				589DA58A22F354E400AE2BE6 /* ImageScale.swift in Sources */,
+				589DA58A22F354E400AE2BE6 /* UIImageExtension.swift in Sources */,
 				5E44B5282324E87A0063AF4B /* DesignableTextView.swift in Sources */,
 				58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */,
 				5E44B5142324E87A0063AF4B /* TransitionManager.swift in Sources */,
@@ -477,7 +482,6 @@
 				5E44B52C2324E87A0063AF4B /* LoadingView.swift in Sources */,
 				58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */,
 				5E44B5122324E87A0063AF4B /* DesignableImageView.swift in Sources */,
-				58A4A66E22F58C6400EC54ED /* ImageForURL.swift in Sources */,
 				5E44B5162324E87A0063AF4B /* ImageLoader.swift in Sources */,
 				5E6424E0232BB67400C8DBDF /* Channel.swift in Sources */,
 				5E44B5132324E87A0063AF4B /* KeyboardLayoutConstraint.swift in Sources */,
@@ -486,7 +490,7 @@
 				5E44B5222324E87A0063AF4B /* SpringTextField.swift in Sources */,
 				5E44B4B52324BAF80063AF4B /* MaterialButton.swift in Sources */,
 				5E44B51A2324E87A0063AF4B /* SoundPlayer.swift in Sources */,
-				58A4A67222F9EB2600EC54ED /* UiColorHex.swift in Sources */,
+				58A4A67222F9EB2600EC54ED /* UIColorExtension.swift in Sources */,
 				5E44B52B2324E87A0063AF4B /* UnwindSegue.swift in Sources */,
 				5E44B51E2324E87A0063AF4B /* SpringTextView.swift in Sources */,
 				5E44B5182324E87A0063AF4B /* SpringImageView.swift in Sources */,

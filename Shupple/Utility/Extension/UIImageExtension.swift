@@ -1,5 +1,5 @@
 //
-//  ImageScale.swift
+//  UIImageExtension.swift
 //  Shupple
 //
 //  Created by 磯崎裕太 on 2019/08/02.
@@ -12,6 +12,18 @@
 import UIKit
 
 extension UIImage {
+    
+    public convenience init(url: String) {
+        let url = URL(string: url)
+        do {
+            let data = try Data(contentsOf: url!)
+            self.init(data: data)!
+            return
+        } catch let err {
+            print("Error : \(err.localizedDescription)")
+        }
+        self.init()
+    }
     
     func reSizeImage(reSize:CGSize)->UIImage {
         UIGraphicsBeginImageContextWithOptions(reSize,false,UIScreen.main.scale);
@@ -26,4 +38,5 @@ extension UIImage {
         let reSize = CGSize(width: self.size.width * scaleSize, height: self.size.height * scaleSize)
         return reSizeImage(reSize: reSize)
     }
+
 }
