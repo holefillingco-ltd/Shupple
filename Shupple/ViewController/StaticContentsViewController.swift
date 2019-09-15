@@ -42,8 +42,6 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        print(indexPath.row)
-        print(StaticContents.updateUser.hashValue)
         switch indexPath.row {
         case StaticContents.updateUser.rawValue:
             performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)

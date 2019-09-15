@@ -24,8 +24,8 @@ class RegistrationViewController: FormViewController {
     private let indicator = Indicator()
     private let apiClient = APIClient()
     private let materialUIButton = MaterialUIButton()
+    
     private var finButton = SpringButton()
-
     private var selectedImage = UIImage()
     private var pView = UIView()
     private var postUser = PostUser()
