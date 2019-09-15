@@ -15,6 +15,7 @@ class PostUser: Codable {
     var opponentAgeLow: Int?
     var opponentAgeUpper: Int?
     var hobby: String?
+    var image: String?
     
     /*
      * set関数を使用してアクセス

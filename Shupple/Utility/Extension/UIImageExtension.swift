@@ -42,7 +42,7 @@ extension UIImage {
     }
   
     /// イメージ→PNGデータ->Stringに変換する
-    ///
+    /// TODO: エラーハンドリング
     /// - Returns: 変換後のPNG(binary)
     public func toPNGData() -> String {
         guard let data = self.pngData() else {
@@ -53,7 +53,7 @@ extension UIImage {
     }
     
     /// イメージ→JPEGデータ->Stringに変換する
-    ///
+    /// TODO: エラーハンドリング
     /// - Returns: 変換後のJPEG(binary)
     public func toJPEGData() -> String {
         guard let data = self.jpegData(compressionQuality: 1.0) else {
