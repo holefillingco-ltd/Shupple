@@ -118,7 +118,7 @@ class UpdateUserViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "居住地"
                 row.options = prefectures
-                row.value = prefectures[(Prefecture.init(name: currentUser.userInformation!.residence!)?.code)!]
+                row.value = currentUser.userInformation?.residence
                 row.onChange{ row in
                     self.postUser.setResidence(residence: row.value!)
                 }
@@ -126,7 +126,6 @@ class UpdateUserViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "職業"
                 row.options = jobs
-//                row.value = jobs[(Job.init(name: currentUser.userInformation!.job!)?.code)!]
                 row.value = currentUser.userInformation?.job
                 row.onChange{ row in
                     self.postUser.setJob(job: row.value!)
@@ -135,7 +134,7 @@ class UpdateUserViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "性格"
                 row.options = personalitys
-                row.value = personalitys[(Personality.init(name: currentUser.userInformation!.personality!)?.code)!]
+                row.value = currentUser.userInformation?.personality
                 row.onChange{ row in
                     self.postUser.setPersonality(personality: row.value!)
                 }
