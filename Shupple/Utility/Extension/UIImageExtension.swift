@@ -49,7 +49,8 @@ extension UIImage {
             return ""
         }
         
-        return String(data: data, encoding: .utf8)!
+        let encodeString = data.base64EncodedString(options: [])
+        return encodeString
     }
     
     /// イメージ→JPEGデータ->Stringに変換する
@@ -60,6 +61,7 @@ extension UIImage {
             return ""
         }
         
-        return String(data: data, encoding: .utf8)!
+        let encodeString = data.base64EncodedString(options: [])
+        return encodeString
     }
 }
