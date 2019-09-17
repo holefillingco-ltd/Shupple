@@ -44,6 +44,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setOpponentImage()
         setShuppleButton()
         setChatButton()
+        userDefaults.register(defaults: ["MatchingTime":Date()])
         userDefaults.register(defaults: ["OpponentUID":"default"])
         opponentUid = userDefaults.object(forKey: "OpponentUID") as? String
         requestGetUser()
