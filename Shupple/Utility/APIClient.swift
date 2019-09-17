@@ -50,6 +50,7 @@ class APIClient {
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
     func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
+        let now = Date()
 
         indicator.start(view: view)
 
@@ -63,6 +64,7 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 let opponent = self.decodeUser(json: JSON(value))
+                userDefaults.set(now, forKey: "MatchingTime")
                 userDefaults.set(opponent.uid, forKey: "OpponentUID")
                 function(opponent)
             case .failure(let error):

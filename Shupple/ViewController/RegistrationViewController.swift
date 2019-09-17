@@ -30,7 +30,6 @@ class RegistrationViewController: FormViewController {
     private var pView = UIView()
     private var postUser = PostUser()
     
-
     /*
      * downloadImageで使用
      */
