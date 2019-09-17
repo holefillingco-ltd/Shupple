@@ -103,7 +103,6 @@ class RegistrationViewController: FormViewController {
                 row.onChange { [unowned self] row in
                     self.selectedImage = row.value!
                     self.changePV(image: self.selectedImage)
-                    self.postUser.image = row.value?.toPNGData()
                 }
             }
             <<< TextRow("nickName"){ row in
