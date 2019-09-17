@@ -34,6 +34,7 @@ class APIClient {
         request.httpBody = data
         
         Alamofire.request(request).responseJSON { response in
+            debugPrint(response)
             switch response.result {
             case .success(_):
                 userDefaults.set(uid, forKey: "UID")
