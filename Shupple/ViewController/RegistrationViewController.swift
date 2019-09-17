@@ -81,6 +81,9 @@ class RegistrationViewController: FormViewController {
      * フォームのセット
      */
     func setEureka() {
+        var rules = RuleSet<String>()
+        rules.add(rule: RuleRequired())
+        
         form
         +++ Section() {
             $0.header = {
@@ -103,21 +106,39 @@ class RegistrationViewController: FormViewController {
                 row.onChange { [unowned self] row in
                     self.selectedImage = row.value!
                     self.changePV(image: self.selectedImage)
-                    // TODO: 拡張子毎に処理分けしてないけど動く。。
+                    // WARN: 拡張子毎に処理分けしてないけど動く。。
                     self.postUser.image = row.value!.toPNGData()
                 }
+                self.postUser.image = row.value!.toPNGData()
             }
             <<< TextRow("nickName"){ row in
+                row.placeholder = "Ex.) 太郎"
+                row.add(ruleSet: rules)
+                row.add(rule: RuleMaxLength(maxLength: 10))
+                row.validationOptions = .validatesOnChange
                 row.title = "ニックネーム"
                 row.value = currentuser?.displayName
                 row.onChange{ row in
-                    self.postUser.nickName = row.value!
+                    self.postUser.nickName = row.value
+                }
+                self.postUser.nickName = row.value
+            }
+            .cellUpdate{ cell, row in
+                if !row.isValid {
+                    cell.titleLabel?.textColor = .red
                 }
             }
             <<< DateRow("birth"){ row in
+                row.add(rule: RuleRequired())
+                row.validationOptions = .validatesOnChange
                 row.title = "生年月日"
                 row.onChange{ row in
                     self.postUser.setBirth(birth: row.value!)
+                }
+            }
+            .cellUpdate{ cell, row in
+                if !row.isValid {
+                    cell.textLabel?.textColor = .red
                 }
             }
             <<< SegmentedRow<String>("sex"){ row in
@@ -127,22 +148,36 @@ class RegistrationViewController: FormViewController {
                 row.onChange{ row in
                     self.postUser.setSex(sex: row.value!)
                 }
+                self.postUser.setSex(sex: row.value!)
             }
             <<< TextRow("hobby"){ row in
+                row.add(ruleSet: rules)
+                row.validationOptions = .validatesOnChange
                 row.title = "趣味"
                 row.placeholder = "Ex.) サッカー"
                 row.onChange{ row in
-                    self.postUser.hobby = row.value!
+                    self.postUser.hobby = row.value
+                }
+            }
+            .cellUpdate{ cell, row in
+                if !row.isValid {
+                    cell.titleLabel?.textColor = .red
                 }
             }
             <<< PickerInlineRow<String>() { row in
+                row.add(ruleSet: rules)
                 row.title = "居住地"
                 row.options = prefectures
                 row.onChange{ row in 
                     self.postUser.setResidence(residence: row.value!)
                 }
             }
+            .cellUpdate{ cell, row in
+                if !row.isValid {
+                }
+            }
             <<< PickerInlineRow<String>() { row in
+                row.add(ruleSet: rules)
                 row.title = "職業"
                 row.options = jobs
                 row.onChange{ row in
@@ -150,13 +185,15 @@ class RegistrationViewController: FormViewController {
                 }
             }
             <<< PickerInlineRow<String>() { row in
+                row.add(ruleSet: rules)
                 row.title = "性格"
                 row.options = personalitys
                 row.onChange{ row in 
                     self.postUser.setPersonality(personality: row.value!)
                 }
             }
-            <<< PickerInlineRow<String>() { row in 
+            <<< PickerInlineRow<String>() { row in
+                row.add(ruleSet: rules)
                 row.title = "相手の年齢"
                 row.options = ages
                 row.onChange{ row in
@@ -164,6 +201,7 @@ class RegistrationViewController: FormViewController {
                 }
             }
             <<< PickerInlineRow<String>() { row in
+                row.add(ruleSet: rules)
                 row.title = "相手の居住地"
                 row.options = prefectures
                 row.onChange{ row in
@@ -175,7 +213,7 @@ class RegistrationViewController: FormViewController {
                 let footer = HeaderFooterView<UIView>(.callback({
                     let fView = UIView(frame: CGRect(x: 0, y: 0,
                                                       width: self.view.frame.width,
-                                                      height: 300))
+                                                      height: 100))
                     self.finButton = self.materialUIButton.setMaterialButton(superView: self.view, title: "登録", y: 30, startColor: UIColor.blueStartColor, endColor: UIColor.blueEndColor)
                     self.finButton.addTarget(self, action: #selector(self.requestRegistration(_:)), for: UIControl.Event.touchUpInside)
                     fView.addSubview(self.finButton)
