@@ -15,6 +15,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
     let userDefaults = UserDefaults.standard
+    var dateManager: DateManager?
     
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
@@ -47,8 +48,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setOpponentImage()
         setShuppleButton()
         setChatButton()
-        userDefaults.register(defaults: ["MatchingTime":Date()])
+        userDefaults.register(defaults: ["MatchingTime":"default"])
         userDefaults.register(defaults: ["OpponentUID":"default"])
+        // registerの後にしなきゃいけないのでここにあるけど変えたい..
         opponentUid = userDefaults.object(forKey: "OpponentUID") as? String
         requestGetUser()
     }
@@ -137,6 +139,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
+    /**
+     * カウントダウンタイマー
+     */
+    
     /**
      * MEMO: チャット導線確認用（その内消す）
      */

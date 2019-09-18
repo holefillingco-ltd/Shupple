@@ -165,6 +165,7 @@
 				5E6424E1232CFC9800C8DBDF /* Extension */,
 				5E44B4B62324BB7B0063AF4B /* Enum */,
 				5E6424DF232BB67400C8DBDF /* Channel.swift */,
+				5E6424EA2332222900C8DBDF /* DateManager.swift */,
 				58CF97C72316EBAE00C3C0B7 /* Indicator.swift */,
 				58CF97CB231ED58C00C3C0B7 /* APIClient.swift */,
 				5E44B4B42324BAF80063AF4B /* MaterialButton.swift */,
@@ -181,7 +182,6 @@
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
 				5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */,
 				58A4A67322FB33DA00EC54ED /* TopViewController.swift */,
-				5E6424EA2332222900C8DBDF /* DateManager.swift */,
 				5E7CEFC9232B677300E4A72F /* ChatViewController.swift */,
 			);
 			path = ViewController;
