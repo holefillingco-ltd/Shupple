@@ -61,6 +61,7 @@
 		5E6424E0232BB67400C8DBDF /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424DF232BB67400C8DBDF /* Channel.swift */; };
 		5E6424E3232CFE1200C8DBDF /* UpdateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */; };
 		5E6424E5232CFFC100C8DBDF /* StaticContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E4232CFFC100C8DBDF /* StaticContents.swift */; };
+		5E6424EB2332222A00C8DBDF /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424EA2332222900C8DBDF /* DateManager.swift */; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -126,6 +127,7 @@
 		5E6424DF232BB67400C8DBDF /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserViewController.swift; sourceTree = "<group>"; };
 		5E6424E4232CFFC100C8DBDF /* StaticContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContents.swift; sourceTree = "<group>"; };
+		5E6424EA2332222900C8DBDF /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Shupple/Utility/DateManager.swift; sourceTree = SOURCE_ROOT; };
 		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
 				5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */,
 				58A4A67322FB33DA00EC54ED /* TopViewController.swift */,
+				5E6424EA2332222900C8DBDF /* DateManager.swift */,
 				5E7CEFC9232B677300E4A72F /* ChatViewController.swift */,
 			);
 			path = ViewController;
@@ -479,6 +482,7 @@
 				5E44B5272324E87A0063AF4B /* SpringLabel.swift in Sources */,
 				589DA58A22F354E400AE2BE6 /* UIImageExtension.swift in Sources */,
 				5E44B5282324E87A0063AF4B /* DesignableTextView.swift in Sources */,
+				5E6424EB2332222A00C8DBDF /* DateManager.swift in Sources */,
 				58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */,
 				5E44B5142324E87A0063AF4B /* TransitionManager.swift in Sources */,
 				58CF97C2230DB31B00C3C0B7 /* Job.swift in Sources */,

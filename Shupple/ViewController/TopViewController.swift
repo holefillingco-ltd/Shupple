@@ -23,6 +23,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var chatBtn = SpringButton()
     var opponentUid: String?
     
+    @IBOutlet weak var timerView: UIImageView!
+    @IBOutlet weak var timer: UILabel!
+    
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
     @IBOutlet weak var personalityTitle: UILabel!
@@ -63,6 +66,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     }
     /**
      * scrollViewのセットアップ
+     * TODO: 綺麗にする
+     *       順番の関係で最後にaddSubviewしてる
      */
     func setScrollView() {
         opponentContentView.addSubview(jobTitle)
@@ -80,6 +85,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(opponentContentView)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         view.addSubview(scrollView)
+        view.addSubview(timerView)
+        view.addSubview(timer)
     }
     /**
      * scrollViewがスクロールされた時に呼ばれる
@@ -121,12 +128,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * MaterialButton
      */
     func setShuppleButton() {
-        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 730, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
     func setChatButton() {
-        chatBtn = materialButton.setMaterialButton(superView: view, title: "Messagees", y: 830, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        chatBtn = materialButton.setMaterialButton(superView: view, title: "Messagees", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
