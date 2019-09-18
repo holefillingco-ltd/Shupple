@@ -156,9 +156,9 @@ class APIClient {
     
     /**
      * JsonからUserへデコード
-     * TODO: Codableで出来る様に
+     * TODO: Codableを使用する様変更
      */
-    func decodeUser(json: JSON) -> User {
+    private func decodeUser(json: JSON) -> User {
         let user = User()
         let userInformation = UserInformation()
         user.uid = json["uid"].string!
@@ -175,8 +175,7 @@ class APIClient {
         user.userInformation = userInformation
         return user
     }
-    
-    func decodeIsMatched(json: JSON) -> User {
+    private func decodeIsMatched(json: JSON) -> User {
         let user = User()
         let userInformation = UserInformation()
         user.uid = json["user"]["uid"].string!

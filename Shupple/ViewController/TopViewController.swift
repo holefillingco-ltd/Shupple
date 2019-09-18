@@ -86,7 +86,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * プロフィール画像を上部に固定する
      */
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        opponentImage.frame = CGRect(x: 0, y: 0+scrollView.contentOffset.y, width: view.frame.width, height: 300)
+        opponentImage.frame = CGRect(x: 0, y: 98+scrollView.contentOffset.y, width: view.frame.width, height: 300)
     }
     /**
      * APIのレスポンスを受け取った後のopponentを各パーツに詰める
@@ -121,12 +121,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * MaterialButton
      */
     func setShuppleButton() {
-        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 650, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 730, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
     func setChatButton() {
-        chatBtn = materialButton.setMaterialButton(superView: view, title: "Messagees", y: 750, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        chatBtn = materialButton.setMaterialButton(superView: view, title: "Messagees", y: 830, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
@@ -137,4 +137,3 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         performSegue(withIdentifier: "toChatView", sender: nil)
     }
 }
-
