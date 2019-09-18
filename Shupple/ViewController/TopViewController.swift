@@ -27,6 +27,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var timerView: UIImageView!
     @IBOutlet weak var countdown: UILabel!
+    @IBOutlet weak var tmp: UILabel!
     
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
@@ -72,8 +73,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        timer = Timer.scheduledTimer(timeInterval: 1.0,
-                                     target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
         timer.fire()
     }
     
@@ -83,9 +83,15 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         timer = nil
     }
     
-    @objc func update(tm: Timer) {
-        let count = dateManager?.getMatchingEndTimeInterval()
-        countdown.text = count
+    @objc func updateCountdown(tm: Timer) {
+        if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
+            let count = dateManager?.getMatchingEndTimeInterval()
+            countdown.text = count
+        } else {
+            countdown.text = "マッチングしてみよう！"
+            countdown.font = countdown.font.withSize(20)
+            tmp.text = ""
+        }
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -122,6 +128,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         view.addSubview(scrollView)
         view.addSubview(timerView)
         view.addSubview(countdown)
+        view.addSubview(tmp)
     }
     /**
      * scrollViewがスクロールされた時に呼ばれる
@@ -152,6 +159,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
         apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
+        dateManager = DateManager(matchingDate: Date())
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する

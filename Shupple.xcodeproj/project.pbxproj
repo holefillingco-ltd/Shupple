@@ -62,6 +62,7 @@
 		5E6424E3232CFE1200C8DBDF /* UpdateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */; };
 		5E6424E5232CFFC100C8DBDF /* StaticContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E4232CFFC100C8DBDF /* StaticContents.swift */; };
 		5E6424EB2332222A00C8DBDF /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424EA2332222900C8DBDF /* DateManager.swift */; };
+		5E6424EE233264EA00C8DBDF /* Wallpoet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6424ED233264A600C8DBDF /* Wallpoet-Regular.ttf */; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,7 @@
 		5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserViewController.swift; sourceTree = "<group>"; };
 		5E6424E4232CFFC100C8DBDF /* StaticContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContents.swift; sourceTree = "<group>"; };
 		5E6424EA2332222900C8DBDF /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateManager.swift; path = Shupple/Utility/DateManager.swift; sourceTree = SOURCE_ROOT; };
+		5E6424ED233264A600C8DBDF /* Wallpoet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Wallpoet-Regular.ttf"; sourceTree = "<group>"; };
 		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		58FC3CDC22EDE61100E89BFB /* Shupple */ = {
 			isa = PBXGroup;
 			children = (
+				5E6424EC2332647200C8DBDF /* Font */,
 				58A4A66A22F5855500EC54ED /* StoryBoard */,
 				58A4A66922F5854600EC54ED /* Model */,
 				58A4A66822F5852300EC54ED /* ViewController */,
@@ -295,6 +298,14 @@
 				589DA58922F354E400AE2BE6 /* UIImageExtension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		5E6424EC2332647200C8DBDF /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				5E6424ED233264A600C8DBDF /* Wallpoet-Regular.ttf */,
+			);
+			path = Font;
 			sourceTree = "<group>";
 		};
 		E84D921CD0F32CAFB20C2E2C /* Pods */ = {
@@ -368,6 +379,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E6424EE233264EA00C8DBDF /* Wallpoet-Regular.ttf in Resources */,
 				58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */,
 				5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */,
 				58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */,

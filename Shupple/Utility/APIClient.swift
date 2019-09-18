@@ -153,7 +153,6 @@ class APIClient {
             indicator.stop(view: view)
         }
     }
-    
     /**
      * JsonからUserへデコード
      * TODO: Codableを使用する様変更

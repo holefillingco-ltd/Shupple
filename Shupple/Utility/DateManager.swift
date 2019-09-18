@@ -42,4 +42,3 @@ class DateManager {
         return data!
     }
 }
-
