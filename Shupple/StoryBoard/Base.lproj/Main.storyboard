@@ -158,11 +158,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4MR-xb-eEE">
-                                <rect key="frame" x="140" y="50" width="94" height="48"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBm-zl-xfj">
+                                <rect key="frame" x="36" y="50" width="287" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" red="0.8820231541450777" green="0.8820231541450777" blue="0.8820231541450777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -173,6 +173,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
+                        <outlet property="countdown" destination="fBm-zl-xfj" id="Wcz-mN-0W9"/>
                         <outlet property="hobbyTitle" destination="3ft-wZ-NsL" id="QHQ-fH-fhW"/>
                         <outlet property="jobTitle" destination="3Ym-ES-puP" id="hBE-ev-D0t"/>
                         <outlet property="opponentAge" destination="A98-a2-bTN" id="lGm-qP-BkX"/>
@@ -184,7 +185,6 @@
                         <outlet property="opponentResidence" destination="6M3-AA-uLG" id="zDt-M0-E6G"/>
                         <outlet property="personalityTitle" destination="Yvq-Mt-xb5" id="Sh8-v0-tId"/>
                         <outlet property="shadowView" destination="S5r-gk-vdn" id="9tD-eV-orf"/>
-                        <outlet property="timer" destination="4MR-xb-eEE" id="7KZ-27-wmg"/>
                         <outlet property="timerView" destination="IVl-M7-6nK" id="l4J-N7-IcD"/>
                         <segue destination="fTU-cS-Ra3" kind="show" identifier="toChatView" id="dm2-Vu-fWE"/>
                     </connections>

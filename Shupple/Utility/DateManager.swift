@@ -33,9 +33,13 @@ class DateManager {
         return dateStr
     }
     
-    func getMatchingEndTimeInterval() -> Int {
+    func getMatchingEndTimeInterval() -> String {
         let span = matchingEndDate?.timeIntervalSinceNow
-        return Int(floor(span!))
+        let fmt = DateComponentsFormatter()
+        fmt.unitsStyle = .positional
+        fmt.allowedUnits = [.minute,.hour,.second]
+        let data = fmt.string(from: span!)
+        return data!
     }
 }
 

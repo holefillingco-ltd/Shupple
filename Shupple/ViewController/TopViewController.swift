@@ -23,9 +23,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var getOpponentBtn = SpringButton()
     var chatBtn = SpringButton()
     var opponentUid: String?
+    var timer: Timer!
     
     @IBOutlet weak var timerView: UIImageView!
-    @IBOutlet weak var timer: UILabel!
+    @IBOutlet weak var countdown: UILabel!
     
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var hobbyTitle: UILabel!
@@ -52,7 +53,39 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         userDefaults.register(defaults: ["OpponentUID":"default"])
         // registerの後にしなきゃいけないのでここにあるけど変えたい..
         opponentUid = userDefaults.object(forKey: "OpponentUID") as? String
+        setMatchingDate()
         requestGetUser()
+    }
+    
+    /**
+     * MatchingTimeが保存されている場合のみdateManagerをセット
+     */
+    func setMatchingDate() {
+        if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
+            dateManager = DateManager(matchingDate: (userDefaults.object(forKey: "MatchingTime") as? Date)!)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                     target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        timer.fire()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        timer.invalidate()
+        timer = nil
+    }
+    
+    @objc func update(tm: Timer) {
+        let count = dateManager?.getMatchingEndTimeInterval()
+        countdown.text = count
     }
     /**
      * imageView(opponentImage)のセットアップ
@@ -88,7 +121,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         view.addSubview(scrollView)
         view.addSubview(timerView)
-        view.addSubview(timer)
+        view.addSubview(countdown)
     }
     /**
      * scrollViewがスクロールされた時に呼ばれる
