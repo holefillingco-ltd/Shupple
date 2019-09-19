@@ -197,6 +197,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentJob.text = "no data"
         opponentHobby.text = "no data"
         opponentPersonality.text = "no data"
+        tmp.text = ""
+        countdown.text = "マッチングしてみよう！"
     }
     /**
      * MEMO: チャット導線確認用（その内消す）
