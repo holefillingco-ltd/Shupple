@@ -16,14 +16,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
     let userDefaults = UserDefaults.standard
-    var dateManager: DateManager?
+    let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as? String
     
+    var dateManager: DateManager?
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
     var opponent = User()
     var getOpponentBtn = SpringButton()
     var chatBtn = SpringButton()
-    var opponentUid: String?
     var timer: Timer!
     
     @IBOutlet weak var timerView: UIImageView!
@@ -51,10 +51,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setOpponentImage()
         setShuppleButton()
         setChatButton()
-        userDefaults.register(defaults: ["MatchingTime":"default"])
-        userDefaults.register(defaults: ["OpponentUID":"default"])
-        // registerの後にしなきゃいけないのでここにあるけど変えたい..
-        opponentUid = userDefaults.object(forKey: "OpponentUID") as? String
         setMatchingDate()
         requestGetUser()
     }

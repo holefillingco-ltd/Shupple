@@ -23,13 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let userDefault = UserDefaults.standard
-        userDefault.register(defaults: ["UID":"default"])
+        let userDefaults = UserDefaults.standard
+        userDefaults.register(defaults: ["UID":"default"])
+        userDefaults.register(defaults: ["MatchingTime":"default"])
+        userDefaults.register(defaults: ["OpponentUID":"default"])
         
         /**
          * ログインしている場合TopViewControllerへ遷移
          */
-        if userDefault.object(forKey: "UID") as! String != "default" {
+        if userDefaults.object(forKey: "UID") as! String != "default" {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabView")
