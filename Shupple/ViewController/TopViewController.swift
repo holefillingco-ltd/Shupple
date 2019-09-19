@@ -66,23 +66,23 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             dateManager = DateManager(matchingDate: (userDefaults.object(forKey: "MatchingTime") as? Date)!)
         }
     }
-    
+    // タイマー
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    
+    // タイマー
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
         timer.fire()
     }
-    
+    // タイマー
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         timer.invalidate()
         timer = nil
     }
-    
+    // タイマー
     @objc func updateCountdown(tm: Timer) {
         if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
             let count = dateManager?.getMatchingEndTimeInterval()
@@ -168,6 +168,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
     }
     /**
+     *
+     */
+    func requestCancelOpponent() {
+        apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator)
+    }
+    /**
      * MaterialButton
      */
     func setShuppleButton() {
@@ -181,9 +187,16 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(chatBtn)
     }
     /**
-     * カウントダウンタイマー
+     * マッチング解除後(タイマーが0)各パーツをマッチング前に戻す
      */
-    
+    func cancelMatching() {
+        opponentName.text = "マッチングしてみよう！"
+        opponentAge.text = "no data"
+        opponentResidence.text = "no data"
+        opponentJob.text = "no data"
+        opponentHobby.text = "no data"
+        opponentPersonality.text = "no data"
+    }
     /**
      * MEMO: チャット導線確認用（その内消す）
      */
