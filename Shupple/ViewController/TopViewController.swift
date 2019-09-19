@@ -142,7 +142,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * APIのレスポンスを受け取った後のopponentを各パーツに詰める
      * TODO: それぞれのフィールドへ詰めていく
      */
-    private func convertOpponent(opponent: User) {
+    private func convertOpponentToUILabel(opponent: User) {
         opponentName.text = opponent.nickName
         opponentAge.text = "\(String(opponent.age!)) 歳"
         opponentResidence.text = opponent.userInformation?.residence
@@ -159,14 +159,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, function: convertOpponent)
+        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, function: convertOpponentToUILabel)
         dateManager = DateManager(matchingDate: Date())
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する
      */
     func requestGetUser() {
-        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, function: convertOpponent)
+        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, function: convertOpponentToUILabel)
     }
     /**
      *
@@ -190,7 +190,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     /**
      * マッチング解除後(タイマーが0)各パーツをマッチング前に戻す
      */
-    func cancelMatching() {
+    func resetLabelToNotMatching() {
         opponentName.text = "マッチングしてみよう！"
         opponentAge.text = "no data"
         opponentResidence.text = "no data"
