@@ -13,7 +13,8 @@ import SwiftyJSON
 
 class APIClient {
     private let registrationURL = URL(string: "http://localhost:8080/users")
-    private let getOpponentURL = URL(string: "http://localhost:8080/users")
+    private let getOpponentURL = URL(string: "http://localhost:8080/users/shupple")
+    private let cancelOpponentURL = URL(string: "http://localhost:8080/users/shupple")
     private let updateUserURL = URL(string: "http://localhost:8080/users")
     private let getUserURL = URL(string: "http://localhost:8080/users/select")
     private let isMatchedURL = URL(string: "http://localhost:8080/users/isMatched")
@@ -45,7 +46,7 @@ class APIClient {
         }
     }
     /**
-     * GET /users
+     * GET /users/shupple
      * TopVC
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
@@ -68,6 +69,29 @@ class APIClient {
                 userDefaults.set(now, forKey: "MatchingTime")
                 userDefaults.set(opponent.uid, forKey: "OpponentUID")
                 function(opponent)
+            case .failure(let error):
+                print(error)
+            }
+            indicator.stop(view: view)
+        }
+    }
+    /**
+     * PUT /users/shupple
+     * TopVC
+     */
+    func requestCancelOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) {
+        
+        indicator.start(view: view)
+        
+        var request = URLRequest(url: cancelOpponentURL!)
+        
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                print(value)
             case .failure(let error):
                 print(error)
             }
