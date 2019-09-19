@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
@@ -86,6 +87,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     @objc func updateCountdown(tm: Timer) {
         if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
             let count = dateManager?.getMatchingEndTimeInterval()
+            if count == "End" {
+                requestCancelOpponent()
+            }
             countdown.text = count
         } else {
             countdown.text = "マッチングしてみよう！"
