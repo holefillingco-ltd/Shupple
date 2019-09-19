@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseAuth
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
-    let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
+    let currentUserUid = Auth.auth().currentUser?.uid
     let indicator = Indicator()
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
@@ -162,20 +162,20 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
+        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, function: convertOpponent)
         dateManager = DateManager(matchingDate: Date())
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する
      */
     func requestGetUser() {
-        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator, function: convertOpponent)
+        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, function: convertOpponent)
     }
     /**
      *
      */
     func requestCancelOpponent() {
-        apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid, view: view, indicator: indicator)
+        apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
     }
     /**
      * MaterialButton
