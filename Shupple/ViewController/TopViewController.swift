@@ -84,6 +84,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
             let count = dateManager?.getMatchingEndTimeInterval()
             if count == "End" {
+                // TODO: マッチングキャンセル
                 requestCancelOpponent()
             }
             countdown.text = count

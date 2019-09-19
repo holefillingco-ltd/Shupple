@@ -92,6 +92,8 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 print(value)
+                userDefaults.set("default", forKey: "MatchingTime")
+                userDefaults.set("default", forKey: "OpponentUID")
             case .failure(let error):
                 print(error)
             }
@@ -215,5 +217,4 @@ class APIClient {
         user.userInformation = userInformation
         return user
     }
-    
 }
