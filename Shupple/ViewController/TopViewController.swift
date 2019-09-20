@@ -61,7 +61,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     // タイマー
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.advanceCount), userInfo: nil, repeats: true)
         timer.fire()
     }
     // 画面が閉じる直前にtimer削除
@@ -71,7 +71,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         timer = nil
     }
     // タイマー
-    @objc func updateCountdown(tm: Timer) {
+    @objc func advanceCount(tm: Timer) {
         if countdownActive == true {
             let count = dateManager?.getMatchingEndTimeInterval()
             countdown.font = countdown.font.withSize(38)
