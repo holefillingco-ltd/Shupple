@@ -85,7 +85,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             tmp.text = "TimeLimit"
         } else {
             countdown.text = "Shupple"
-            countdown.font = countdown.font.withSize(20)
+            countdown.font = countdown.font.withSize(30)
             tmp.text = ""
 //            materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: false, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         }
