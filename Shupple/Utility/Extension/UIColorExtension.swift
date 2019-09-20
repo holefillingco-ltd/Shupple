@@ -17,6 +17,8 @@ extension UIColor {
     static let pinkEndColor = #colorLiteral(red: 0.938419044, green: 0.6146818523, blue: 0.9140722291, alpha: 1)
     static let greenStartColor = #colorLiteral(red: 0.01324471092, green: 0.9139329232, blue: 0.07301861268, alpha: 1)
     static let greenEndColor = #colorLiteral(red: 0.7330715545, green: 1, blue: 0.6801393378, alpha: 1)
+    static let grayStartColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+    static let grayEndColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
     
     convenience init(hex: String, alpha: CGFloat) {
         let v = Int("000000" + hex, radix: 16) ?? 0

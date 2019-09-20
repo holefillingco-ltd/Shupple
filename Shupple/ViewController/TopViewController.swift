@@ -64,7 +64,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.updateCountdown), userInfo: nil, repeats: true)
         timer.fire()
     }
-    // タイマー
+    // 画面が閉じる直前にtimer削除
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         timer.invalidate()
@@ -76,14 +76,18 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             let count = dateManager?.getMatchingEndTimeInterval()
             countdown.font = countdown.font.withSize(38)
             if count == "End" {
-                // TODO: マッチングキャンセル
-                countdownActive = false
+//                requestCancelOpponent()
+//                resetLabelToNotMatching()
+            countdownActive = false
+//                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayStartColor)
             }
             countdown.text = count
+            tmp.text = "TimeLimit"
         } else {
-            countdown.text = "マッチングしてみよう！"
+            countdown.text = "Shupple"
             countdown.font = countdown.font.withSize(20)
             tmp.text = ""
+//            materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: false, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         }
     }
     /**
@@ -198,12 +202,13 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentHobby.text = "no data"
         opponentPersonality.text = "no data"
         tmp.text = ""
-        countdown.text = "マッチングしてみよう！"
+        countdown.text = "Shupple"
     }
     /**
      * MEMO: チャット導線確認用（その内消す）
      */
     @objc func hoge(_ sender: UIButton) {
+        chatBtn.animate()
         performSegue(withIdentifier: "toChatView", sender: nil)
     }
 }
