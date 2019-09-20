@@ -51,8 +51,7 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
-        let now = Date()
+    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void) {
 
         indicator.start(view: view)
 
@@ -66,9 +65,11 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 let opponent = self.decodeUser(json: JSON(value))
-                userDefaults.set(now, forKey: "MatchingTime")
-                userDefaults.set(opponent.uid, forKey: "OpponentUID")
-                function(opponent)
+                if opponent.isMatched {
+                    dateManagerStartFunc(opponent.matchingDate!)
+                }
+                userDefaults.set(opponent.user.uid, forKey: "OpponentUID")
+                userConvertToUILabelFunc(opponent.user)
             case .failure(let error):
                 print(error)
             }
@@ -144,7 +145,7 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 let user = self.decodeUser(json: JSON(value))
-                function(user)
+                function(user.user)
             case .failure(let error):
                 print(error)
             }
@@ -155,7 +156,7 @@ class APIClient {
      * GET /users/isMatched
      * TopVC
      */
-    func requestIsMatched(userDefaults: UserDefaults,uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
+    func requestIsMatched(userDefaults: UserDefaults,uid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void) {
         
         indicator.start(view: view)
         
@@ -168,10 +169,13 @@ class APIClient {
         Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(let value):
-                    if JSON(value)["is_matched"].bool! == true {
-                        let user = self.decodeIsMatched(json: JSON(value))
-                        userDefaults.set(user.uid, forKey: "OpponentUID")
-                        function(user)
+                if JSON(value)["is_matched"].bool! == true {
+                    let user = self.decodeIsMatched(json: JSON(value))
+                    userDefaults.set(user.user.uid, forKey: "OpponentUID")
+                    userDefaults.set(user.matchingDate, forKey: "MatchingTime")
+                    userConvertToUILabelFunc(user.user)
+                    let matchingDate = user.matchingDate
+                    dateManagerStartFunc(matchingDate)
                 }
             case .failure(let error):
                 print(error)
@@ -181,9 +185,9 @@ class APIClient {
     }
     /**
      * JsonからUserへデコード
-     * TODO: Codableを使用する様変更
+     * TODO: CodableとcomputedPropertieを使用する様変更
      */
-    private func decodeUser(json: JSON) -> User {
+    private func decodeUser(json: JSON) -> (user: User, matchingDate: Date?, isMatched: Bool) {
         let user = User()
         let userInformation = UserInformation()
         user.uid = json["uid"].string!
@@ -192,15 +196,21 @@ class APIClient {
         user.birthDay = json["birthDay"].string!
         user.age = json["age"].int!
         user.imageURL = json["imageUrl"].string!
-        userInformation.hobby = json["user_information"]["hobby"].string!
-        userInformation.setResidence(residence: json["user_information"]["residence"].int!)
-        userInformation.setJob(job: json["user_information"]["job"].int!)
-        userInformation.setPersonality(personality: json["user_information"]["personality"].int!)
-        userInformation.setOpponentResidence(residence: json["user_information"]["opponentResidence"].int!)
+        userInformation.hobby = json["userInformation"]["hobby"].string!
+        userInformation.setResidence(residence: json["userInformation"]["residence"].int!)
+        userInformation.setJob(job: json["userInformation"]["job"].int!)
+        userInformation.setPersonality(personality: json["userInformation"]["personality"].int!)
+        userInformation.setOpponentResidence(residence: json["userInformation"]["opponentResidence"].int!)
         user.userInformation = userInformation
-        return user
+        if json["userCombination"]["ID"].int! == 0 {
+            return (user, nil, false)
+        }
+        let matchingDateStr: String = json["userCombination"]["CreatedAt"].string!
+        let dateUtils = DateUtils()
+        let matchingDate = dateUtils.string2Date(dateStr: matchingDateStr)
+        return (user, matchingDate, true)
     }
-    private func decodeIsMatched(json: JSON) -> User {
+    private func decodeIsMatched(json: JSON) -> (user: User, matchingDate: Date) {
         let user = User()
         let userInformation = UserInformation()
         user.uid = json["user"]["uid"].string!
@@ -209,12 +219,15 @@ class APIClient {
         user.birthDay = json["user"]["birthDay"].string!
         user.age = json["user"]["age"].int!
         user.imageURL = json["user"]["imageUrl"].string!
-        userInformation.hobby = json["user"]["user_information"]["hobby"].string!
-        userInformation.setResidence(residence: json["user"]["user_information"]["residence"].int!)
-        userInformation.setJob(job: json["user"]["user_information"]["job"].int!)
-        userInformation.setPersonality(personality: json["user"]["user_information"]["personality"].int!)
-        userInformation.setOpponentResidence(residence: json["user"]["user_information"]["opponentResidence"].int!)
+        userInformation.hobby = json["user"]["userInformation"]["hobby"].string!
+        userInformation.setResidence(residence: json["user"]["userInformation"]["residence"].int!)
+        userInformation.setJob(job: json["user"]["userInformation"]["job"].int!)
+        userInformation.setPersonality(personality: json["user"]["userInformation"]["personality"].int!)
+        userInformation.setOpponentResidence(residence: json["user"]["userInformation"]["opponentResidence"].int!)
         user.userInformation = userInformation
-        return user
+        let matchingDateStr: String = json["user"]["userCombination"]["CreatedAt"].string!
+        let dateUtils = DateUtils()
+        let matchingDate = dateUtils.string2Date(dateStr: matchingDateStr)
+        return (user, matchingDate)
     }
 }

@@ -25,6 +25,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var getOpponentBtn = SpringButton()
     var chatBtn = SpringButton()
     var timer: Timer!
+    var countdownActive = false
     
     @IBOutlet weak var timerView: UIImageView!
     @IBOutlet weak var countdown: UILabel!
@@ -51,17 +52,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setOpponentImage()
         setShuppleButton()
         setChatButton()
-        setMatchingDate()
-        requestGetUser()
-    }
-    
-    /**
-     * MatchingTimeが保存されている場合のみdateManagerをセット
-     */
-    func setMatchingDate() {
-        if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
-            dateManager = DateManager(matchingDate: (userDefaults.object(forKey: "MatchingTime") as? Date)!)
-        }
+        requestIsMatched()
     }
     // タイマー
     override func viewDidAppear(_ animated: Bool) {
@@ -81,11 +72,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     }
     // タイマー
     @objc func updateCountdown(tm: Timer) {
-        if userDefaults.object(forKey: "MatchingTime") as? String != "default" {
+        if countdownActive == true {
             let count = dateManager?.getMatchingEndTimeInterval()
+            countdown.font = countdown.font.withSize(38)
             if count == "End" {
                 // TODO: マッチングキャンセル
-                requestCancelOpponent()
+                countdownActive = false
             }
             countdown.text = count
         } else {
@@ -150,29 +142,37 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentHobby.text = opponent.userInformation?.hobby
         opponentPersonality.text = opponent.userInformation?.personality
     }
+    
+    func  dateManagerStart(matchingDate: Date)  {
+        dateManager = DateManager.init(matchingDate: matchingDate)
+        countdownActive = true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     /**
      * getOpponentButtonを押されたら呼ばれる
+     * 応急処置でDateManagerにDate()を渡している
+     * 2回目起動以降(マッチング済み)は呼ばれないのが大前提
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, function: convertOpponentToUILabel)
-        dateManager = DateManager(matchingDate: Date())
+        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart)
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する
+     * マッチングしていない場合何も行わない
      */
-    func requestGetUser() {
-        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, function: convertOpponentToUILabel)
+    func requestIsMatched() {
+        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart)
     }
     /**
      *
      */
     func requestCancelOpponent() {
         apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
+        resetLabelToNotMatching()
     }
     /**
      * MaterialButton
