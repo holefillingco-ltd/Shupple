@@ -62,7 +62,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.advanceCount), userInfo: nil, repeats: true)
-        timer.fire()
+//        timer.fire()
     }
     // 画面が閉じる直前にtimer削除
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,16 +70,34 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         timer.invalidate()
         timer = nil
     }
+    // タイマーを停止し、再起動できるようにセット
+    func invalidateAndReStartSetTimer() {
+        timer.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.advanceCount), userInfo: nil, repeats: true)
+    }
     // タイマー
     @objc func advanceCount(tm: Timer) {
         if countdownActive == true {
             let count = dateManager?.getMatchingEndTimeInterval()
             countdown.font = countdown.font.withSize(38)
+            if getOpponentBtn.isEnabled {
+                materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: false, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: true, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+            }
+            if count == "0" {
+                resetLabelToNotMatching()
+            }
             if count == "End" {
 //                requestCancelOpponent()
-//                resetLabelToNotMatching()
-            countdownActive = false
-//                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayStartColor)
+                resetLabelToNotMatching()
+                countdownActive = false
+                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayStartColor)
+                materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: true, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+                countdown.text = "Shupple"
+                countdown.font = countdown.font.withSize(30)
+                tmp.text = ""
+                invalidateAndReStartSetTimer()
+                return
             }
             countdown.text = count
             tmp.text = "TimeLimit"
@@ -87,7 +105,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             countdown.text = "Shupple"
             countdown.font = countdown.font.withSize(30)
             tmp.text = ""
-//            materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: false, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+            if chatBtn.isEnabled {
+                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+            }
         }
     }
     /**
@@ -150,6 +170,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     func  dateManagerStart(matchingDate: Date)  {
         dateManager = DateManager.init(matchingDate: matchingDate)
         countdownActive = true
+        timer.fire()
     }
 
     override func didReceiveMemoryWarning() {
