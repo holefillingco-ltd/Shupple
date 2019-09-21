@@ -76,23 +76,22 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.advanceCount), userInfo: nil, repeats: true)
     }
     // タイマー
+    // WARN: なんで動いてるか分からん
     @objc func advanceCount(tm: Timer) {
         if countdownActive == true {
             let count = dateManager?.getMatchingEndTimeInterval()
             countdown.font = countdown.font.withSize(38)
             if getOpponentBtn.isEnabled {
                 materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: false, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: true, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
             }
             if count == "0" {
+                // TODO: マッチンングリセットAPI
                 resetLabelToNotMatching()
             }
             if count == "End" {
-//                requestCancelOpponent()
                 resetLabelToNotMatching()
                 countdownActive = false
-                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayStartColor)
-                materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: true, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
                 countdown.text = "Shupple"
                 countdown.font = countdown.font.withSize(30)
                 tmp.text = ""
@@ -107,6 +106,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             tmp.text = ""
             if chatBtn.isEnabled {
                 materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+                invalidateAndReStartSetTimer()
             }
         }
     }
@@ -208,9 +208,21 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(getOpponentBtn)
     }
     func setChatButton() {
-        chatBtn = materialButton.setMaterialButton(superView: view, title: "Messagees", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
+    }
+    func serAnotherShuppleButton() {
+        getOpponentBtn.removeFromSuperview()
+        let anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        anotherGetOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
+        scrollView.addSubview(anotherGetOpponentBtn)
+    }
+    func setAnotherChatBtn() {
+        chatBtn.removeFromSuperview()
+        let anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        anotherChatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
+        scrollView.addSubview(anotherChatBtn)
     }
     /**
      * マッチング解除後(タイマーが0)各パーツをマッチング前に戻す
