@@ -92,6 +92,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
                 resetLabelToNotMatching()
                 countdownActive = false
                 materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+                
                 countdown.text = "Shupple"
                 countdown.font = countdown.font.withSize(30)
                 tmp.text = ""
@@ -212,7 +213,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
-    func serAnotherShuppleButton() {
+    func setAnotherShuppleButton() {
         getOpponentBtn.removeFromSuperview()
         let anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         anotherGetOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
