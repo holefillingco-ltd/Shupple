@@ -24,6 +24,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var opponent = User()
     var getOpponentBtn = SpringButton()
     var chatBtn = SpringButton()
+    var anotherGetOpponentBtn = SpringButton()
+    var anotherChatBtn = SpringButton()
     var timer: Timer!
     var countdownActive = false
     
@@ -81,9 +83,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         if countdownActive == true {
             let count = dateManager?.getMatchingEndTimeInterval()
             countdown.font = countdown.font.withSize(38)
-            if getOpponentBtn.isEnabled {
-                materialButton.changeTupIsEnabled(button: getOpponentBtn, isEnabled: false, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-            }
+            setChatButton()
+            setAnotherShuppleButton()
             if count == "0" {
                 // TODO: マッチンングリセットAPI
                 resetLabelToNotMatching()
@@ -96,6 +97,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
                 countdown.text = "Shupple"
                 countdown.font = countdown.font.withSize(30)
                 tmp.text = ""
+                setShuppleButton()
+                setAnotherChatBtn()
                 invalidateAndReStartSetTimer()
                 return
             }
@@ -105,10 +108,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             countdown.text = "Shupple"
             countdown.font = countdown.font.withSize(30)
             tmp.text = ""
-            if chatBtn.isEnabled {
-                materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-                invalidateAndReStartSetTimer()
-            }
+            setShuppleButton()
+            setAnotherChatBtn()
         }
     }
     /**
@@ -204,25 +205,29 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * MaterialButton
      */
     func setShuppleButton() {
+        getOpponentBtn.removeFromSuperview()
+        anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
     func setChatButton() {
+        chatBtn.removeFromSuperview()
+        anotherChatBtn.removeFromSuperview()
         chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
     func setAnotherShuppleButton() {
+        anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn.removeFromSuperview()
-        let anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
-        anotherGetOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
+        anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         scrollView.addSubview(anotherGetOpponentBtn)
     }
     func setAnotherChatBtn() {
+        anotherChatBtn.removeFromSuperview()
         chatBtn.removeFromSuperview()
-        let anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
-        anotherChatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
+        anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         scrollView.addSubview(anotherChatBtn)
     }
     /**

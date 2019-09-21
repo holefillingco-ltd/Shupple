@@ -48,7 +48,6 @@ class ChatViewController: JSQMessagesViewController {
             let text = snapshotValue["text"] as! String
             let sender = snapshotValue["from"] as? String
             let name = snapshotValue["name"] as? String
-            print(snapshot.value!)
             let message = JSQMessage(senderId: sender, displayName: name, text: text)
             self.messages?.append(message!)
             self.finishSendingMessage()
