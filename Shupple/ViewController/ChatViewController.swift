@@ -12,15 +12,17 @@ import JSQMessagesViewController
 
 class ChatViewController: JSQMessagesViewController {
     
-    private let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
+    private let currentUserUid = Auth.auth().currentUser?.uid
     private let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as! String
     
+    @IBOutlet weak var header: UINavigationBar!
     var ref: DatabaseReference!
     var messages: [JSQMessage]?
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
     var incomingAvatar: JSQMessagesAvatarImage!
     var outgoingAvatar: JSQMessagesAvatarImage!
+    var safeArea: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +38,18 @@ class ChatViewController: JSQMessagesViewController {
         self.outgoingBubble = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         self.messages = []
         setupFirebase()
+        
+        safeArea = UIView.init(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: 44))
+        header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
+        header.barTintColor = .grayEndColor
+        header.isTranslucent = false
+        safeArea?.backgroundColor = .grayEndColor
+        view.addSubview(header)
+        view.addSubview(safeArea!)
     }
     
     func setupFirebase() {
-        let ch = Channel(myId: currentUserUid, opponentId: opponentUid)
+        let ch = Channel(myId: currentUserUid!, opponentId: opponentUid)
         ref = Database.database().reference().child(ch.id!)
         
         ref.queryLimited(toLast: 25).observe(DataEventType.childAdded, with: {

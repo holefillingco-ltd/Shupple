@@ -24,7 +24,6 @@
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
 		58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CE122EDE61100E89BFB /* SecondViewController.swift */; };
-		58FC3CE522EDE61100E89BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE322EDE61100E89BFB /* Main.storyboard */; };
 		58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE622EDE61300E89BFB /* Assets.xcassets */; };
 		58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE822EDE61300E89BFB /* LaunchScreen.storyboard */; };
 		5E44B4B2231EA1020063AF4B /* UserInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B4B1231EA1020063AF4B /* UserInformation.swift */; };
@@ -65,6 +64,7 @@
 		5E6424EE233264EA00C8DBDF /* Wallpoet-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E6424ED233264A600C8DBDF /* Wallpoet-Regular.ttf */; };
 		5E6424F22333C35600C8DBDF /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F12333C35600C8DBDF /* DateUtils.swift */; };
 		5E6424F42335100700C8DBDF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F32335100700C8DBDF /* UIViewExtension.swift */; };
+		5E6424F62336539400C8DBDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE322EDE61100E89BFB /* Main.storyboard */; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -388,8 +388,8 @@
 				5E6424EE233264EA00C8DBDF /* Wallpoet-Regular.ttf in Resources */,
 				58FC3CEA22EDE61300E89BFB /* LaunchScreen.storyboard in Resources */,
 				5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */,
+				5E6424F62336539400C8DBDF /* Main.storyboard in Resources */,
 				58FC3CE722EDE61300E89BFB /* Assets.xcassets in Resources */,
-				58FC3CE522EDE61100E89BFB /* Main.storyboard in Resources */,
 				5E44B5262324E87A0063AF4B /* LoadingView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
