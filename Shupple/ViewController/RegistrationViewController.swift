@@ -70,6 +70,7 @@ class RegistrationViewController: FormViewController {
     }
     /*
      * finButtonを押されたら呼ばれる
+     * APIへのリクエスト・画面遷移
      */
     @objc func requestRegistration(_ sender: UIButton) {
         finButton.animate()
