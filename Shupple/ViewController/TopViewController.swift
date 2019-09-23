@@ -29,7 +29,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var timer: Timer!
     var countdownActive = false
     
-    @IBOutlet weak var timerView: UIImageView!
+    @IBOutlet weak var countdownView: UIView!
     @IBOutlet weak var countdown: UILabel!
     @IBOutlet weak var tmp: UILabel!
     
@@ -145,7 +145,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.addSubview(opponentContentView)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         view.addSubview(scrollView)
-        view.addSubview(timerView)
+        view.addSubview(countdownView)
         view.addSubview(countdown)
         view.addSubview(tmp)
     }
@@ -167,6 +167,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentJob.text = opponent.userInformation?.job
         opponentHobby.text = opponent.userInformation?.hobby
         opponentPersonality.text = opponent.userInformation?.personality
+        setOpponentImage()
     }
     
     func  dateManagerStart(matchingDate: Date)  {

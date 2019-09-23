@@ -145,24 +145,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="timer_background" translatesAutoresizingMaskIntoConstraints="NO" id="IVl-M7-6nK">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBm-zl-xfj">
-                                <rect key="frame" x="79" y="50" width="216" height="48"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Wallpoet" family="Wallpoet" pointSize="38"/>
-                                <color key="textColor" red="0.8820231541450777" green="0.8820231541450777" blue="0.8820231541450777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyZ-T5-oJB">
-                                <rect key="frame" x="0.0" y="68" width="80" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="19"/>
-                                <color key="textColor" red="1" green="0.3460773006194946" blue="0.30714750161798476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="マッチングしてみよう！" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOk-lW-xHR">
                                 <rect key="frame" x="16" y="406" width="359" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -177,6 +159,27 @@
                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Joo-Bm-93y">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBm-zl-xfj">
+                                        <rect key="frame" x="79" y="53" width="216" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Wallpoet" family="Wallpoet" pointSize="38"/>
+                                        <color key="textColor" red="0.26987532383419688" green="0.26987532383419688" blue="0.26987532383419688" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyZ-T5-oJB">
+                                        <rect key="frame" x="0.0" y="68" width="71" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="DINCondensed-Bold" family="DIN Condensed" pointSize="19"/>
+                                        <color key="textColor" red="1" green="0.3460773006194946" blue="0.30714750161798476" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.60377158485832094" green="1" blue="0.99660028379366294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
@@ -186,6 +189,7 @@
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="countdown" destination="fBm-zl-xfj" id="Wcz-mN-0W9"/>
+                        <outlet property="countdownView" destination="Joo-Bm-93y" id="etX-FY-va5"/>
                         <outlet property="hobbyTitle" destination="3ft-wZ-NsL" id="QHQ-fH-fhW"/>
                         <outlet property="jobTitle" destination="3Ym-ES-puP" id="hBE-ev-D0t"/>
                         <outlet property="opponentAge" destination="A98-a2-bTN" id="lGm-qP-BkX"/>
@@ -197,14 +201,13 @@
                         <outlet property="opponentResidence" destination="6M3-AA-uLG" id="zDt-M0-E6G"/>
                         <outlet property="personalityTitle" destination="Yvq-Mt-xb5" id="Sh8-v0-tId"/>
                         <outlet property="shadowView" destination="S5r-gk-vdn" id="9tD-eV-orf"/>
-                        <outlet property="timerView" destination="IVl-M7-6nK" id="l4J-N7-IcD"/>
                         <outlet property="tmp" destination="CyZ-T5-oJB" id="iYS-6b-Q7A"/>
                         <segue destination="fTU-cS-Ra3" kind="show" identifier="toChatView" id="dm2-Vu-fWE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lA-FX-leG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4870.289855072464" y="414.50892857142856"/>
+            <point key="canvasLocation" x="4869.6000000000004" y="413.79310344827587"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="VT1-IA-IFY">
@@ -317,6 +320,5 @@
     </scenes>
     <resources>
         <image name="back-chevron.png" width="13" height="21"/>
-        <image name="timer_background" width="2832" height="1392"/>
     </resources>
 </document>

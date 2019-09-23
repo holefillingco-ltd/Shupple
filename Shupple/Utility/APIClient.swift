@@ -93,7 +93,6 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 print(value)
-                userDefaults.set("default", forKey: "MatchingTime")
                 userDefaults.set("default", forKey: "OpponentUID")
             case .failure(let error):
                 print(error)
@@ -172,7 +171,6 @@ class APIClient {
                 if JSON(value)["is_matched"].bool! == true {
                     let user = self.decodeIsMatched(json: JSON(value))
                     userDefaults.set(user.user.uid, forKey: "OpponentUID")
-                    userDefaults.set(user.matchingDate, forKey: "MatchingTime")
                     userConvertToUILabelFunc(user.user)
                     let matchingDate = user.matchingDate
                     dateManagerStartFunc(matchingDate)

@@ -25,7 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let userDefaults = UserDefaults.standard
         userDefaults.register(defaults: ["UID":"default"])
-        userDefaults.register(defaults: ["MatchingTime":"default"])
         userDefaults.register(defaults: ["OpponentUID":"default"])
         
         /**
