@@ -16,6 +16,7 @@ class ChatViewController: JSQMessagesViewController {
     var opponentUid: String?
     
     @IBOutlet weak var header: UINavigationBar!
+    
     var ref: DatabaseReference!
     var messages: [JSQMessage]?
     var incomingBubble: JSQMessagesBubbleImage!

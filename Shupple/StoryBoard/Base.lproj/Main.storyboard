@@ -36,11 +36,12 @@
                     <connections>
                         <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
                         <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
+                        <segue destination="2hw-Of-Jms" kind="show" identifier="registeredPattern" id="PAT-eE-Z8d"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1447" y="-321"/>
+            <point key="canvasLocation" x="1060" y="414"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="UNJ-Iv-wkJ">
@@ -59,7 +60,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="-321"/>
+            <point key="canvasLocation" x="2444" y="-22"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Mmk-8s-HF2">
@@ -322,4 +323,7 @@
         <image name="back-chevron.png" width="13" height="21"/>
         <image name="noImage" width="400" height="400"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="PAT-eE-Z8d"/>
+    </inferredMetricsTieBreakers>
 </document>

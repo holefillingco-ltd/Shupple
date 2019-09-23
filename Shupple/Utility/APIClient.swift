@@ -18,6 +18,7 @@ class APIClient {
     private let updateUserURL = URL(string: "http://localhost:8080/users")
     private let getUserURL = URL(string: "http://localhost:8080/users/select")
     private let isMatchedURL = URL(string: "http://localhost:8080/users/isMatched")
+    private let isRegisteredURL = URL(string: "http://localhost:8080/users/isRegistered")
     
     /**
      * POST /users
@@ -181,6 +182,30 @@ class APIClient {
             indicator.stop(view: view)
         }
     }
+    /**
+     * GET /users/isRegistered
+     *
+     */
+    func requestIsRegistered(uid: String, view: UIView, indicator: Indicator, selectNextVC: @escaping (Bool) -> Void) {
+        indicator.start(view: view)
+        
+        var request = URLRequest(url: isRegisteredURL!)
+        
+        request.httpMethod = HTTPMethod.get.rawValue
+        request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        
+        Alamofire.request(request).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                selectNextVC(JSON(value)["is_registered"].bool!)
+            case .failure(let error):
+                print(error)
+            }
+            indicator.stop(view: view)
+        }
+    }
+    
     /**
      * JsonからUserへデコード
      * TODO: CodableとcomputedPropertieを使用する様変更

@@ -18,11 +18,13 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     // Firebase認証
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!} }
     // UserDefaultのインスタンス
-    let userDefault = UserDefaults.standard
+    let userDefaults = UserDefaults.standard
+    let apiClient = APIClient()
+    let indicator = Indicator()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userDefault.register(defaults: ["UID":"default"])
+        userDefaults.register(defaults: ["UID":"default"])
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
@@ -55,16 +57,26 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
                      animated: true,
                      completion: nil)
     }
+    /**
+     * 認証成功後、遷移先VCを決定する
+     */
+    func hoge(isRegistered: Bool) {
+        if isRegistered {
+            self.performSegue(withIdentifier: "registeredPattern", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "toRegistrationView", sender: self)
+        }
+    }
     
     public func authUI(
         _ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?
     ) {
         // 認証に成功した場合
         if error == nil {
-            self.performSegue(withIdentifier: "toRegistrationView", sender: self)
+//            self.performSegue(withIdentifier: "toRegistrationView", sender: self)
+            userDefaults.set(uid, forKey: "UID")
+            apiClient.requestIsRegistered(uid: (authUI.auth?.currentUser!.uid)!, view: view, indicator: indicator, selectNextVC: hoge)
         }
     }
-    
-    
 }
 
