@@ -16,7 +16,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     let apiClient = APIClient()
     let materialButton = MaterialUIButton()
     let userDefaults = UserDefaults.standard
-    let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as? String
+    var opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as? String
     
     var dateManager: DateManager?
     var scrollView = UIScrollView()
@@ -166,6 +166,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      * TODO: それぞれのフィールドへ詰めていく
      */
     private func convertOpponentToUILabel(opponent: User) {
+        opponentUid = opponent.uid
         opponentName.text = opponent.nickName
         opponentAge.text = "\(String(opponent.age!)) 歳"
         opponentResidence.text = opponent.userInformation?.residence
