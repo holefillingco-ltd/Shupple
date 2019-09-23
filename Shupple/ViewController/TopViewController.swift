@@ -21,7 +21,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     var dateManager: DateManager?
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
-    var opponent = User()
     var getOpponentBtn = SpringButton()
     var chatBtn = SpringButton()
     var anotherGetOpponentBtn = SpringButton()
@@ -51,7 +50,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.delegate = self
         
         setScrollView()
-        setOpponentImage()
         setShuppleButton()
         setChatButton()
         requestIsMatched()
@@ -115,13 +113,16 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     /**
      * imageView(opponentImage)のセットアップ
      */
-    func setOpponentImage() {
-        let image = UIImage(url: opponent.imageURL)
+    func setOpponentImage(opponent: User) {
+        var imageURL = ""
+        let tmp = opponent.imageURL ?? "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png"
+        if opponent.imageURL != nil {
+            imageURL = "https://isozaki-images.s3-ap-northeast-1.amazonaws.com/\(tmp)"
+        } else {
+            imageURL = tmp
+        }
+        let image = UIImage(url: imageURL)
         opponentImage.contentMode = .scaleAspectFill
-        shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        shadowView.layer.shadowColor = UIColor.black.cgColor
-        shadowView.layer.shadowOpacity = 0.6
-        shadowView.layer.shadowRadius = 6
         opponentImage.image = image
     }
     /**
@@ -144,6 +145,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.addSubview(opponentContentView)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
+        shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 0.6
+        shadowView.layer.shadowRadius = 6
         view.addSubview(scrollView)
         view.addSubview(countdownView)
         view.addSubview(countdown)
@@ -167,7 +172,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentJob.text = opponent.userInformation?.job
         opponentHobby.text = opponent.userInformation?.hobby
         opponentPersonality.text = opponent.userInformation?.personality
-        setOpponentImage()
+        setOpponentImage(opponent: opponent)
     }
     
     func  dateManagerStart(matchingDate: Date)  {
