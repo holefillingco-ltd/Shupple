@@ -219,7 +219,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         chatBtn.removeFromSuperview()
         anotherChatBtn.removeFromSuperview()
         chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
-        chatBtn.addTarget(self, action: #selector(hoge(_:)), for: .touchUpInside)
+        chatBtn.addTarget(self, action: #selector(toChatVC(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
     func setAnotherShuppleButton() {
@@ -248,14 +248,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         countdown.text = "Shupple"
     }
     func resetUIImageToNotMatching() {
-        let image = UIImage(url: "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png")
+        let image = UIImage(named: "noImage")
         opponentImage.contentMode = .scaleAspectFill
         opponentImage.image = image
     }
     /**
      * MEMO: チャット導線確認用（その内消す）
      */
-    @objc func hoge(_ sender: UIButton) {
+    @objc func toChatVC(_ sender: UIButton) {
         chatBtn.animate()
         performSegue(withIdentifier: "toChatView", sender: nil)
     }
