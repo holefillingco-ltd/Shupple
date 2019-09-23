@@ -83,20 +83,17 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             countdown.font = countdown.font.withSize(38)
             setChatButton()
             setAnotherShuppleButton()
-            if count == "0" {
-                // TODO: マッチンングリセットAPI
-                resetLabelToNotMatching()
-            }
             if count == "End" {
                 resetLabelToNotMatching()
+                resetUIImageToNotMatching()
                 countdownActive = false
                 materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-                
                 countdown.text = "Shupple"
                 countdown.font = countdown.font.withSize(30)
                 tmp.text = ""
                 setShuppleButton()
                 setAnotherChatBtn()
+                apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
                 invalidateAndReStartSetTimer()
                 return
             }
@@ -249,6 +246,11 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         opponentPersonality.text = "no data"
         tmp.text = ""
         countdown.text = "Shupple"
+    }
+    func resetUIImageToNotMatching() {
+        let image = UIImage(url: "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png")
+        opponentImage.contentMode = .scaleAspectFill
+        opponentImage.image = image
     }
     /**
      * MEMO: チャット導線確認用（その内消す）
