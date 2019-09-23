@@ -257,4 +257,11 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         chatBtn.animate()
         performSegue(withIdentifier: "toChatView", sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toChatView" {
+            let nextVC = segue.destination as! ChatViewController
+            nextVC.hoeg = self.opponentUid
+        }
+    }
 }

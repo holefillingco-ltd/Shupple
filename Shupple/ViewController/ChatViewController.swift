@@ -14,6 +14,7 @@ class ChatViewController: JSQMessagesViewController {
     
     private let currentUserUid = Auth.auth().currentUser?.uid
     private let opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as! String
+    var hoeg: String?
     
     @IBOutlet weak var header: UINavigationBar!
     var ref: DatabaseReference!
