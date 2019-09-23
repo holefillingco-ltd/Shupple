@@ -261,7 +261,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toChatView" {
             let nextVC = segue.destination as! ChatViewController
-            nextVC.hoeg = self.opponentUid
+            nextVC.opponentUid = self.opponentUid
         }
     }
 }
