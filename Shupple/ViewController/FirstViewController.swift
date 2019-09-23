@@ -24,7 +24,6 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        userDefaults.register(defaults: ["UID":"default"])
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
@@ -73,9 +72,9 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     ) {
         // 認証に成功した場合
         if error == nil {
-//            self.performSegue(withIdentifier: "toRegistrationView", sender: self)
+            let uid = authUI.auth?.currentUser?.uid
             userDefaults.set(uid, forKey: "UID")
-            apiClient.requestIsRegistered(uid: (authUI.auth?.currentUser!.uid)!, view: view, indicator: indicator, selectNextVC: hoge)
+            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: hoge)
         }
     }
 }
