@@ -71,7 +71,11 @@ class PostUser: Codable {
             self.opponentAgeUpper = 100
         }
     }
-    
+ 
+    /**
+     * switch文で分岐してAPIを叩く
+     * https://qiita.com/tenten0213/items/3248eb73852ef8dd12b0
+     */
     func isValidate() -> (result: Bool, msg: String?) {
         if self.nickName == nil {
             return (true, "ニックネームを入力して下さい。")
