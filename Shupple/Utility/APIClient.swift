@@ -52,7 +52,7 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void) {
+    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void, errorAlert: @escaping () -> Void) {
 
         indicator.start(view: view)
 
@@ -62,7 +62,7 @@ class APIClient {
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.setValue(opponentUid, forHTTPHeaderField: "Uid")
 
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let opponent = self.decodeUser(json: JSON(value))
@@ -71,8 +71,8 @@ class APIClient {
                 }
                 userDefaults.set(opponent.user.uid, forKey: "OpponentUID")
                 userConvertToUILabelFunc(opponent.user)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }
@@ -90,7 +90,7 @@ class APIClient {
         request.httpMethod = HTTPMethod.put.rawValue
         request.setValue(uid, forHTTPHeaderField: "Uid")
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(let value):
                 print(value)
@@ -117,7 +117,7 @@ class APIClient {
         request.setValue(uid, forHTTPHeaderField: "Uid")
         request.httpBody = data
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(let value):
                 print(value)
@@ -141,7 +141,7 @@ class APIClient {
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.setValue(uid, forHTTPHeaderField: "Uid")
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(let value):
                 let user = self.decodeUser(json: JSON(value))
@@ -166,7 +166,7 @@ class APIClient {
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.setValue(uid, forHTTPHeaderField: "Uid")
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(let value):
                 if JSON(value)["is_matched"].bool! == true {
