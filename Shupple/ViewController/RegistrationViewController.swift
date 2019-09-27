@@ -70,16 +70,19 @@ class RegistrationViewController: FormViewController {
     }
     /*
      * finButtonを押されたら呼ばれる
+     * validationチェック後
      * APIへのリクエスト・画面遷移
+     * validationに引っ掛かった場合アラート表示
      */
     @objc func requestRegistration(_ sender: UIButton) {
-        switch !postUser.isValidate().result {
+        let valid = postUser.isValidate()
+        switch !valid.result {
         case true:
             finButton.animate()
             apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
             performSegue(withIdentifier: "toTopView", sender: nil)
         case false:
-            break
+            present(AlertCustom().getAlertContrtoller(title: "入力項目", message: valid.msg!), animated: true, completion: nil)
         }
     }
     /*
