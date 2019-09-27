@@ -24,7 +24,7 @@ class APIClient {
      * POST /users
      * RegistrationVC
      */
-    func requestRegistration(postUser: PostUser, userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) {
+    func requestRegistration(postUser: PostUser, userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator, performSegue: @escaping (String, Any?) -> Void, errorAlert: @escaping () -> Void) {
         
         indicator.start(view: view)
         
@@ -35,13 +35,13 @@ class APIClient {
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.httpBody = data
         
-        Alamofire.request(request).responseJSON { response in
-            debugPrint(response)
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(_):
                 userDefaults.set(uid, forKey: "UID")
-            case .failure(let error):
-                print(error)
+                performSegue("toTopView", nil)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }
@@ -195,7 +195,7 @@ class APIClient {
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         request.setValue(uid, forHTTPHeaderField: "Uid")
         
-        Alamofire.request(request).responseJSON { response in
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(let value):
                 selectNextVC(JSON(value)["is_registered"].bool!)

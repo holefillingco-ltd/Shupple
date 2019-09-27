@@ -79,12 +79,16 @@ class RegistrationViewController: FormViewController {
         switch !valid.result {
         case true:
             finButton.animate()
-            apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
-            performSegue(withIdentifier: "toTopView", sender: nil)
+            apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator, performSegue: performSegue, errorAlert: errorAlert)
         case false:
             present(AlertCustom().getAlertContrtoller(title: "入力項目", message: valid.msg!), animated: true, completion: nil)
         }
     }
+    
+    func errorAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
+    }
+    
     /*
      * フォームのセット
      */

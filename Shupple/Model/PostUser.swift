@@ -102,6 +102,9 @@ class PostUser: Codable {
         if self.personality == nil {
             return (true, "性格を選択して下さい。")
         }
+        if self.opponentResidence == nil {
+            return (true, "お相手の居住地を選択して下さい。")
+        }
         return (false, nil)
     }
 }
