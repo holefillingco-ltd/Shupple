@@ -65,6 +65,7 @@
 		5E6424F22333C35600C8DBDF /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F12333C35600C8DBDF /* DateUtils.swift */; };
 		5E6424F42335100700C8DBDF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F32335100700C8DBDF /* UIViewExtension.swift */; };
 		5E6424F62336539400C8DBDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE322EDE61100E89BFB /* Main.storyboard */; };
+		5E6424F8233E160300C8DBDF /* AlertCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F7233E160300C8DBDF /* AlertCustom.swift */; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -134,6 +135,7 @@
 		5E6424ED233264A600C8DBDF /* Wallpoet-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Wallpoet-Regular.ttf"; sourceTree = "<group>"; };
 		5E6424F12333C35600C8DBDF /* DateUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		5E6424F32335100700C8DBDF /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		5E6424F7233E160300C8DBDF /* AlertCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertCustom.swift; sourceTree = "<group>"; };
 		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				5E6424E1232CFC9800C8DBDF /* Extension */,
 				5E44B4B62324BB7B0063AF4B /* Enum */,
 				5E6424DF232BB67400C8DBDF /* Channel.swift */,
+				5E6424F7233E160300C8DBDF /* AlertCustom.swift */,
 				5E6424EA2332222900C8DBDF /* DateManager.swift */,
 				58CF97C72316EBAE00C3C0B7 /* Indicator.swift */,
 				58CF97CB231ED58C00C3C0B7 /* APIClient.swift */,
@@ -526,6 +529,7 @@
 				5E44B51E2324E87A0063AF4B /* SpringTextView.swift in Sources */,
 				5E44B5182324E87A0063AF4B /* SpringImageView.swift in Sources */,
 				5E6424E3232CFE1200C8DBDF /* UpdateUserViewController.swift in Sources */,
+				5E6424F8233E160300C8DBDF /* AlertCustom.swift in Sources */,
 				58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */,
 				5E44B52A2324E87A0063AF4B /* SpringAnimation.swift in Sources */,
 				5E44B5252324E87A0063AF4B /* AsyncButton.swift in Sources */,
