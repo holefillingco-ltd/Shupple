@@ -81,7 +81,7 @@ class APIClient {
      * PUT /users/shupple
      * TopVC
      */
-    func requestCancelOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator) {
+    func requestCancelOpponent(userDefaults: UserDefaults, uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void) {
         
         indicator.start(view: view)
         
@@ -95,8 +95,8 @@ class APIClient {
             case .success(let value):
                 print(value)
                 userDefaults.set("default", forKey: "OpponentUID")
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }
@@ -105,7 +105,7 @@ class APIClient {
      * PUT /users
      * UpdateUserVC
      */
-    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator) {
+    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void) {
         
         indicator.start(view: view)
         
@@ -121,8 +121,8 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 print(value)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }
@@ -131,7 +131,7 @@ class APIClient {
      * GET /users/select
      * etc..
      */
-    func requestGetUser(uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void) {
+    func requestGetUser(uid: String, view: UIView, indicator: Indicator, function: @escaping (User) -> Void, errorAlert: @escaping () -> Void) {
         
         indicator.start(view: view)
         
@@ -146,8 +146,8 @@ class APIClient {
             case .success(let value):
                 let user = self.decodeUser(json: JSON(value))
                 function(user.user)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }
@@ -156,7 +156,7 @@ class APIClient {
      * GET /users/isMatched
      * TopVC
      */
-    func requestIsMatched(userDefaults: UserDefaults,uid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void) {
+    func requestIsMatched(userDefaults: UserDefaults,uid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void, errorAlert: @escaping () -> Void) {
         
         indicator.start(view: view)
         
@@ -176,8 +176,8 @@ class APIClient {
                     let matchingDate = user.matchingDate
                     dateManagerStartFunc(matchingDate)
                 }
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }

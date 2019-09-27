@@ -56,7 +56,11 @@ class UpdateUserViewController: FormViewController {
      * 各フォームのvalueに表示するためcurrentUserを取得する
      */
     func getUser() {
-        apiClient.requestGetUser(uid: currentUserUid, view: view, indicator: indicator, function: convertUser)
+        apiClient.requestGetUser(uid: currentUserUid, view: view, indicator: indicator, function: convertUser, errorAlert: errorAlert)
+    }
+    
+    func errorAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
     }
     /**
      * TODO: やばすぎ。。
@@ -70,7 +74,7 @@ class UpdateUserViewController: FormViewController {
      */
     @objc func requestUpdateUser(_ sender: UIButton) {
         finBtn.animate()
-        apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid, view: view, indicator: indicator)
+        apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid, view: view, indicator: indicator, errorAlert: errorAlert)
     }
     /*
      * フォームのセット
