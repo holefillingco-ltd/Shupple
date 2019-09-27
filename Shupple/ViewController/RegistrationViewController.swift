@@ -73,9 +73,14 @@ class RegistrationViewController: FormViewController {
      * APIへのリクエスト・画面遷移
      */
     @objc func requestRegistration(_ sender: UIButton) {
-        finButton.animate()
-        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
-        performSegue(withIdentifier: "toTopView", sender: nil)
+        switch !postUser.isValidate().result {
+        case true:
+            finButton.animate()
+            apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
+            performSegue(withIdentifier: "toTopView", sender: nil)
+        case false:
+            break
+        }
     }
     /*
      * フォームのセット
