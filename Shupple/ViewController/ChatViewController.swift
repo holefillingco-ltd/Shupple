@@ -28,23 +28,23 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        inputToolbar!.contentView!.leftBarButtonItem = nil
         automaticallyScrollsToMostRecentMessage = true
+        self.inputToolbar.contentView.leftBarButtonItem = nil
         
         self.senderId = currentUserUid
         self.senderDisplayName = currentUserUid
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
-        self.incomingBubble = bubbleFactory?.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleLightGray())
+        self.incomingBubble = bubbleFactory?.incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleGreen())
         self.outgoingBubble = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         self.messages = []
         setupFirebase()
         
         safeArea = UIView.init(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: 44))
         header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
-        header.barTintColor = .grayEndColor
+        header.barTintColor = UIColor.jsq_messageBubbleGreen()
         header.isTranslucent = false
-        safeArea?.backgroundColor = .grayEndColor
+        safeArea?.backgroundColor = UIColor.greenEndColor
         view.addSubview(header)
         view.addSubview(safeArea!)
     }
@@ -76,7 +76,6 @@ class ChatViewController: JSQMessagesViewController {
         let post1Ref = ref.childByAutoId()
         post1Ref.setValue(post)
         self.finishSendingMessage(animated: true)
-        
         self.view.endEditing(true)
     }
     
@@ -104,5 +103,37 @@ class ChatViewController: JSQMessagesViewController {
     // アイテムの総数を返す
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages!.count
+    }
+    
+    //時刻表示のための高さ調整
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAt indexPath: IndexPath!) -> NSAttributedString! {
+        
+        let message = messages![indexPath.item]
+        if indexPath.item == 0 {
+            return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+        }
+        if indexPath.item - 1 > 0 {
+            let previousMessage = messages![indexPath.item - 1]
+            if message.date.timeIntervalSince(previousMessage.date) / 60 > 1 {
+                return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
+            }
+        }
+        return nil
+    }
+    
+    // 送信時刻を出すために高さを調整する
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAt indexPath: IndexPath!) -> CGFloat {
+        
+        if indexPath.item == 0 {
+            return kJSQMessagesCollectionViewCellLabelHeightDefault
+        }
+        if indexPath.item - 1 > 0 {
+            let previousMessage = messages![indexPath.item - 1]
+            let message = messages![indexPath.item]
+            if message.date .timeIntervalSince(previousMessage.date) / 60 > 1 {
+                return kJSQMessagesCollectionViewCellLabelHeightDefault
+            }
+        }
+        return 0.0
     }
 }
