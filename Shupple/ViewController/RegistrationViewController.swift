@@ -84,7 +84,6 @@ class RegistrationViewController: FormViewController {
             present(AlertCustom().getAlertContrtoller(title: "入力項目", message: valid.msg!), animated: true, completion: nil)
         }
     }
-    
     func errorAlert() {
         present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
     }
@@ -95,7 +94,6 @@ class RegistrationViewController: FormViewController {
     func setEureka() {
         var rules = RuleSet<String>()
         rules.add(rule: RuleRequired())
-        
         form
         +++ Section() {
             $0.header = {

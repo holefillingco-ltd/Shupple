@@ -13,7 +13,6 @@ import FirebaseAuth
 
 class UpdateUserViewController: FormViewController {
     
-    private let currentuser = Auth.auth().currentUser
     private let prefectures = Prefecture.allPrefectures
     private let jobs = Job.allJob
     private let personalitys = Personality.allPersonality
@@ -21,7 +20,7 @@ class UpdateUserViewController: FormViewController {
     private let sexes = Sex.allSex
     private let encoder = JSONEncoder()
     private let userDefaults = UserDefaults.standard
-    private let currentUserUid = UserDefaults.standard.object(forKey: "UID") as! String
+    private let currentUserUid = Auth.auth().currentUser?.uid
     private let indicator = Indicator()
     private let apiClient = APIClient()
     private let materialUIButton = MaterialUIButton()
@@ -53,10 +52,23 @@ class UpdateUserViewController: FormViewController {
         pView.addSubview(imageView)
     }
     /**
+     *
+     */
+    func setProfileImage() {
+        var imageURL = ""
+        let tmp = currentUser.imageURL ?? "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png"
+        if currentUser.imageURL != nil {
+            imageURL = "https://isozaki-images.s3-ap-northeast-1.amazonaws.com/\(tmp)"
+        } else {
+            imageURL = tmp
+        }
+        selectedImage = UIImage(url: imageURL)
+    }
+    /**
      * 各フォームのvalueに表示するためcurrentUserを取得する
      */
     func getUser() {
-        apiClient.requestGetUser(uid: currentUserUid, view: view, indicator: indicator, function: convertUser, errorAlert: errorAlert)
+        apiClient.requestGetUser(uid: currentUserUid!, view: view, indicator: indicator, function: convertUser, errorAlert: errorAlert)
     }
     
     func errorAlert() {
@@ -67,14 +79,29 @@ class UpdateUserViewController: FormViewController {
      */
     private func convertUser(user: User) {
         currentUser = user
+        postUser.nickName = user.nickName
+        postUser.hobby = user.userInformation?.hobby
+        postUser.setResidence(residence: user.userInformation!.residence!)
+        postUser.setJob(job: user.userInformation!.job!)
+        postUser.setPersonality(personality: user.userInformation!.personality!)
+        postUser.setOpponentResidence(residence: user.userInformation!.opponentResidence!)
+        postUser.setOpponentAgeFromKey(opponentAgeKey: user.userInformation!.opponentAgeKey!)
+        setProfileImage()
         setEureka()
     }
     /**
      * finBtnを押した時に呼ばれる
      */
     @objc func requestUpdateUser(_ sender: UIButton) {
-        finBtn.animate()
-        apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid, view: view, indicator: indicator, errorAlert: errorAlert)
+        let valid = postUser.isValidate()
+        switch !valid.result {
+        case true:
+            finBtn.animate()
+            apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid!, view: view, indicator: indicator, errorAlert: errorAlert)
+        case false:
+            errorAlert()
+        }
+        
     }
     /*
      * フォームのセット
@@ -102,7 +129,10 @@ class UpdateUserViewController: FormViewController {
                 row.onChange { [unowned self] row in
                     self.selectedImage = row.value!
                     self.changePV(image: self.selectedImage)
+                    // WARN: 拡張子毎に処理分けしてないけど動く。。
+                    self.postUser.image = row.value!.toPNGData()
                 }
+                self.postUser.image = row.value!.toPNGData()
             }
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
@@ -146,6 +176,7 @@ class UpdateUserViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "相手の年齢"
                 row.options = ages
+                row.value = currentUser.userInformation?.getOpponentAgeRange()
                 row.onChange{ row in
                     self.postUser.setOpponentAge(opponentAgeRange: row.value!)
                 }
@@ -153,6 +184,7 @@ class UpdateUserViewController: FormViewController {
             <<< PickerInlineRow<String>() { row in
                 row.title = "相手の居住地"
                 row.options = prefectures
+                row.value = currentUser.userInformation?.opponentResidence
                 row.onChange{ row in
                     self.postUser.setOpponentResidence(residence: row.value!)
                 }

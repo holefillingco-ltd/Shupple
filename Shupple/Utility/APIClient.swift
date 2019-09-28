@@ -92,8 +92,7 @@ class APIClient {
         
         Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
-            case .success(let value):
-                print(value)
+            case .success(_):
                 userDefaults.set("default", forKey: "OpponentUID")
             case .failure(_):
                 errorAlert()
@@ -118,6 +117,7 @@ class APIClient {
         request.httpBody = data
         
         Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
+            debugPrint(response)
             switch response.result {
             case .success(let value):
                 print(value)
@@ -224,6 +224,7 @@ class APIClient {
         userInformation.setJob(job: json["userInformation"]["job"].int!)
         userInformation.setPersonality(personality: json["userInformation"]["personality"].int!)
         userInformation.setOpponentResidence(residence: json["userInformation"]["opponentResidence"].int!)
+        userInformation.opponentAgeKey = json["userInformation"]["opponentAgeLow"].int!
         user.userInformation = userInformation
         if json["userCombination"]["ID"].int! == 0 {
             return (user, nil, false)
@@ -247,6 +248,7 @@ class APIClient {
         userInformation.setJob(job: json["user"]["userInformation"]["job"].int!)
         userInformation.setPersonality(personality: json["user"]["userInformation"]["personality"].int!)
         userInformation.setOpponentResidence(residence: json["user"]["userInformation"]["opponentResidence"].int!)
+        userInformation.opponentAgeKey = json["user"]["userInformation"]["opponentAgeLow"].int!
         user.userInformation = userInformation
         let matchingDateStr: String = json["user"]["userCombination"]["CreatedAt"].string!
         let dateUtils = DateUtils()
