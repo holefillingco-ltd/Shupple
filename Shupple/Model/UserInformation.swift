@@ -14,6 +14,7 @@ class UserInformation: Codable {
     var job: String?
     var personality: String?
     var opponentResidence: String?
+    var opponentAgeKey: Int?
     
     func setResidence(residence: Int) {
         self.residence = Prefecture.init(code: residence)!.name
@@ -31,4 +32,18 @@ class UserInformation: Codable {
         self.opponentResidence = Prefecture.init(code: residence)!.name
     }
     
+    func getOpponentAgeRange() -> String {
+        switch self.opponentAgeKey {
+        case 18:
+            return "18~20"
+        case 20:
+            return "20~25"
+        case 25:
+            return "25~30"
+        case 30:
+            return "30~35"
+        default:
+            return "指定無し"
+        }
+    }
 }

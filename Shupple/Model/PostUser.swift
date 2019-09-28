@@ -71,6 +71,29 @@ class PostUser: Codable {
             self.opponentAgeUpper = 100
         }
     }
+    
+    /**
+     * UpdateVCで使う
+     */
+    func setOpponentAgeFromKey(opponentAgeKey: Int) {
+        switch opponentAgeKey {
+        case 18:
+            self.opponentAgeLow = 18
+            self.opponentAgeUpper = 20
+        case 20:
+            self.opponentAgeLow = 20
+            self.opponentAgeUpper = 25
+        case 25:
+            self.opponentAgeLow = 25
+            self.opponentAgeUpper = 30
+        case 30:
+            self.opponentAgeLow = 30
+            self.opponentAgeUpper = 35
+        default:
+            self.opponentAgeLow = 1
+            self.opponentAgeUpper = 100
+        }
+    }
  
     /**
      * switch文で分岐してAPIを叩く
@@ -101,6 +124,9 @@ class PostUser: Codable {
         }
         if self.personality == nil {
             return (true, "性格を選択して下さい。")
+        }
+        if self.opponentResidence == nil {
+            return (true, "お相手の居住地を選択して下さい。")
         }
         return (false, nil)
     }

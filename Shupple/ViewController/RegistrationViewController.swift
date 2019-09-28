@@ -70,20 +70,30 @@ class RegistrationViewController: FormViewController {
     }
     /*
      * finButtonを押されたら呼ばれる
+     * validationチェック後
      * APIへのリクエスト・画面遷移
+     * validationに引っ掛かった場合アラート表示
      */
     @objc func requestRegistration(_ sender: UIButton) {
-        finButton.animate()
-        apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator)
-        performSegue(withIdentifier: "toTopView", sender: nil)
+        let valid = postUser.isValidate()
+        switch !valid.result {
+        case true:
+            finButton.animate()
+            apiClient.requestRegistration(postUser: postUser, userDefaults: userDefaults, uid: currentuser!.uid, view: view, indicator: indicator, performSegue: performSegue, errorAlert: errorAlert)
+        case false:
+            present(AlertCustom().getAlertContrtoller(title: "入力項目", message: valid.msg!), animated: true, completion: nil)
+        }
     }
+    func errorAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
+    }
+    
     /*
      * フォームのセット
      */
     func setEureka() {
         var rules = RuleSet<String>()
         rules.add(rule: RuleRequired())
-        
         form
         +++ Section() {
             $0.header = {

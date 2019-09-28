@@ -84,7 +84,8 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             setChatButton()
             setAnotherShuppleButton()
             if count == "End" {
-                resetLabelToNotMatching()
+                requestCancelOpponent()
+//                resetLabelToNotMatching()
                 resetUIImageToNotMatching()
                 countdownActive = false
                 materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
@@ -93,7 +94,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
                 tmp.text = ""
                 setShuppleButton()
                 setAnotherChatBtn()
-                apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
+//                apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
                 invalidateAndReStartSetTimer()
                 return
             }
@@ -189,20 +190,24 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart)
+        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart, errorAlert: errorAlert)
+    }
+    
+    func errorAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する
      * マッチングしていない場合何も行わない
      */
     func requestIsMatched() {
-        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart)
+        apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart, errorAlert: errorAlert)
     }
     /**
      *
      */
     func requestCancelOpponent() {
-        apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
+        apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, errorAlert: errorAlert)
         resetLabelToNotMatching()
     }
     /**
