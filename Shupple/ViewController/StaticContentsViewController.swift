@@ -8,10 +8,12 @@
 
 import UIKit
 import MessageUI
+import Firebase
 
 class StaticContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ", "退会"]
+    let currentUserUid = Auth.auth().currentUser?.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,17 +53,31 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         case StaticContents.contact.rawValue:
             sendMail()
         case StaticContents.unsubscribe.rawValue:
-            let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: UIAlertController.Style.alert)
+            unsubscribe()
         default:
             return
         }
     }
     
+    func hoge() {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "firstVC")
+        self.present(nextView, animated: true, completion: nil)
+    }
+    
     func unsubscribe() {
         let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: .alert)
-        let okAction = UIAlertAction("退会", style: .default, handler: {(action: UIAlertAction!) in
-            
+        let okAction = UIAlertAction(title: "退会", style: .default, handler: {(action: UIAlertAction!) in
+            APIClient().requestSoftDeleteUser(uid: self.currentUserUid!, view: self.view, indicator: Indicator(), errorAlert: self.errorAlert, unsubscribe: self.hoge)
         })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func errorAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
     }
     
     

@@ -118,9 +118,8 @@ class APIClient {
         Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             debugPrint(response)
             switch response.result {
-            case .success(let value):
+            case .success(_):
                 popViewController()
-                print(value)
             case .failure(_):
                 errorAlert()
             }
@@ -208,8 +207,9 @@ class APIClient {
     
     /**
      * DELETE /users
+     * StaticContentsVC
      */
-    func requestSoftDeleteUser(uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void) {
+    func requestSoftDeleteUser(uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void, unsubscribe: @escaping () -> Void) {
         indicator.start(view: view)
         
         var request = URLRequest(url: commonURL!)
@@ -220,7 +220,8 @@ class APIClient {
         Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             switch response.result {
             case .success(_):
-                print("hoge")
+                unsubscribe()
+                UserDefaults.standard.set("default", forKey: "UID")
             case .failure(_):
                 errorAlert()
             }
