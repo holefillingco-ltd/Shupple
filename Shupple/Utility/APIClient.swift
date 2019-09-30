@@ -12,10 +12,9 @@ import Alamofire
 import SwiftyJSON
 
 class APIClient {
-    private let registrationURL = URL(string: "http://localhost:8080/users")
+    private let commonURL = URL(string: "http://localhost:8080/users")
     private let getOpponentURL = URL(string: "http://localhost:8080/users/shupple")
     private let cancelOpponentURL = URL(string: "http://localhost:8080/users/shupple")
-    private let updateUserURL = URL(string: "http://localhost:8080/users")
     private let getUserURL = URL(string: "http://localhost:8080/users/select")
     private let isMatchedURL = URL(string: "http://localhost:8080/users/isMatched")
     private let isRegisteredURL = URL(string: "http://localhost:8080/users/isRegistered")
@@ -29,7 +28,7 @@ class APIClient {
         indicator.start(view: view)
         
         let data = try! JSONEncoder().encode(postUser)
-        var request = URLRequest(url: registrationURL!)
+        var request = URLRequest(url: commonURL!)
         
         request.httpMethod = HTTPMethod.post.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -104,12 +103,12 @@ class APIClient {
      * PUT /users
      * UpdateUserVC
      */
-    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void) {
+    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void, popViewController: @escaping () -> Void) {
         
         indicator.start(view: view)
         
         let data = try! JSONEncoder().encode(postUser)
-        var request = URLRequest(url: registrationURL!)
+        var request = URLRequest(url: commonURL!)
         
         request.httpMethod = HTTPMethod.put.rawValue
         request.setValue("application/json; charset=UTF-8", forHTTPHeaderField: "Content-Type")
@@ -119,8 +118,8 @@ class APIClient {
         Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
             debugPrint(response)
             switch response.result {
-            case .success(let value):
-                print(value)
+            case .success(_):
+                popViewController()
             case .failure(_):
                 errorAlert()
             }
@@ -206,6 +205,29 @@ class APIClient {
         }
     }
     
+    /**
+     * DELETE /users
+     * StaticContentsVC
+     */
+    func requestSoftDeleteUser(uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void, unsubscribe: @escaping () -> Void) {
+        indicator.start(view: view)
+        
+        var request = URLRequest(url: commonURL!)
+        
+        request.httpMethod = HTTPMethod.delete.rawValue
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        
+        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
+            switch response.result {
+            case .success(_):
+                unsubscribe()
+                UserDefaults.standard.set("default", forKey: "UID")
+            case .failure(_):
+                errorAlert()
+            }
+            indicator.stop(view: view)
+        }
+    }
     /**
      * JsonからUserへデコード
      * TODO: CodableとcomputedPropertieを使用する様変更

@@ -75,7 +75,7 @@ class RegistrationViewController: FormViewController {
      * validationに引っ掛かった場合アラート表示
      */
     @objc func requestRegistration(_ sender: UIButton) {
-        let valid = postUser.isValidate()
+        let valid = postUser.isValidateToPost()
         switch !valid.result {
         case true:
             finButton.animate()

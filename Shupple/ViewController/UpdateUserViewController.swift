@@ -93,15 +93,19 @@ class UpdateUserViewController: FormViewController {
      * finBtnを押した時に呼ばれる
      */
     @objc func requestUpdateUser(_ sender: UIButton) {
-        let valid = postUser.isValidate()
+        let valid = postUser.isValidateToPut()
         switch !valid.result {
         case true:
             finBtn.animate()
-            apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid!, view: view, indicator: indicator, errorAlert: errorAlert)
+            apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid!, view: view, indicator: indicator, errorAlert: errorAlert, popViewController: backToPreviousVC)
+            
         case false:
-            errorAlert()
+            present(AlertCustom().getAlertContrtoller(title: "エラー", message: valid.msg!), animated: true, completion: nil)
         }
         
+    }
+    private func backToPreviousVC() {
+        self.navigationController?.popViewController(animated: true)
     }
     /*
      * フォームのセット

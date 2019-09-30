@@ -53,6 +53,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setShuppleButton()
         setChatButton()
         requestIsMatched()
+        userDefaults.set(currentUserUid, forKey: "UID")
     }
     // タイマー
     override func viewDidAppear(_ animated: Bool) {

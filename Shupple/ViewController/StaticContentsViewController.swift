@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MessageUI
+import Firebase
 
 class StaticContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ"]
+    let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ", "退会"]
+    let currentUserUid = Auth.auth().currentUser?.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +41,7 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
     
     /**
      * セルが選択された時の動作
-     * TODO: 他のセルが選択された時の動作
+     * TODO: アプリインストール時に戻す(userdefaultsとか)
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -48,9 +51,60 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         case StaticContents.notice.rawValue:
             performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
         case StaticContents.contact.rawValue:
-            performSegue(withIdentifier: StaticContents.contact.segueIdentifirer, sender: nil)
+            sendMail()
+        case StaticContents.unsubscribe.rawValue:
+            unsubscribe()
         default:
             return
         }
+    }
+    
+    func hoge() {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "firstVC")
+        self.present(nextView, animated: true, completion: nil)
+    }
+    
+    func unsubscribe() {
+        let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "退会", style: .default, handler: {(action: UIAlertAction!) in
+            APIClient().requestSoftDeleteUser(uid: self.currentUserUid!, view: self.view, indicator: Indicator(), errorAlert: self.errorAlert, unsubscribe: self.hoge)
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func errorAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
+    }
+    
+    
+    func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
+            mail.setToRecipients(["diorclub8@gmail.com"]) // 宛先アドレス
+            mail.setSubject("お問い合わせ") // 件名
+            mail.setMessageBody("ここに本文が入ります。", isHTML: false) // 本文
+            present(mail, animated: true, completion: nil)
+        } else {
+            present(AlertCustom().getAlertContrtoller(title: "エラー", message: "メールがご利用になれません。"), animated: true, completion: nil)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            print("キャンセル")
+        case .saved:
+            print("下書き保存")
+        case .sent:
+            print("送信成功")
+        default:
+            print("送信失敗")
+        }
+        dismiss(animated: true, completion: nil)
     }
 }

@@ -52,14 +52,12 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     
     @objc func AuthButtonTapped(sender: AnyObject) {
         let authViewController = self.authUI.authViewController()
-        self.present(authViewController,
-                     animated: true,
-                     completion: nil)
+        self.present(authViewController, animated: true, completion: nil)
     }
     /**
      * 認証成功後、遷移先VCを決定する
      */
-    func hoge(isRegistered: Bool) {
+    func selectNextVC(isRegistered: Bool) {
         if isRegistered {
             self.performSegue(withIdentifier: "registeredPattern", sender: self)
         } else {
@@ -73,9 +71,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         // 認証に成功した場合
         if error == nil {
             let uid = authUI.auth?.currentUser?.uid
-            userDefaults.set(uid, forKey: "UID")
-            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: hoge)
+            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: selectNextVC)
         }
     }
 }
-
