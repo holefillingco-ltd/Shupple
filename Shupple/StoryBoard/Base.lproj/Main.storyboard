@@ -22,13 +22,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topImage1" translatesAutoresizingMaskIntoConstraints="NO" id="24e-vM-DoZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDm-KM-WDh">
-                                <rect key="frame" x="182" y="353" width="51" height="30"/>
+                                <rect key="frame" x="162" y="701" width="51" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="認証"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="24e-vM-DoZ" firstAttribute="trailing" secondItem="PQr-Ze-W5v" secondAttribute="trailing" id="4rt-Eq-Lgu"/>
+                            <constraint firstAttribute="bottom" secondItem="24e-vM-DoZ" secondAttribute="bottom" id="Zw5-8N-P52"/>
+                            <constraint firstItem="24e-vM-DoZ" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" id="tyX-tk-aXg"/>
+                            <constraint firstItem="24e-vM-DoZ" firstAttribute="leading" secondItem="PQr-Ze-W5v" secondAttribute="leading" id="uY5-Nh-QvZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="vVm-Fi-tpj"/>
@@ -41,7 +50,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1060" y="414"/>
+            <point key="canvasLocation" x="1060" y="413.79310344827587"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="UNJ-Iv-wkJ">
@@ -322,6 +331,7 @@
     <resources>
         <image name="back-chevron.png" width="13" height="21"/>
         <image name="noImage" width="400" height="400"/>
+        <image name="topImage1" width="3456" height="5184"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PAT-eE-Z8d"/>
