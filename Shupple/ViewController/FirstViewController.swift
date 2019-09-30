@@ -71,7 +71,6 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         // 認証に成功した場合
         if error == nil {
             let uid = authUI.auth?.currentUser?.uid
-//            userDefaults.set("Auth", forKey: "UID")
             apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: selectNextVC)
         }
     }

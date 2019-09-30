@@ -39,7 +39,7 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
     
     /**
      * セルが選択された時の動作
-     * TODO: 他のセルが選択された時の動作
+     * TODO: アプリインストール時に戻す(userdefaultsとか)
      */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -51,11 +51,19 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         case StaticContents.contact.rawValue:
             sendMail()
         case StaticContents.unsubscribe.rawValue:
-            performSegue(withIdentifier: StaticContents.unsubscribe.segueIdentifirer, sender: nil)
+            let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: UIAlertController.Style.alert)
         default:
             return
         }
     }
+    
+    func unsubscribe() {
+        let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction("退会", style: .default, handler: {(action: UIAlertAction!) in
+            
+        })
+    }
+    
     
     func sendMail() {
         if MFMailComposeViewController.canSendMail() {
