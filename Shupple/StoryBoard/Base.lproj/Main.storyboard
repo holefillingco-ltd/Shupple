@@ -185,7 +185,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="K2G-Bf-VPQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="c3d-QS-AJM"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="c3d-QS-AJM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <size key="freeformSize" width="375" height="1000"/>
                     <connections>
@@ -223,7 +223,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="メッセージ" id="wU5-9L-7na">
-                                        <barButtonItem key="leftBarButtonItem" title="戻る" image="back-chevron.png" style="plain" id="ezg-I1-5md">
+                                        <barButtonItem key="leftBarButtonItem" largeContentSizeImage="back-chevron.png" style="plain" systemItem="stop" id="ezg-I1-5md">
                                             <connections>
                                                 <segue destination="eiS-We-SDQ" kind="unwind" unwindAction="unwindToViewController:" id="eie-2Y-3fO"/>
                                             </connections>
@@ -303,7 +303,7 @@
         <scene sceneID="5XJ-xt-hr9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3J9-D3-PYj" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="dwL-qx-49w"/>
+                    <tabBarItem key="tabBarItem" systemItem="more" id="dwL-qx-49w"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BNL-AH-3me">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

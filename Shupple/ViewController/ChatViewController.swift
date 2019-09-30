@@ -44,7 +44,7 @@ class ChatViewController: JSQMessagesViewController {
         header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
         header.barTintColor = UIColor.jsq_messageBubbleGreen()
         header.isTranslucent = false
-        safeArea?.backgroundColor = UIColor.greenEndColor
+        safeArea?.backgroundColor = UIColor.jsq_messageBubbleGreen()
         view.addSubview(header)
         view.addSubview(safeArea!)
     }
