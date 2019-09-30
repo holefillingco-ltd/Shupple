@@ -11,7 +11,7 @@ import MessageUI
 
 class StaticContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ"]
+    let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ", "退会"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,8 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
             performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
         case StaticContents.contact.rawValue:
             sendMail()
+        case StaticContents.unsubscribe.rawValue:
+            performSegue(withIdentifier: StaticContents.unsubscribe.segueIdentifirer, sender: nil)
         default:
             return
         }

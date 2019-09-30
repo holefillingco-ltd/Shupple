@@ -99,7 +99,7 @@ class PostUser: Codable {
      * switch文で分岐してAPIを叩く
      * https://qiita.com/tenten0213/items/3248eb73852ef8dd12b0
      */
-    func isValidate() -> (result: Bool, msg: String?) {
+    func isValidateToPost() -> (result: Bool, msg: String?) {
         if self.nickName == nil {
             return (true, "ニックネームを入力して下さい。")
         } else if self.nickName!.count > 10 {
@@ -115,6 +115,35 @@ class PostUser: Codable {
         }
         if self.birthDay == nil {
             return (true, "誕生日を入力して下さい。")
+        }
+        if self.residence == nil {
+            return (true, "居住地を選択して下さい。")
+        }
+        if self.job == nil {
+            return (true, "職業を入力して下さい。")
+        }
+        if self.personality == nil {
+            return (true, "性格を選択して下さい。")
+        }
+        if self.opponentResidence == nil {
+            return (true, "お相手の居住地を選択して下さい。")
+        }
+        return (false, nil)
+    }
+    
+    func isValidateToPut() -> (result: Bool, msg: String?) {
+        if self.nickName == nil {
+            return (true, "ニックネームを入力して下さい。")
+        } else if self.nickName!.count > 10 {
+            return (true, "ニックネームは1~10文字で入力して下さい。")
+        }
+        if self.opponentAgeLow == nil {
+            return (true, "お相手の年齢を選択して下さい。")
+        }
+        if self.hobby == nil {
+            return (true, "趣味を入力して下さい")
+        } else if self.hobby!.count > 10 {
+            return (true, "趣味は1~10文字で入力して下さい。")
         }
         if self.residence == nil {
             return (true, "居住地を選択して下さい。")

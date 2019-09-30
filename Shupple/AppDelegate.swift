@@ -26,18 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let userDefaults = UserDefaults.standard
         userDefaults.register(defaults: ["UID":"default"])
         userDefaults.register(defaults: ["OpponentUID":"default"])
+        let uid = userDefaults.object(forKey: "UID") as! String
         
         /**
          * ログインしている場合TopViewControllerへ遷移
          */
-        if userDefaults.object(forKey: "UID") as! String != "default" {
+        if uid == "default" {
+            // ログインしていない場合Is Initial View Controllerに遷移
+        } else {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabView")
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
-        } else {
-            // ログインしていない場合Is Initial View Controllerに遷移
         }
         
         TWTRTwitter.sharedInstance().start(

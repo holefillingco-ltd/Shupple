@@ -104,7 +104,7 @@ class APIClient {
      * PUT /users
      * UpdateUserVC
      */
-    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void) {
+    func requestUpdateUser(postUser: PostUser, uid: String, view: UIView, indicator: Indicator, errorAlert: @escaping () -> Void, popViewController: @escaping () -> Void) {
         
         indicator.start(view: view)
         
@@ -120,6 +120,7 @@ class APIClient {
             debugPrint(response)
             switch response.result {
             case .success(let value):
+                popViewController()
                 print(value)
             case .failure(_):
                 errorAlert()

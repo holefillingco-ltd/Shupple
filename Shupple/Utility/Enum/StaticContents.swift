@@ -12,6 +12,7 @@ enum StaticContents: Int {
     case updateUser = 0
     case notice
     case contact
+    case unsubscribe
     
     var segueIdentifirer: String {
         switch self {
@@ -21,6 +22,8 @@ enum StaticContents: Int {
             return "toNoticeView"
         case .contact:
             return "toContact"
+        case .unsubscribe:
+            return "toUnSubscribe"
         }
     }
 }

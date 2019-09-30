@@ -57,7 +57,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     /**
      * 認証成功後、遷移先VCを決定する
      */
-    func hoge(isRegistered: Bool) {
+    func selectNextVC(isRegistered: Bool) {
         if isRegistered {
             self.performSegue(withIdentifier: "registeredPattern", sender: self)
         } else {
@@ -72,8 +72,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         if error == nil {
             let uid = authUI.auth?.currentUser?.uid
             userDefaults.set(uid, forKey: "UID")
-            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: hoge)
+            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: selectNextVC)
         }
     }
 }
-
