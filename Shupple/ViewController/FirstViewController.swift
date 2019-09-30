@@ -52,9 +52,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     
     @objc func AuthButtonTapped(sender: AnyObject) {
         let authViewController = self.authUI.authViewController()
-        self.present(authViewController,
-                     animated: true,
-                     completion: nil)
+        self.present(authViewController, animated: true, completion: nil)
     }
     /**
      * 認証成功後、遷移先VCを決定する
