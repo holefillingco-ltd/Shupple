@@ -30,6 +30,9 @@ target 'Shupple' do
   # Firebase
   pod 'Firebase'
 
+  # MenuBar
+  pod 'Floaty', '~> 4.2.0'
+
 end
 
 pod 'Firebase/Analytics'

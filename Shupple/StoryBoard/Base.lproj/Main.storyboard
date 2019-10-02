@@ -74,6 +74,9 @@
                         <viewLayoutGuide key="safeArea" id="QJ1-Br-BVb"/>
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="bnh-QK-pl4" kind="show" identifier="toTopView" id="wlY-85-HQi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EPi-N6-odM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -339,4 +342,7 @@
         <image name="noImage" width="400" height="400"/>
         <image name="topImage1" width="3456" height="5184"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wlY-85-HQi"/>
+    </inferredMetricsTieBreakers>
 </document>

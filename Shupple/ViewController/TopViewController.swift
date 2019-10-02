@@ -8,6 +8,8 @@
 
 import UIKit
 import FirebaseAuth
+import MessageUI
+import Floaty
 
 class TopViewController: UIViewController, UIScrollViewDelegate {
 
@@ -52,6 +54,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         setScrollView()
         setShuppleButton()
         setChatButton()
+        setUpFloaty()
         requestIsMatched()
         userDefaults.set(currentUserUid, forKey: "UID")
     }
@@ -195,7 +198,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     }
     
     func errorAlert() {
-        present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: "条件に合ったお相手が見つかりません🙇‍♂️少し時間をおいて下さい。"), animated: true, completion: nil)
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する
@@ -205,7 +208,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         apiClient.requestIsMatched(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart, errorAlert: errorAlert)
     }
     /**
-     *
+     * cancelAPIを叩き成功した場合
      */
     func requestCancelOpponent() {
         apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator, errorAlert: errorAlert)
@@ -271,5 +274,72 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
             let nextVC = segue.destination as! ChatViewController
             nextVC.opponentUid = self.opponentUid
         }
+    }
+    
+    func setUpFloaty()  {
+        let floaty = Floaty()
+        floaty.addItem(title: "Edit", handler: {_ in
+            self.performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
+        })
+        floaty.addItem(title: "Notice", handler: {_ in
+            self.performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
+        })
+        floaty.addItem(title: "ContactforEmail", handler: {_ in
+            self.sendMail()
+        })
+        floaty.addItem(title: "ContactforChat", handler: {_ in
+            self.performSegue(withIdentifier: StaticContents.contactChat.segueIdentifirer, sender: nil)
+        })
+        floaty.addItem(title: "Unsubscribe", handler: {_ in
+            self.unsubscribe()
+        })
+        self.view.addSubview(floaty)
+    }
+    
+    /********************************************************************
+     *                     FloatyのボタンHandler                          *
+     ********************************************************************/
+    func sendMail() {
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
+            mail.setToRecipients(["diorclub8@gmail.com"])
+            mail.setSubject("お問い合わせ")
+            mail.setMessageBody("ここに本文が入ります。", isHTML: false)
+            present(mail, animated: true, completion: nil)
+        } else {
+            present(AlertCustom().getAlertContrtoller(title: "エラー", message: "メールがご利用になれません。"), animated: true, completion: nil)
+        }
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        switch result {
+        case .cancelled:
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "キャンセルしました。"), animated: true, completion: nil)
+        case .saved:
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "下書きを保存しました。"), animated: true, completion: nil)
+        case .sent:
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "送信完了しました。"), animated: true, completion: nil)
+        default:
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "送信に失敗しました。時間が経ってから再度お試行して下さい。"), animated: true, completion: nil)
+        }
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func hoge() {
+        let storyboard: UIStoryboard = self.storyboard!
+        let nextView = storyboard.instantiateViewController(withIdentifier: "firstVC")
+        self.present(nextView, animated: true, completion: nil)
+    }
+    
+    func unsubscribe() {
+        let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "退会", style: .default, handler: {(action: UIAlertAction!) in
+            APIClient().requestSoftDeleteUser(uid: self.currentUserUid!, view: self.view, indicator: Indicator(), errorAlert: self.errorAlert, unsubscribe: self.hoge)
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
     }
 }
