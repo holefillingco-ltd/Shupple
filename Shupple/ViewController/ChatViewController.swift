@@ -31,6 +31,7 @@ class ChatViewController: JSQMessagesViewController {
         automaticallyScrollsToMostRecentMessage = true
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
+        
         self.senderId = currentUserUid
         self.senderDisplayName = currentUserUid
         

@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TabView")
+            let initialViewController = storyboard.instantiateViewController(withIdentifier: "TopView")
             self.window?.rootViewController = initialViewController
             self.window?.makeKeyAndVisible()
         }

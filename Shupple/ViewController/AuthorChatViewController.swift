@@ -27,6 +27,7 @@ class AuthorChatViewController: JSQMessagesViewController {
         
         automaticallyScrollsToMostRecentMessage = true
         self.inputToolbar.contentView.leftBarButtonItem = nil
+        collectionView.frame = (CGRect(x: 0, y: 88, width: view.frame.width , height: 641))
         
         self.senderId = currentUserUid
         self.senderDisplayName = currentUserUid
@@ -127,4 +128,11 @@ class AuthorChatViewController: JSQMessagesViewController {
         return 0.0
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
+    }
 }
