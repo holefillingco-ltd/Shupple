@@ -12,7 +12,7 @@ import Firebase
 
 class StaticContentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    let staticContents = ["プロフィール編集", "お知らせ", "お問い合わせ", "退会"]
+    let staticContents = ["プロフィール編集", "お知らせ", "メールでのお問い合わせ", "チャットでのお問い合わせ","退会"]
     let currentUserUid = Auth.auth().currentUser?.uid
 
     override func viewDidLoad() {
@@ -50,8 +50,10 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
             performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
         case StaticContents.notice.rawValue:
             performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
-        case StaticContents.contact.rawValue:
+        case StaticContents.contactEmail.rawValue:
             sendMail()
+        case StaticContents.contactChat.rawValue:
+            print("hoge")
         case StaticContents.unsubscribe.rawValue:
             unsubscribe()
         default:
@@ -85,9 +87,9 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
-            mail.setToRecipients(["diorclub8@gmail.com"]) // 宛先アドレス
-            mail.setSubject("お問い合わせ") // 件名
-            mail.setMessageBody("ここに本文が入ります。", isHTML: false) // 本文
+            mail.setToRecipients(["diorclub8@gmail.com"])
+            mail.setSubject("お問い合わせ")
+            mail.setMessageBody("ここに本文が入ります。", isHTML: false)
             present(mail, animated: true, completion: nil)
         } else {
             present(AlertCustom().getAlertContrtoller(title: "エラー", message: "メールがご利用になれません。"), animated: true, completion: nil)
@@ -97,13 +99,13 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         switch result {
         case .cancelled:
-            print("キャンセル")
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "キャンセルしました。"), animated: true, completion: nil)
         case .saved:
-            print("下書き保存")
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "下書きを保存しました。"), animated: true, completion: nil)
         case .sent:
-            print("送信成功")
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "送信完了しました。"), animated: true, completion: nil)
         default:
-            print("送信失敗")
+            present(AlertCustom().getAlertContrtoller(title: "メール", message: "送信に失敗しました。時間が経ってから再度お試行して下さい。"), animated: true, completion: nil)
         }
         dismiss(animated: true, completion: nil)
     }

@@ -11,7 +11,8 @@ import Foundation
 enum StaticContents: Int {
     case updateUser = 0
     case notice
-    case contact
+    case contactEmail
+    case contactChat
     case unsubscribe
     
     var segueIdentifirer: String {
@@ -20,8 +21,10 @@ enum StaticContents: Int {
             return "toUpdateView"
         case .notice:
             return "toNoticeView"
-        case .contact:
-            return "toContact"
+        case .contactEmail:
+            return "toContactEmail"
+        case .contactChat:
+            return "toContactChat"
         case .unsubscribe:
             return "toUnSubscribe"
         }
