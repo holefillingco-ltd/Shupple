@@ -53,7 +53,7 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         case StaticContents.contactEmail.rawValue:
             sendMail()
         case StaticContents.contactChat.rawValue:
-            print("hoge")
+            performSegue(withIdentifier: StaticContents.contactChat.segueIdentifirer, sender: nil)
         case StaticContents.unsubscribe.rawValue:
             unsubscribe()
         default:

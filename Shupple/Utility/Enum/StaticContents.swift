@@ -24,7 +24,7 @@ enum StaticContents: Int {
         case .contactEmail:
             return "toContactEmail"
         case .contactChat:
-            return "toContactChat"
+            return "toAuthorChat"
         case .unsubscribe:
             return "toUnSubscribe"
         }

@@ -36,6 +36,7 @@ class AuthorChatViewController: JSQMessagesViewController {
         self.outgoingBubble = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         self.messages = []
         setupFirebase()
+        self.navigationItem.title = "運営チャット"
     }
 
     func setupFirebase() {

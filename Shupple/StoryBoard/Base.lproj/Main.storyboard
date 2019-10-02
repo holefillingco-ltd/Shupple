@@ -298,7 +298,7 @@
                     <navigationItem key="navigationItem" id="RNU-Sh-pVs"/>
                     <connections>
                         <segue destination="89Q-lK-jpI" kind="show" identifier="toUpdateView" id="CeU-v5-jpG"/>
-                        <segue destination="Ngw-KB-9AO" kind="show" id="8hb-c5-IlN"/>
+                        <segue destination="Ngw-KB-9AO" kind="show" identifier="toAuthorChat" id="8hb-c5-IlN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ced-2d-PBC" userLabel="First Responder" sceneMemberID="firstResponder"/>
