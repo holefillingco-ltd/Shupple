@@ -82,7 +82,6 @@ class StaticContentsViewController: UIViewController, UITableViewDelegate, UITab
         present(AlertCustom().getAlertContrtoller(title: "エラー", message: ""), animated: true, completion: nil)
     }
     
-    
     func sendMail() {
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
