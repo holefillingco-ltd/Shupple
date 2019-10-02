@@ -305,10 +305,10 @@
             </objects>
             <point key="canvasLocation" x="5814" y="1747"/>
         </scene>
-        <!--View Controller-->
+        <!--Author Chat View Controller-->
         <scene sceneID="b66-IJ-CgQ">
             <objects>
-                <viewController id="Ngw-KB-9AO" sceneMemberID="viewController">
+                <viewController id="Ngw-KB-9AO" customClass="AuthorChatViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TNi-Vp-peA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
