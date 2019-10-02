@@ -57,7 +57,7 @@ class UpdateUserViewController: FormViewController {
     }
     /**
      *
-     */
+     */ 
     func setProfileImage() {
         var imageURL = ""
         let tmp = currentUser.imageURL ?? "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png"
