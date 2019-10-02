@@ -12,6 +12,7 @@ import JSQMessagesViewController
 
 class AuthorChatViewController: JSQMessagesViewController {
 
+    @IBOutlet weak var header: UINavigationBar!
     private let currentUserUid = Auth.auth().currentUser?.uid
     let AuthorId = "diorclub8isozakiauthor"
     
@@ -24,6 +25,8 @@ class AuthorChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
+        view.addSubview(header)
         
         automaticallyScrollsToMostRecentMessage = true
         self.inputToolbar.contentView.leftBarButtonItem = nil
@@ -36,7 +39,6 @@ class AuthorChatViewController: JSQMessagesViewController {
         self.outgoingBubble = bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
         self.messages = []
         setupFirebase()
-        self.navigationItem.title = "運営チャット"
     }
 
     func setupFirebase() {
