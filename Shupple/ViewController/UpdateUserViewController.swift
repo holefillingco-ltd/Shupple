@@ -13,6 +13,8 @@ import FirebaseAuth
 
 class UpdateUserViewController: FormViewController {
     
+    @IBOutlet weak var header: UINavigationBar!
+    
     private let prefectures = Prefecture.allPrefectures
     private let jobs = Job.allJob
     private let personalitys = Personality.allPersonality
@@ -33,6 +35,8 @@ class UpdateUserViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
+        view.addSubview(header)
         getUser()
     }
 
