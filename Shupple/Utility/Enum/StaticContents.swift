@@ -10,7 +10,6 @@ import Foundation
 
 enum StaticContents: Int {
     case updateUser = 0
-    case notice
     case contactEmail
     case contactChat
     case unsubscribe
@@ -19,8 +18,6 @@ enum StaticContents: Int {
         switch self {
         case .updateUser:
             return "toUpdateView"
-        case .notice:
-            return "toNoticeView"
         case .contactEmail:
             return "toContactEmail"
         case .contactChat:

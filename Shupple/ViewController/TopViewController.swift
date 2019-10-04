@@ -11,7 +11,7 @@ import FirebaseAuth
 import MessageUI
 import Floaty
 
-class TopViewController: UIViewController, UIScrollViewDelegate {
+class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate {
 
     let currentUserUid = Auth.auth().currentUser?.uid
     let indicator = Indicator()
@@ -119,7 +119,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         var imageURL = ""
         let tmp = opponent.imageURL ?? "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png"
         if opponent.imageURL != nil {
-            imageURL = "https://isozaki-images.s3-ap-northeast-1.amazonaws.com/\(tmp)"
+            imageURL = "https://new-classic.ninja/images/\(tmp)"
         } else {
             imageURL = tmp
         }
@@ -133,19 +133,21 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
      *       順番の関係で最後にaddSubviewしてる
      */
     func setScrollView() {
-        opponentContentView.addSubview(jobTitle)
-        opponentContentView.addSubview(hobbyTitle)
-        opponentContentView.addSubview(personalityTitle)
-        opponentContentView.addSubview(opponentName)
-        opponentContentView.addSubview(opponentAge)
-        opponentContentView.addSubview(opponentResidence)
-        opponentContentView.addSubview(opponentJob)
-        opponentContentView.addSubview(opponentHobby)
-        opponentContentView.addSubview(opponentPersonality)
-        opponentContentView.addSubview(opponentImage)
-        opponentContentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+//        opponentContentView.addSubview(jobTitle)
+//        opponentContentView.addSubview(hobbyTitle)
+//        opponentContentView.addSubview(personalityTitle)
+//        opponentContentView.addSubview(opponentName)
+//        opponentContentView.addSubview(opponentAge)
+//        opponentContentView.addSubview(opponentResidence)
+//        opponentContentView.addSubview(opponentJob)
+//        opponentContentView.addSubview(opponentHobby)
+//        opponentContentView.addSubview(opponentPersonality)
+//        opponentContentView.addSubview(opponentImage)
+//        opponentContentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.addSubview(opponentContentView)
+        scrollView.addSubview(tableView)
+//        scrollView.addSubview(opponentContentView)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         shadowView.layer.shadowColor = UIColor.black.cgColor
@@ -281,12 +283,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
         floaty.addItem(title: "Edit", handler: {_ in
             self.performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
         })
-        floaty.addItem(title: "Notice", handler: {_ in
-            self.performSegue(withIdentifier: StaticContents.notice.segueIdentifirer, sender: nil)
-        })
-        floaty.addItem(title: "ContactforEmail", handler: {_ in
-            self.sendMail()
-        })
         floaty.addItem(title: "ContactforChat", handler: {_ in
             self.performSegue(withIdentifier: StaticContents.contactChat.segueIdentifirer, sender: nil)
         })
@@ -299,33 +295,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate {
     /********************************************************************
      *                     FloatyのボタンHandler                          *
      ********************************************************************/
-    func sendMail() {
-        if MFMailComposeViewController.canSendMail() {
-            let mail = MFMailComposeViewController()
-            mail.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
-            mail.setToRecipients(["diorclub8@gmail.com"])
-            mail.setSubject("お問い合わせ")
-            mail.setMessageBody("ここに本文が入ります。", isHTML: false)
-            present(mail, animated: true, completion: nil)
-        } else {
-            present(AlertCustom().getAlertContrtoller(title: "エラー", message: "メールがご利用になれません。"), animated: true, completion: nil)
-        }
-    }
-    
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        switch result {
-        case .cancelled:
-            present(AlertCustom().getAlertContrtoller(title: "メール", message: "キャンセルしました。"), animated: true, completion: nil)
-        case .saved:
-            present(AlertCustom().getAlertContrtoller(title: "メール", message: "下書きを保存しました。"), animated: true, completion: nil)
-        case .sent:
-            present(AlertCustom().getAlertContrtoller(title: "メール", message: "送信完了しました。"), animated: true, completion: nil)
-        default:
-            present(AlertCustom().getAlertContrtoller(title: "メール", message: "送信に失敗しました。時間が経ってから再度お試行して下さい。"), animated: true, completion: nil)
-        }
-        dismiss(animated: true, completion: nil)
-    }
-    
     func hoge() {
         let storyboard: UIStoryboard = self.storyboard!
         let nextView = storyboard.instantiateViewController(withIdentifier: "firstVC")

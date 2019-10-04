@@ -19,6 +19,7 @@ extension UIColor {
     static let greenEndColor = #colorLiteral(red: 0.7330715545, green: 1, blue: 0.6801393378, alpha: 1)
     static let grayStartColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
     static let grayEndColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+    static let headerGray = #colorLiteral(red: 0.8671354128, green: 0.8671354128, blue: 0.8671354128, alpha: 1)
     
     convenience init(hex: String, alpha: CGFloat) {
         let v = Int("000000" + hex, radix: 16) ?? 0

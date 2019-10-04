@@ -35,8 +35,8 @@ class UpdateUserViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
-        view.addSubview(header)
+        
+        Header().setHeader(header: header, view: view, color: .headerGray)
         getUser()
     }
 
@@ -56,13 +56,13 @@ class UpdateUserViewController: FormViewController {
         pView.addSubview(imageView)
     }
     /**
-     *
-     */ 
+     * TODO:cloudfront経由にする
+     */
     func setProfileImage() {
         var imageURL = ""
         let tmp = currentUser.imageURL ?? "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png"
         if currentUser.imageURL != nil {
-            imageURL = "https://isozaki-images.s3-ap-northeast-1.amazonaws.com/\(tmp)"
+            imageURL = "https://new-classic.ninja/images/\(tmp)"
         } else {
             imageURL = tmp
         }
@@ -102,7 +102,6 @@ class UpdateUserViewController: FormViewController {
         case true:
             finBtn.animate()
             apiClient.requestUpdateUser(postUser: postUser, uid: currentUserUid!, view: view, indicator: indicator, errorAlert: errorAlert, popViewController: backToPreviousVC)
-            
         case false:
             present(AlertCustom().getAlertContrtoller(title: "エラー", message: valid.msg!), animated: true, completion: nil)
         }

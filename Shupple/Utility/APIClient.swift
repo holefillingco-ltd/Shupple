@@ -12,12 +12,12 @@ import Alamofire
 import SwiftyJSON
 
 class APIClient {
-    private let commonURL = URL(string: "http://localhost:8080/users")
-    private let getOpponentURL = URL(string: "http://localhost:8080/users/shupple")
-    private let cancelOpponentURL = URL(string: "http://localhost:8080/users/shupple")
-    private let getUserURL = URL(string: "http://localhost:8080/users/select")
-    private let isMatchedURL = URL(string: "http://localhost:8080/users/isMatched")
-    private let isRegisteredURL = URL(string: "http://localhost:8080/users/isRegistered")
+    private let commonURL = URL(string: "https://new-classic.ninja/users")
+    private let getOpponentURL = URL(string: "https://new-classic.ninja/users/shupple")
+    private let cancelOpponentURL = URL(string: "https://new-classic.ninja/users/shupple")
+    private let getUserURL = URL(string: "https://new-classic.ninja/users/select")
+    private let isMatchedURL = URL(string: "https://new-classic.ninja/users/isMatched")
+    private let isRegisteredURL = URL(string: "https://new-classic.ninja/users/isRegistered")
     
     /**
      * POST /users

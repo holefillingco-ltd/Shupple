@@ -23,7 +23,6 @@ class ChatViewController: JSQMessagesViewController {
     var outgoingBubble: JSQMessagesBubbleImage!
     var incomingAvatar: JSQMessagesAvatarImage!
     var outgoingAvatar: JSQMessagesAvatarImage!
-    var safeArea: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +40,7 @@ class ChatViewController: JSQMessagesViewController {
         self.messages = []
         setupFirebase()
         
-        safeArea = UIView.init(frame: CGRect.init(x: 0, y: 0, width: view.frame.width, height: 44))
-        header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
-        header.barTintColor = UIColor.greenEndColor
-        header.isTranslucent = false
-        safeArea?.backgroundColor = UIColor.greenEndColor
-        view.addSubview(header)
-        view.addSubview(safeArea!)
+        Header().setHeader(header: header, view: view, color: .greenEndColor)
     }
     
     func setupFirebase() {

@@ -25,8 +25,7 @@ class AuthorChatViewController: JSQMessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        header.frame = CGRect(x: 0, y: 44, width: view.frame.width, height: 44)
-        view.addSubview(header)
+        Header().setHeader(header: header, view: view, color: .headerGray)
         
         automaticallyScrollsToMostRecentMessage = true
         self.inputToolbar.contentView.leftBarButtonItem = nil

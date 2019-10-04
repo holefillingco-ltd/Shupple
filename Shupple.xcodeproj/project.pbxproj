@@ -70,6 +70,7 @@
 		5E6424FA2341CA5D00C8DBDF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6424F92341CA5D00C8DBDF /* MessageUI.framework */; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
+		5EC09A4B2346FACB00E657D5 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC09A4A2346FACB00E657D5 /* Header.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		5E6424F92341CA5D00C8DBDF /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5EC09A4A2346FACB00E657D5 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70313AAD303D97A156C371 /* Pods_Shupple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shupple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 		589DA58822F354B600AE2BE6 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				5EC09A4A2346FACB00E657D5 /* Header.swift */,
 				5E6424E1232CFC9800C8DBDF /* Extension */,
 				5E44B4B62324BB7B0063AF4B /* Enum */,
 				5E6424DF232BB67400C8DBDF /* Channel.swift */,
@@ -494,6 +497,7 @@
 				5E44B51B2324E87A0063AF4B /* BlurView.swift in Sources */,
 				5E57232923445E0F00A3323C /* AuthorChatViewController.swift in Sources */,
 				5E6424E5232CFFC100C8DBDF /* StaticContents.swift in Sources */,
+				5EC09A4B2346FACB00E657D5 /* Header.swift in Sources */,
 				58CF97CC231ED58C00C3C0B7 /* APIClient.swift in Sources */,
 				5E44B5172324E87A0063AF4B /* Spring.swift in Sources */,
 				58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */,
