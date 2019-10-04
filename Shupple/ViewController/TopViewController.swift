@@ -20,6 +20,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     let userDefaults = UserDefaults.standard
     var opponentUid = UserDefaults.standard.object(forKey: "OpponentUID") as? String
     
+    @IBOutlet weak var opponentInformationStackView: UIStackView!
     var dateManager: DateManager?
     var scrollView = UIScrollView()
     var opponentContentView = UIView()
@@ -142,12 +143,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
 //        opponentContentView.addSubview(opponentJob)
 //        opponentContentView.addSubview(opponentHobby)
 //        opponentContentView.addSubview(opponentPersonality)
-//        opponentContentView.addSubview(opponentImage)
-//        opponentContentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
+        opponentContentView.addSubview(opponentInformationStackView)
+        opponentContentView.addSubview(opponentImage)
+        opponentContentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.addSubview(tableView)
-//        scrollView.addSubview(opponentContentView)
+        scrollView.addSubview(opponentContentView)
         scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
         shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         shadowView.layer.shadowColor = UIColor.black.cgColor
@@ -222,27 +223,27 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func setShuppleButton() {
         getOpponentBtn.removeFromSuperview()
         anotherGetOpponentBtn.removeFromSuperview()
-        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         scrollView.addSubview(getOpponentBtn)
     }
     func setChatButton() {
         chatBtn.removeFromSuperview()
         anotherChatBtn.removeFromSuperview()
-        chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(toChatVC(_:)), for: .touchUpInside)
         scrollView.addSubview(chatBtn)
     }
     func setAnotherShuppleButton() {
         anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn.removeFromSuperview()
-        anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 750, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+        anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         scrollView.addSubview(anotherGetOpponentBtn)
     }
     func setAnotherChatBtn() {
         anotherChatBtn.removeFromSuperview()
         chatBtn.removeFromSuperview()
-        anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 850, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+        anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         scrollView.addSubview(anotherChatBtn)
     }
     /**
@@ -280,13 +281,13 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     
     func setUpFloaty()  {
         let floaty = Floaty()
-        floaty.addItem(title: "Edit", handler: {_ in
+        floaty.addItem("プロフィール編集", icon: UIImage(named: "user_edit")!, handler: {_ in
             self.performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
         })
-        floaty.addItem(title: "ContactforChat", handler: {_ in
+        floaty.addItem("お問い合わせ", icon: UIImage(named: "help"), handler: {_ in
             self.performSegue(withIdentifier: StaticContents.contactChat.segueIdentifirer, sender: nil)
         })
-        floaty.addItem(title: "Unsubscribe", handler: {_ in
+        floaty.addItem("退会", icon: UIImage(named: "unsubscribe"), handler: {_ in
             self.unsubscribe()
         })
         self.view.addSubview(floaty)
