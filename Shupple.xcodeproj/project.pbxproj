@@ -71,6 +71,7 @@
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 		5EC09A4B2346FACB00E657D5 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC09A4A2346FACB00E657D5 /* Header.swift */; };
+		5EC09A4D2347385F00E657D5 /* WebQuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC09A4C2347385E00E657D5 /* WebQuestionnaireViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +145,7 @@
 		5E7CEFC9232B677300E4A72F /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5EC09A4A2346FACB00E657D5 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
+		5EC09A4C2347385E00E657D5 /* WebQuestionnaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebQuestionnaireViewController.swift; sourceTree = "<group>"; };
 		8DD51B699DB279C9F2B1110E /* Pods-Shupple.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shupple.debug.xcconfig"; path = "Target Support Files/Pods-Shupple/Pods-Shupple.debug.xcconfig"; sourceTree = "<group>"; };
 		BE70313AAD303D97A156C371 /* Pods_Shupple.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shupple.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -195,6 +197,7 @@
 		58A4A66822F5852300EC54ED /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				5EC09A4C2347385E00E657D5 /* WebQuestionnaireViewController.swift */,
 				58C1CBBD22F2030500460FE1 /* RegistrationViewController.swift */,
 				5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */,
 				58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */,
@@ -519,6 +522,7 @@
 				5E6424F42335100700C8DBDF /* UIViewExtension.swift in Sources */,
 				5E6424EB2332222A00C8DBDF /* DateManager.swift in Sources */,
 				58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */,
+				5EC09A4D2347385F00E657D5 /* WebQuestionnaireViewController.swift in Sources */,
 				5E44B5142324E87A0063AF4B /* TransitionManager.swift in Sources */,
 				58CF97C2230DB31B00C3C0B7 /* Job.swift in Sources */,
 				5E44B5212324E87A0063AF4B /* DesignableButton.swift in Sources */,

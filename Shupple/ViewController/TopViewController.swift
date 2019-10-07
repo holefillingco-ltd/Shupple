@@ -134,15 +134,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
      *       順番の関係で最後にaddSubviewしてる
      */
     func setScrollView() {
-//        opponentContentView.addSubview(jobTitle)
-//        opponentContentView.addSubview(hobbyTitle)
-//        opponentContentView.addSubview(personalityTitle)
-//        opponentContentView.addSubview(opponentName)
-//        opponentContentView.addSubview(opponentAge)
-//        opponentContentView.addSubview(opponentResidence)
-//        opponentContentView.addSubview(opponentJob)
-//        opponentContentView.addSubview(opponentHobby)
-//        opponentContentView.addSubview(opponentPersonality)
         opponentContentView.addSubview(opponentInformationStackView)
         opponentContentView.addSubview(opponentImage)
         opponentContentView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
@@ -281,14 +272,17 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     
     func setUpFloaty()  {
         let floaty = Floaty()
-        floaty.addItem("プロフィール編集", icon: UIImage(named: "user_edit")!, handler: {_ in
-            self.performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
+        floaty.addItem("退会", icon: UIImage(named: "unsubscribe"), handler: {_ in
+            self.unsubscribe()
         })
         floaty.addItem("お問い合わせ", icon: UIImage(named: "help"), handler: {_ in
             self.performSegue(withIdentifier: StaticContents.contactChat.segueIdentifirer, sender: nil)
         })
-        floaty.addItem("退会", icon: UIImage(named: "unsubscribe"), handler: {_ in
-            self.unsubscribe()
+        floaty.addItem("アンケート", icon: UIImage(named: "questionnaire"), handler: {_ in
+            self.performSegue(withIdentifier: "toQuestionView", sender: nil)
+        })
+        floaty.addItem("プロフィール編集", icon: UIImage(named: "user_edit")!, handler: {_ in
+            self.performSegue(withIdentifier: StaticContents.updateUser.segueIdentifirer, sender: nil)
         })
         self.view.addSubview(floaty)
     }

@@ -110,7 +110,7 @@ class RegistrationViewController: FormViewController {
         +++ Section("Profile")
             <<< ImageRow(){ row in
                 row.title = "プロフィール画像"
-                row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.value = selectedImage
                 row.clearAction = .no
                 row.onChange { [unowned self] row in
