@@ -51,7 +51,12 @@ class RegistrationViewController: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        downloadImage(from: (currentuser?.photoURL)!)
+        if currentuser?.photoURL != nil {
+            downloadImage(from: (currentuser?.photoURL)!)
+
+        } else {
+            downloadImage(from: URL(string: "https://schoolshop-lab.jp/wp-content/uploads/2018/11/240ec862387d03003cb4c41cd93cb0be.png")!)
+        }
     }
     /*
      * 画像プレビューを変更する

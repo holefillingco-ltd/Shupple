@@ -51,7 +51,7 @@ class APIClient {
      * TODO: decodeエラーハンドリング
      * https://medium.com/@phillfarrugia/encoding-and-decoding-json-with-swift-4-3832bf21c9a8
      */
-    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void, errorAlert: @escaping () -> Void) {
+    func requestGetOpponent(userDefaults: UserDefaults, opponentUid: String, view: UIView, indicator: Indicator, userConvertToUILabelFunc: @escaping (User) -> Void, dateManagerStartFunc: @escaping (Date) -> Void, errorAlert: @escaping () -> Void, successAlert: @escaping () -> Void) {
 
         indicator.start(view: view)
 
@@ -70,6 +70,7 @@ class APIClient {
                 }
                 userDefaults.set(opponent.user.uid, forKey: "OpponentUID")
                 userConvertToUILabelFunc(opponent.user)
+                successAlert()
             case .failure(_):
                 errorAlert()
             }

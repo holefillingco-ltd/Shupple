@@ -27,7 +27,8 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
-            twitterAuthProvider()!
+//            twitterAuthProvider()!,
+//            FUIEmailAuth()
         ]
         // authUIのデリゲート
         self.authUI.delegate = self

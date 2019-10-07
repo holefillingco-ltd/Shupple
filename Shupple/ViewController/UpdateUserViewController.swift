@@ -114,6 +114,8 @@ class UpdateUserViewController: FormViewController {
      * フォームのセット
      */
     func setEureka() {
+        var rules = RuleSet<String>()
+        rules.add(rule: RuleRequired())
         form
             +++ Section() {
                 $0.header = {
@@ -130,7 +132,7 @@ class UpdateUserViewController: FormViewController {
             +++ Section("Profile")
             <<< ImageRow(){ row in
                 row.title = "プロフィール画像"
-                row.sourceTypes = [.PhotoLibrary, .SavedPhotosAlbum, .Camera]
+                row.sourceTypes = [.PhotoLibrary, .Camera]
                 row.value = selectedImage
                 row.clearAction = .no
                 row.onChange { [unowned self] row in
@@ -143,9 +145,12 @@ class UpdateUserViewController: FormViewController {
             }
             <<< TextRow("nickName"){ row in
                 row.title = "ニックネーム"
+                row.add(ruleSet: rules)
+                row.add(rule: RuleMaxLength(maxLength: 10))
+                row.validationOptions = .validatesOnChange
                 row.value = currentUser.nickName
                 row.onChange{ row in
-                    self.postUser.nickName = row.value!
+                    self.postUser.nickName = row.value
                 }
             }
             <<< TextRow("hobby"){ row in
@@ -153,7 +158,7 @@ class UpdateUserViewController: FormViewController {
                 row.value = currentUser.userInformation?.hobby
                 row.placeholder = "Ex.) サッカー"
                 row.onChange{ row in
-                    self.postUser.hobby = row.value!
+                    self.postUser.hobby = row.value
                 }
             }
             <<< PickerInlineRow<String>() { row in

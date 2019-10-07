@@ -90,7 +90,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
             setAnotherShuppleButton()
             if count == "End" {
                 requestCancelOpponent()
-//                resetLabelToNotMatching()
                 resetUIImageToNotMatching()
                 countdownActive = false
                 materialButton.changeTupIsEnabled(button: chatBtn, isEnabled: false,  startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
@@ -99,7 +98,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
                 tmp.text = ""
                 setShuppleButton()
                 setAnotherChatBtn()
-//                apiClient.requestCancelOpponent(userDefaults: userDefaults, uid: currentUserUid!, view: view, indicator: indicator)
                 invalidateAndReStartSetTimer()
                 return
             }
@@ -188,11 +186,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
      */
     @objc func requestGetOpponent(_ sender: UIButton) {
         getOpponentBtn.animate()
-        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart, errorAlert: errorAlert)
+        apiClient.requestGetOpponent(userDefaults: userDefaults, opponentUid: currentUserUid!, view: view, indicator: indicator, userConvertToUILabelFunc: convertOpponentToUILabel, dateManagerStartFunc: dateManagerStart, errorAlert: errorAlert, successAlert: successAlert)
     }
     
     func errorAlert() {
         present(AlertCustom().getAlertContrtoller(title: "エラー", message: "条件に合ったお相手が見つかりません🙇‍♂️少し時間をおいて下さい。"), animated: true, completion: nil)
+    }
+    func successAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "マッチング成功", message: "お相手が見つかりました！"), animated: true, completion: nil)
     }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する

@@ -54,6 +54,7 @@ public enum Personality {
     case compassion
     case responsible
     case bright
+    case shyness
     case stimulation
     case peace
     case adventure
