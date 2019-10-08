@@ -120,7 +120,7 @@ class UpdateUserViewController: FormViewController {
             +++ Section() {
                 $0.header = {
                     let header = HeaderFooterView<UIView>(.callback({
-                        self.pView = UIView(frame: CGRect(x: 0, y: 0,
+                        self.pView = UIView(frame: CGRect(x: 0, y: 88,
                                                           width: self.view.frame.width,
                                                           height: 300))
                         self.changePV(image: self.selectedImage)
