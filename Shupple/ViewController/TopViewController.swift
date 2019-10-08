@@ -138,7 +138,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         
         scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
         scrollView.addSubview(opponentContentView)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 100)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height + 300)
         shadowView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
         shadowView.layer.shadowColor = UIColor.black.cgColor
         shadowView.layer.shadowOpacity = 0.6
