@@ -13,8 +13,8 @@ import TwitterKit
 
 class FirstViewController: UIViewController, FUIAuthDelegate {
     
-    @IBOutlet weak var AuthButton: UIButton!
     
+    @IBOutlet weak var topImageView: UIImageView!
     // Firebase認証
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!} }
     // UserDefaultのインスタンス
@@ -24,7 +24,6 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let pic = UIImage(named: "")
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
@@ -34,9 +33,14 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         // authUIのデリゲート
         self.authUI.delegate = self
         self.authUI.providers = providers
-        AuthButton.addTarget(self,
-                             action: #selector(self.AuthButtonTapped(sender:)),
-                             for: .touchUpInside)
+        setAuthBtn()
+    }
+    
+    private func setAuthBtn() {
+        let btn = MaterialUIButton().setMaterialButton(superView: view, title: "認証", y: 700, startColor: .blueStartColor, endColor: .blueEndColor)
+        btn.addTarget(self, action: #selector(self.AuthButtonTapped(sender:)), for: .touchUpInside)
+        view.addSubview(btn)
+        view.bringSubviewToFront(btn)
     }
 
     private func twitterAuthProvider() -> FUIAuthProvider? {

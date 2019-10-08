@@ -26,11 +26,6 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topImage1" translatesAutoresizingMaskIntoConstraints="NO" id="24e-vM-DoZ">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDm-KM-WDh">
-                                <rect key="frame" x="162" y="701" width="51" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="認証"/>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="W52-gC-bOP">
                                 <rect key="frame" x="92" y="135" width="190" height="182"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -55,7 +50,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="vVm-Fi-tpj"/>
                     <navigationItem key="navigationItem" id="vAd-aT-qKb"/>
                     <connections>
-                        <outlet property="AuthButton" destination="RDm-KM-WDh" id="9KE-7V-2UN"/>
+                        <outlet property="topImageView" destination="24e-vM-DoZ" id="vfH-qt-2Iq"/>
                         <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
                         <segue destination="bnh-QK-pl4" kind="show" identifier="registeredPattern" id="c2A-kc-tcj"/>
                     </connections>
@@ -415,6 +410,6 @@
         <image name="topImage1" width="3456" height="5184"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wlY-85-HQi"/>
+        <segue reference="c2A-kc-tcj"/>
     </inferredMetricsTieBreakers>
 </document>
