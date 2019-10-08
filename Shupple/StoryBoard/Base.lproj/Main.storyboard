@@ -383,7 +383,7 @@
                                     <navigationItem title="プロフィール編集" id="EsU-L5-wca">
                                         <barButtonItem key="leftBarButtonItem" largeContentSizeImage="back-chevron.png" style="plain" systemItem="stop" id="r7X-NH-1g2">
                                             <connections>
-                                                <segue destination="plE-SZ-uBl" kind="unwind" unwindAction="unwindToViewController:" id="9EL-to-vht"/>
+                                                <segue destination="plE-SZ-uBl" kind="unwind" identifier="backToVC" unwindAction="unwindToViewController:" id="9EL-to-vht"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

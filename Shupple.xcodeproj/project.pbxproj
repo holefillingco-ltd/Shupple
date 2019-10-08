@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21766D27FB2BEBD48679BFD8 /* Pods_Shupple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE70313AAD303D97A156C371 /* Pods_Shupple.framework */; };
+		21766D27FB2BEBD48679BFD8 /* Pods_Shupple.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE70313AAD303D97A156C371 /* Pods_Shupple.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		589DA58A22F354E400AE2BE6 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589DA58922F354E400AE2BE6 /* UIImageExtension.swift */; };
 		58A4A67222F9EB2600EC54ED /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67122F9EB2600EC54ED /* UIColorExtension.swift */; };
 		58A4A67422FB33DA00EC54ED /* TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4A67322FB33DA00EC54ED /* TopViewController.swift */; };
@@ -19,7 +19,6 @@
 		58CF97C4230DBA2D00C3C0B7 /* Personality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C3230DBA2D00C3C0B7 /* Personality.swift */; };
 		58CF97C62314366900C3C0B7 /* PostUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C52314366900C3C0B7 /* PostUser.swift */; };
 		58CF97C82316EBAE00C3C0B7 /* Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97C72316EBAE00C3C0B7 /* Indicator.swift */; };
-		58CF97CA231BF9CE00C3C0B7 /* Eureka.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 58CF97C9231BF9CE00C3C0B7 /* Eureka.bundle */; settings = {ATTRIBUTES = (Weak, ); }; };
 		58CF97CC231ED58C00C3C0B7 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF97CB231ED58C00C3C0B7 /* APIClient.swift */; };
 		58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDD22EDE61100E89BFB /* AppDelegate.swift */; };
 		58FC3CE022EDE61100E89BFB /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */; };
@@ -67,7 +66,7 @@
 		5E6424F42335100700C8DBDF /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F32335100700C8DBDF /* UIViewExtension.swift */; };
 		5E6424F62336539400C8DBDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FC3CE322EDE61100E89BFB /* Main.storyboard */; };
 		5E6424F8233E160300C8DBDF /* AlertCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424F7233E160300C8DBDF /* AlertCustom.swift */; };
-		5E6424FA2341CA5D00C8DBDF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6424F92341CA5D00C8DBDF /* MessageUI.framework */; };
+		5E6424FA2341CA5D00C8DBDF /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E6424F92341CA5D00C8DBDF /* MessageUI.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		5E7CEFCA232B677300E4A72F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E7CEFC9232B677300E4A72F /* ChatViewController.swift */; };
 		5E92C24E231E3083004EDA32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E92C24D231E3083004EDA32 /* GoogleService-Info.plist */; };
 		5EC09A4B2346FACB00E657D5 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC09A4A2346FACB00E657D5 /* Header.swift */; };
@@ -156,7 +155,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E6424FA2341CA5D00C8DBDF /* MessageUI.framework in Frameworks */,
-				58CF97CA231BF9CE00C3C0B7 /* Eureka.bundle in Frameworks */,
 				21766D27FB2BEBD48679BFD8 /* Pods_Shupple.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,7 +420,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Eureka.framework",
 			);
 			outputFileListPaths = (
 			);

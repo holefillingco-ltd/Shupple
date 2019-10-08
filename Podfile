@@ -9,6 +9,7 @@ target 'Shupple' do
   pod 'TwitterKit'
 
   # Eureka ImageRow
+  pod 'Eureka'
   pod 'ImageRow', '~> 3.0'
 
   # Kingfisher

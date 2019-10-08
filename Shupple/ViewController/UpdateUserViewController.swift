@@ -108,9 +108,9 @@ class UpdateUserViewController: FormViewController {
         
     }
     private func backToPreviousVC() {
-        self.navigationController?.popViewController(animated: true)
+        performSegue(withIdentifier: "backToVC", sender: nil)
     }
-    /*
+    /**
      * フォームのセット
      */
     func setEureka() {

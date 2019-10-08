@@ -37,7 +37,7 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     }
     
     private func setAuthBtn() {
-        let btn = MaterialUIButton().setMaterialButton(superView: view, title: "認証", y: 700, startColor: .blueStartColor, endColor: .blueEndColor)
+        let btn = MaterialUIButton().setMaterialButton(superView: view, title: "認証", y: Int(view.frame.height - 100), startColor: .blueStartColor, endColor: .blueEndColor)
         btn.addTarget(self, action: #selector(self.AuthButtonTapped(sender:)), for: .touchUpInside)
         view.addSubview(btn)
         view.bringSubviewToFront(btn)
