@@ -52,9 +52,9 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         super.viewDidLoad()
         scrollView.delegate = self
         
-        setScrollView()
         setShuppleButton()
         setChatButton()
+        setScrollView()
         setUpFloaty()
         requestIsMatched()
         userDefaults.set(currentUserUid, forKey: "UID")
@@ -217,26 +217,34 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
-        scrollView.addSubview(getOpponentBtn)
+//        scrollView.addSubview(getOpponentBtn)
+        opponentContentView.addSubview(getOpponentBtn)
+        opponentContentView.sendSubviewToBack(getOpponentBtn)
     }
     func setChatButton() {
         chatBtn.removeFromSuperview()
         anotherChatBtn.removeFromSuperview()
         chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(toChatVC(_:)), for: .touchUpInside)
-        scrollView.addSubview(chatBtn)
+//        scrollView.addSubview(chatBtn)
+        opponentContentView.addSubview(chatBtn)
+        opponentContentView.sendSubviewToBack(chatBtn)
     }
     func setAnotherShuppleButton() {
         anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn.removeFromSuperview()
         anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-        scrollView.addSubview(anotherGetOpponentBtn)
+//        scrollView.addSubview(anotherGetOpponentBtn)
+        opponentContentView.addSubview(anotherGetOpponentBtn)
+        opponentContentView.sendSubviewToBack(anotherGetOpponentBtn)
     }
     func setAnotherChatBtn() {
         anotherChatBtn.removeFromSuperview()
         chatBtn.removeFromSuperview()
         anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-        scrollView.addSubview(anotherChatBtn)
+//        scrollView.addSubview(anotherChatBtn)
+        opponentContentView.addSubview(anotherChatBtn)
+        opponentContentView.sendSubviewToBack(anotherChatBtn)
     }
     /**
      * マッチング解除後(タイマーが0)各パーツをマッチング前に戻す
@@ -273,6 +281,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     
     func setUpFloaty()  {
         let floaty = Floaty()
+        floaty.buttonColor = countdownView.backgroundColor!
         floaty.addItem("退会", icon: UIImage(named: "unsubscribe"), handler: {_ in
             self.unsubscribe()
         })

@@ -218,7 +218,7 @@ class APIClient {
         request.httpMethod = HTTPMethod.delete.rawValue
         request.setValue(uid, forHTTPHeaderField: "Uid")
         
-        Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
+        Alamofire.request(request).responseJSON { response in
             switch response.result {
             case .success(_):
                 unsubscribe()

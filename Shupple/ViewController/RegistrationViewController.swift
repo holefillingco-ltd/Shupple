@@ -146,6 +146,7 @@ class RegistrationViewController: FormViewController {
             <<< DateRow("birth"){ row in
                 row.add(rule: RuleRequired())
                 row.validationOptions = .validatesOnChange
+                row.maximumDate = Date()
                 row.title = "生年月日"
                 row.onChange{ row in
                     self.postUser.setBirth(birth: row.value!)
