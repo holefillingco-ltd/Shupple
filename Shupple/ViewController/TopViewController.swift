@@ -217,7 +217,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
-//        scrollView.addSubview(getOpponentBtn)
         opponentContentView.addSubview(getOpponentBtn)
         opponentContentView.sendSubviewToBack(getOpponentBtn)
     }
@@ -226,7 +225,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         anotherChatBtn.removeFromSuperview()
         chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(toChatVC(_:)), for: .touchUpInside)
-//        scrollView.addSubview(chatBtn)
         opponentContentView.addSubview(chatBtn)
         opponentContentView.sendSubviewToBack(chatBtn)
     }
@@ -234,7 +232,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn.removeFromSuperview()
         anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-//        scrollView.addSubview(anotherGetOpponentBtn)
         opponentContentView.addSubview(anotherGetOpponentBtn)
         opponentContentView.sendSubviewToBack(anotherGetOpponentBtn)
     }
@@ -242,7 +239,6 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         anotherChatBtn.removeFromSuperview()
         chatBtn.removeFromSuperview()
         anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
-//        scrollView.addSubview(anotherChatBtn)
         opponentContentView.addSubview(anotherChatBtn)
         opponentContentView.sendSubviewToBack(anotherChatBtn)
     }

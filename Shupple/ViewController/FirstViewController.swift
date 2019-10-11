@@ -77,7 +77,10 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
         // 認証に成功した場合
         if error == nil {
             let uid = authUI.auth?.currentUser?.uid
-            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: selectNextVC)
+            apiClient.requestIsRegistered(uid: uid!, view: view, indicator: indicator, selectNextVC: selectNextVC, errorAlert: erroAlert)
         }
+    }
+    private func erroAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "エラー", message: "予期せぬエラーが発生しました。"), animated: true, completion: nil)
     }
 }

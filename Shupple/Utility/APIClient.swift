@@ -117,7 +117,6 @@ class APIClient {
         request.httpBody = data
         
         Alamofire.request(request).validate(statusCode:[200]).responseJSON { response in
-            debugPrint(response)
             switch response.result {
             case .success(_):
                 popViewController()
@@ -186,7 +185,7 @@ class APIClient {
      * GET /users/isRegistered
      *
      */
-    func requestIsRegistered(uid: String, view: UIView, indicator: Indicator, selectNextVC: @escaping (Bool) -> Void) {
+    func requestIsRegistered(uid: String, view: UIView, indicator: Indicator, selectNextVC: @escaping (Bool) -> Void, errorAlert: @escaping () -> Void) {
         indicator.start(view: view)
         
         var request = URLRequest(url: isRegisteredURL!)
@@ -199,8 +198,8 @@ class APIClient {
             switch response.result {
             case .success(let value):
                 selectNextVC(JSON(value)["is_registered"].bool!)
-            case .failure(let error):
-                print(error)
+            case .failure(_):
+                errorAlert()
             }
             indicator.stop(view: view)
         }
