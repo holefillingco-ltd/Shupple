@@ -57,7 +57,20 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
         setScrollView()
         setUpFloaty()
         requestIsMatched()
+        setLayout()
         userDefaults.set(currentUserUid, forKey: "UID")
+    }
+    
+    private func setLayout() {
+        var countdownViewRect = countdownView.frame
+        countdownViewRect.size.width = view.frame.width
+        countdownView.frame = countdownViewRect
+        var shadowViewRect = shadowView.frame
+        shadowViewRect.size.width = view.frame.width
+        shadowView.frame = shadowViewRect
+        var countdownRect = countdown.frame
+        countdownRect.origin.x = (view.frame.width - countdownRect.size.width)/2
+        countdown.frame = countdownRect
     }
     // タイマー
     override func viewDidAppear(_ animated: Bool) {
@@ -215,7 +228,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func setShuppleButton() {
         getOpponentBtn.removeFromSuperview()
         anotherGetOpponentBtn.removeFromSuperview()
-        getOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
+        getOpponentBtn = materialButton.setLeftMaterialButton(superView: view, title: "Shupple!!", y: 400, startColor: UIColor.pinkStartColor, endColor: UIColor.pinkEndColor)
         getOpponentBtn.addTarget(self, action: #selector(requestGetOpponent(_:)), for: .touchUpInside)
         opponentContentView.addSubview(getOpponentBtn)
         opponentContentView.sendSubviewToBack(getOpponentBtn)
@@ -223,7 +236,7 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func setChatButton() {
         chatBtn.removeFromSuperview()
         anotherChatBtn.removeFromSuperview()
-        chatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
+        chatBtn = materialButton.setRightMaterialButton(superView: view, title: "メッセージ", y: 400, startColor: UIColor.greenStartColor, endColor: UIColor.greenEndColor)
         chatBtn.addTarget(self, action: #selector(toChatVC(_:)), for: .touchUpInside)
         opponentContentView.addSubview(chatBtn)
         opponentContentView.sendSubviewToBack(chatBtn)
@@ -231,14 +244,14 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func setAnotherShuppleButton() {
         anotherGetOpponentBtn.removeFromSuperview()
         getOpponentBtn.removeFromSuperview()
-        anotherGetOpponentBtn = materialButton.setMaterialButton(superView: view, title: "Shupple!!", y: 700, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+        anotherGetOpponentBtn = materialButton.setLeftMaterialButton(superView: view, title: "Shupple!!", y: 400, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         opponentContentView.addSubview(anotherGetOpponentBtn)
         opponentContentView.sendSubviewToBack(anotherGetOpponentBtn)
     }
     func setAnotherChatBtn() {
         anotherChatBtn.removeFromSuperview()
         chatBtn.removeFromSuperview()
-        anotherChatBtn = materialButton.setMaterialButton(superView: view, title: "メッセージ", y: 800, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
+        anotherChatBtn = materialButton.setRightMaterialButton(superView: view, title: "メッセージ", y: 400, startColor: UIColor.grayStartColor, endColor: UIColor.grayEndColor)
         opponentContentView.addSubview(anotherChatBtn)
         opponentContentView.sendSubviewToBack(anotherChatBtn)
     }

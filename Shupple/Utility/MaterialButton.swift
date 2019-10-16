@@ -60,4 +60,55 @@ class MaterialUIButton {
 
         button.layer.insertSublayer(gradientLayer, at: 0)
     }
+    
+    func setLeftMaterialButton(superView: UIView, title: String, y: Int, startColor: UIColor, endColor: UIColor) -> SpringButton {
+        let button = SpringButton(frame: CGRect(x: Int((superView.frame.width - 150)/8), y: y, width: 150, height: 50))
+        let gradientLayer = CAGradientLayer()
+        
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.grayEndColor, for: .highlighted)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = button.bounds.midY
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 10
+        
+        gradientLayer.frame = button.bounds
+        gradientLayer.cornerRadius = button.bounds.midY
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        
+        button.layer.insertSublayer(gradientLayer, at: 0)
+        button.animation = "wobble"
+        
+        return button
+    }
+    
+    
+    func setRightMaterialButton(superView: UIView, title: String, y: Int, startColor: UIColor, endColor: UIColor) -> SpringButton {
+        let button = SpringButton(frame: CGRect(x: Int(((superView.frame.width - 150)/8) * 7), y: y, width: 150, height: 50))
+        let gradientLayer = CAGradientLayer()
+        
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(UIColor.grayEndColor, for: .highlighted)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = button.bounds.midY
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 0, height: 3)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 10
+        
+        gradientLayer.frame = button.bounds
+        gradientLayer.cornerRadius = button.bounds.midY
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        
+        button.layer.insertSublayer(gradientLayer, at: 0)
+        button.animation = "wobble"
+        
+        return button
+    }
 }
