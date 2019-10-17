@@ -57,6 +57,7 @@
 		5E44B52E2324E87A0063AF4B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B5112324E87A0063AF4B /* AsyncImageView.swift */; };
 		5E44B53023291A8C0063AF4B /* StaticContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */; };
 		5E57232923445E0F00A3323C /* AuthorChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57232823445E0F00A3323C /* AuthorChatViewController.swift */; };
+		5E6234C02358203900BE899E /* TermsOfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6234BF2358203900BE899E /* TermsOfServiceViewController.swift */; };
 		5E6424E0232BB67400C8DBDF /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424DF232BB67400C8DBDF /* Channel.swift */; };
 		5E6424E3232CFE1200C8DBDF /* UpdateUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */; };
 		5E6424E5232CFFC100C8DBDF /* StaticContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6424E4232CFFC100C8DBDF /* StaticContents.swift */; };
@@ -132,6 +133,7 @@
 		5E44B5112324E87A0063AF4B /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContentsViewController.swift; sourceTree = "<group>"; };
 		5E57232823445E0F00A3323C /* AuthorChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorChatViewController.swift; sourceTree = "<group>"; };
+		5E6234BF2358203900BE899E /* TermsOfServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceViewController.swift; sourceTree = "<group>"; };
 		5E6424DF232BB67400C8DBDF /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 		5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserViewController.swift; sourceTree = "<group>"; };
 		5E6424E4232CFFC100C8DBDF /* StaticContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticContents.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				5E6424E2232CFE1200C8DBDF /* UpdateUserViewController.swift */,
 				58FC3CDF22EDE61100E89BFB /* FirstViewController.swift */,
 				58FC3CE122EDE61100E89BFB /* SecondViewController.swift */,
+				5E6234BF2358203900BE899E /* TermsOfServiceViewController.swift */,
 				5E44B52F23291A8B0063AF4B /* StaticContentsViewController.swift */,
 				58A4A67322FB33DA00EC54ED /* TopViewController.swift */,
 				5E7CEFC9232B677300E4A72F /* ChatViewController.swift */,
@@ -502,6 +505,7 @@
 				5E44B5172324E87A0063AF4B /* Spring.swift in Sources */,
 				58FC3CE222EDE61100E89BFB /* SecondViewController.swift in Sources */,
 				5E44B5192324E87A0063AF4B /* DesignableLabel.swift in Sources */,
+				5E6234C02358203900BE899E /* TermsOfServiceViewController.swift in Sources */,
 				5E44B5152324E87A0063AF4B /* TransitionZoom.swift in Sources */,
 				58FC3CDE22EDE61100E89BFB /* AppDelegate.swift in Sources */,
 				5E44B5292324E87A0063AF4B /* AutoTextView.swift in Sources */,

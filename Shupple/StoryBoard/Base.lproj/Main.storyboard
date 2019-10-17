@@ -37,6 +37,25 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffu-Wu-mre">
+                                <rect key="frame" x="110" y="535" width="155" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="利用規約"/>
+                                <connections>
+                                    <segue destination="TQA-DA-0qr" kind="show" id="rza-yI-Fn7"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nuk-oZ-ycd">
+                                <rect key="frame" x="163" y="496" width="49" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="利用規約に同意の上ご登録下さい" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8t-jb-ZoC">
+                                <rect key="frame" x="58" y="467" width="260" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -50,7 +69,12 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="vVm-Fi-tpj"/>
                     <navigationItem key="navigationItem" id="vAd-aT-qKb"/>
                     <connections>
+                        <outlet property="termLabel" destination="e8t-jb-ZoC" id="ZRq-9R-AWw"/>
+                        <outlet property="termOfServiceLabel" destination="ffu-Wu-mre" id="YAl-Km-64y"/>
+                        <outlet property="termsOfService" destination="Nuk-oZ-ycd" id="gpH-lq-nSl"/>
                         <outlet property="topImageView" destination="24e-vM-DoZ" id="vfH-qt-2Iq"/>
+                        <outlet property="topLogo" destination="W52-gC-bOP" id="Ted-f9-hFI"/>
+                        <outlet property="topTitle" destination="nnM-To-Uo4" id="xwV-RE-pNp"/>
                         <segue destination="yij-LJ-DzJ" kind="show" identifier="toRegistrationView" id="EbQ-y2-T66"/>
                         <segue destination="bnh-QK-pl4" kind="show" identifier="registeredPattern" id="c2A-kc-tcj"/>
                     </connections>
@@ -58,6 +82,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1060" y="413.79310344827587"/>
+        </scene>
+        <!--Terms Of Service View Controller-->
+        <scene sceneID="HfB-f9-MDZ">
+            <objects>
+                <viewController id="TQA-DA-0qr" customClass="TermsOfServiceViewController" customModule="Shupple" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cAC-d0-J8b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rHo-Yp-qg2">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bfH-wZ-KfD">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="利用規約" id="hUo-su-8a1">
+                                        <barButtonItem key="leftBarButtonItem" largeContentSizeImage="back-chevron.png" systemItem="stop" id="C9Y-dg-kNF">
+                                            <connections>
+                                                <segue destination="ZNv-D0-7R9" kind="unwind" unwindAction="unwindToViewController:" id="o0b-uk-J4N"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="m5C-yZ-oGI"/>
+                    </view>
+                    <connections>
+                        <outlet property="header" destination="bfH-wZ-KfD" id="qaL-XC-OqR"/>
+                        <outlet property="webView" destination="rHo-Yp-qg2" id="VLm-0X-Dls"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2uN-5y-GGO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ZNv-D0-7R9" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1034.4000000000001" y="1283.497536945813"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="UNJ-Iv-wkJ">

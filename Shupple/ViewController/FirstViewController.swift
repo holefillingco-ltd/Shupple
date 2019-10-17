@@ -14,6 +14,12 @@ import TwitterKit
 class FirstViewController: UIViewController, FUIAuthDelegate {
     
     
+    @IBOutlet weak var topLogo: UIImageView!
+    @IBOutlet weak var topTitle: UILabel!
+    @IBOutlet weak var termsOfService: UISwitch!
+    @IBOutlet weak var termLabel: UILabel!
+    @IBOutlet weak var termOfServiceLabel: UIButton!
+    
     @IBOutlet weak var topImageView: UIImageView!
     // Firebase認証
     var authUI: FUIAuth { get { return FUIAuth.defaultAuthUI()!} }
@@ -24,15 +30,15 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        termsOfService.isOn = false
         let providers: [FUIAuthProvider] = [
             FUIGoogleAuth(),
             FUIFacebookAuth(),
-//            twitterAuthProvider()!,
-//            FUIEmailAuth()
         ]
         // authUIのデリゲート
         self.authUI.delegate = self
         self.authUI.providers = providers
+        setLayout()
         setAuthBtn()
     }
     
@@ -57,8 +63,12 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     }
     
     @objc func AuthButtonTapped(sender: AnyObject) {
-        let authViewController = self.authUI.authViewController()
-        self.present(authViewController, animated: true, completion: nil)
+        if termsOfService.isOn {
+            let authViewController = self.authUI.authViewController()
+            self.present(authViewController, animated: true, completion: nil)
+        } else {
+            present(AlertCustom().getAlertContrtoller(title: "エラー", message: "利用規約に同意が必要です。"), animated: true, completion: nil)
+        }
     }
     /**
      * 認証成功後、遷移先VCを決定する
@@ -82,5 +92,23 @@ class FirstViewController: UIViewController, FUIAuthDelegate {
     }
     private func erroAlert() {
         present(AlertCustom().getAlertContrtoller(title: "エラー", message: "予期せぬエラーが発生しました。"), animated: true, completion: nil)
+    }
+    
+    private func setLayout() {
+        var topLogoRect = topLogo.frame
+        topLogoRect.origin.x = (view.frame.width - topLogoRect.size.width)/2
+        topLogo.frame = topLogoRect
+        var topTitleRect = topTitle.frame
+        topTitleRect.origin.x = (view.frame.width - topTitleRect.size.width)/2
+        topTitle.frame = topTitleRect
+        var termsOfServiceRect = termsOfService.frame
+        termsOfServiceRect.origin.x = (view.frame.width - termsOfServiceRect.size.width)/2
+        termsOfService.frame = termsOfServiceRect
+        var termLabelRecct = termLabel.frame
+        termLabelRecct.origin.x = (view.frame.width - termLabelRecct.size.width)/2
+        termLabel.frame = termLabelRecct
+        var termOfServiceLabelRect = termOfServiceLabel.frame
+        termOfServiceLabelRect.origin.x = (view.frame.width - termOfServiceLabelRect.size.width)/2
+        termOfServiceLabel.frame = termOfServiceLabelRect
     }
 }
