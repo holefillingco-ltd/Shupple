@@ -337,25 +337,40 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     }
     
     func unauthorizedReport() {
-        let alert = UIAlertController(title: "確認", message: "不適切なユーザーとして報告しますか？", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "報告", style: .default, handler: {(action: UIAlertAction!) in
-            self.apiClient.requestUnauthorized(uid: self.currentUserUid!, view: self.view, block: false, indicator: self.indicator, errorAlert: self.errorAlert, successAlert: self.unauthorizedSuccessAlert, reset: self.reset)
-        })
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
+        if opponentUid == nil {
+            let alert = UIAlertController(title: "確認", message: "不適切なユーザーとして報告しますか？", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "報告", style: .default, handler: {(action: UIAlertAction!) in
+                self.apiClient.requestUnauthorized(uid: self.currentUserUid!, view: self.view, block: false, indicator: self.indicator, errorAlert: self.errorAlert, successAlert: self.unauthorizedSuccessAlert, reset: self.reset)
+            })
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+
+        } else {
+            let alert = UIAlertController(title: "確認", message: "現在はマッチングしていません。", preferredStyle: .alert)
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func unauthorizedBlock() {
-        let alert = UIAlertController(title: "確認", message: "不適切なユーザーとしてブロックしますか？", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "報告", style: .default, handler: {(action: UIAlertAction!) in
-            self.apiClient.requestUnauthorized(uid: self.currentUserUid!, view: self.view, block: true, indicator: self.indicator, errorAlert: self.errorAlert, successAlert: self.unauthorizedSuccessAlert, reset: self.reset)
-        })
-        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
-        present(alert, animated: true, completion: nil)
+        if opponentUid == nil {
+            let alert = UIAlertController(title: "確認", message: "不適切なユーザーとしてブロックしますか？", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "報告", style: .default, handler: {(action: UIAlertAction!) in
+                self.apiClient.requestUnauthorized(uid: self.currentUserUid!, view: self.view, block: true, indicator: self.indicator, errorAlert: self.errorAlert, successAlert: self.unauthorizedSuccessAlert, reset: self.reset)
+            })
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "確認", message: "現在はマッチングしていません。", preferredStyle: .alert)
+            let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func reset() {
