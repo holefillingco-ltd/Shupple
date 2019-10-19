@@ -208,6 +208,10 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func successAlert() {
         present(AlertCustom().getAlertContrtoller(title: "マッチング成功", message: "お相手が見つかりました！"), animated: true, completion: nil)
     }
+    func unauthorizedSuccessAlert() {
+        present(AlertCustom().getAlertContrtoller(title: "報告", message: "不適切なユーザーとして報告しました。"),
+                animated: true, completion: nil)
+    }
     /**
      * マッチング済みの場合相手のプロフィールを取得、表示する
      * マッチングしていない場合何も行わない
@@ -291,6 +295,12 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func setUpFloaty()  {
         let floaty = Floaty()
         floaty.buttonColor = countdownView.backgroundColor!
+        floaty.addItem("ブロック", icon: UIImage(named: "cancel"), handler: {_ in
+            self.unauthorizedBlock()
+        })
+        floaty.addItem("不適切なユーザーとして報告", icon: UIImage(named: "alarm"), handler: {_ in
+            self.unauthorizedReport()
+        })
         floaty.addItem("退会", icon: UIImage(named: "unsubscribe"), handler: {_ in
             self.unsubscribe()
         })
@@ -318,11 +328,38 @@ class TopViewController: UIViewController, UIScrollViewDelegate, UITableViewDele
     func unsubscribe() {
         let alert = UIAlertController(title: "確認", message: "退会しますか？", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "退会", style: .default, handler: {(action: UIAlertAction!) in
-            APIClient().requestSoftDeleteUser(uid: self.currentUserUid!, view: self.view, indicator: Indicator(), errorAlert: self.errorAlert, unsubscribe: self.hoge)
+            self.apiClient.requestSoftDeleteUser(uid: self.currentUserUid!, view: self.view, indicator: self.indicator, errorAlert: self.errorAlert, unsubscribe: self.hoge)
         })
         let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    func unauthorizedReport() {
+        let alert = UIAlertController(title: "確認", message: "不適切なユーザーとして報告しますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "報告", style: .default, handler: {(action: UIAlertAction!) in
+            self.apiClient.requestUnauthorized(uid: self.currentUserUid!, view: self.view, block: false, indicator: self.indicator, errorAlert: self.errorAlert, successAlert: self.unauthorizedSuccessAlert, reset: self.reset)
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func unauthorizedBlock() {
+        let alert = UIAlertController(title: "確認", message: "不適切なユーザーとしてブロックしますか？", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "報告", style: .default, handler: {(action: UIAlertAction!) in
+            self.apiClient.requestUnauthorized(uid: self.currentUserUid!, view: self.view, block: true, indicator: self.indicator, errorAlert: self.errorAlert, successAlert: self.unauthorizedSuccessAlert, reset: self.reset)
+        })
+        let cancelAction: UIAlertAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func reset() {
+        resetLabelToNotMatching()
+        resetUIImageToNotMatching()
     }
 }

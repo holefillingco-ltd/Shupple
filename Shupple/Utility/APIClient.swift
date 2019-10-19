@@ -18,6 +18,7 @@ class APIClient {
     private let getUserURL = URL(string: "https://new-classic.ninja/users/select")
     private let isMatchedURL = URL(string: "https://new-classic.ninja/users/isMatched")
     private let isRegisteredURL = URL(string: "https://new-classic.ninja/users/isRegistered")
+    private let unauthorizedURL = URL(string: "https://new-classic.ninja/users/unauthorized")
     
     /**
      * POST /users
@@ -227,6 +228,35 @@ class APIClient {
             }
             indicator.stop(view: view)
         }
+    }
+    
+    /**
+     * POST /users/unauthorized
+     */
+    func requestUnauthorized(uid: String, view: UIView, block: Bool, indicator: Indicator, errorAlert: @escaping () -> Void, successAlert: @escaping () -> Void, reset: @escaping () -> Void) {
+        indicator.start(view: view)
+        
+        var request = URLRequest(url: unauthorizedURL!)
+        
+        request.httpMethod = HTTPMethod.put.rawValue
+        request.setValue(uid, forHTTPHeaderField: "Uid")
+        if block {
+            request.setValue("true", forHTTPHeaderField: "Block")
+        } else {
+            request.setValue("false", forHTTPHeaderField: "Block")
+        }
+        
+        Alamofire.request(request).validate(statusCode: [200]).responseJSON { response in
+            switch response.result {
+            case .success(_):
+                successAlert()
+                reset()
+            case .failure(_):
+                errorAlert()
+            }
+            indicator.stop(view: view)
+        }
+        
     }
     /**
      * JsonからUserへデコード
