@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         TWTRTwitter.sharedInstance().start(
-            withConsumerKey:"TzoGJ45sT2XIaQI7lq3WWZqno",consumerSecret:"buEQnPJ51gJTkwIQYDdNbIuaPBse5v05gPlOlHqtmDdAuvRJ9E")
+            withConsumerKey:"",consumerSecret:"")
         return true
     }
     
